@@ -6,6 +6,30 @@
   const compactEl = document.getElementById("compact-toggle");
   const globalCounterEl = document.getElementById("global-counter");
 
+  function isProbablyMobile() {
+    try {
+      const mql =
+        (q) => typeof window.matchMedia === "function" && window.matchMedia(q).matches;
+      return (
+        mql("(pointer: coarse)") ||
+        mql("(hover: none)") ||
+        mql("(max-width: 820px)")
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  // Hide advanced toggles (still functional; just not shown).
+  compactEl?.closest("label.toggle")?.setAttribute("hidden", "");
+  groupEl?.closest("label.toggle")?.setAttribute("hidden", "");
+
+  // Default to compact view on mobile-ish devices.
+  if (compactEl && isProbablyMobile()) {
+    compactEl.checked = true;
+    document.body.classList.add("compact");
+  }
+
   compactEl.addEventListener("change", () => {
     document.body.classList.toggle("compact", compactEl.checked);
   });
