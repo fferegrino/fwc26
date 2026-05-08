@@ -1,0 +1,5255 @@
+{
+  "url": "https://www.laststicker.com/cards/panini_world_cup_2026/",
+  "rows": [
+    {
+      "sticker_code": "00",
+      "name": "Panini Logo",
+      "country": "We Are Panini"
+    },
+    {
+      "sticker_code": "FWC1",
+      "name": "Official Emblem1",
+      "country": "FIFA World Cup 2026"
+    },
+    {
+      "sticker_code": "FWC2",
+      "name": "Official Emblem2",
+      "country": "FIFA World Cup 2026"
+    },
+    {
+      "sticker_code": "FWC3",
+      "name": "Official Mascots",
+      "country": "FIFA World Cup 2026"
+    },
+    {
+      "sticker_code": "FWC4",
+      "name": "Official Slogan",
+      "country": "FIFA World Cup 2026"
+    },
+    {
+      "sticker_code": "FWC5",
+      "name": "Official Ball",
+      "country": "FIFA World Cup 2026"
+    },
+    {
+      "sticker_code": "FWC6",
+      "name": "Canada",
+      "country": "Host Countries and Cities"
+    },
+    {
+      "sticker_code": "FWC7",
+      "name": "Mexico",
+      "country": "Host Countries and Cities"
+    },
+    {
+      "sticker_code": "FWC8",
+      "name": "USA",
+      "country": "Host Countries and Cities"
+    },
+    {
+      "sticker_code": "MEX1",
+      "name": "Emblem",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX2",
+      "name": "Luis Malagón",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX3",
+      "name": "Johan Vasquez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX4",
+      "name": "Jorge Sánchez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX5",
+      "name": "Cesar Montes",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX6",
+      "name": "Jesus Gallardo",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX7",
+      "name": "Israel Reyes",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX8",
+      "name": "Diego Lainez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX9",
+      "name": "Carlos Rodriguez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX10",
+      "name": "Edson Alvarez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX11",
+      "name": "Orbelin Pineda",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX12",
+      "name": "Marcel Ruiz",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX13",
+      "name": "Team Photo",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX14",
+      "name": "Érick Sánchez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX15",
+      "name": "Hirving Lozano",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX16",
+      "name": "Santiago Giménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX17",
+      "name": "Raúl Jiménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX18",
+      "name": "Alexis Vega",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX19",
+      "name": "Roberto Alvarado",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "MEX20",
+      "name": "Cesar Huerta",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "RSA1",
+      "name": "Emblem",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA2",
+      "name": "Ronwen Williams",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA3",
+      "name": "Sipho Chaine",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA4",
+      "name": "Aubrey Modiba",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA5",
+      "name": "Samukele Kabini",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA6",
+      "name": "Mbekezeli Mbokazi",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA7",
+      "name": "Khulumani Ndamane",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA8",
+      "name": "Siyabonga Ngezana",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA9",
+      "name": "Khuliso Mudau",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA10",
+      "name": "Nkosinathi Sibisi",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA11",
+      "name": "Teboho Mokoena",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA12",
+      "name": "Thalente Mbatha",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA13",
+      "name": "Team Photo",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA14",
+      "name": "Bathasi Aubaas",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA15",
+      "name": "Yaya Sithole",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA16",
+      "name": "Sipho Mbule",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA17",
+      "name": "Lyle Foster",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA18",
+      "name": "Iqraam Rayners",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA19",
+      "name": "Mohau Nkota",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "RSA20",
+      "name": "Oswin Appollis",
+      "country": "South Africa"
+    },
+    {
+      "sticker_code": "KOR1",
+      "name": "Emblem",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR2",
+      "name": "Hyeon-woo Jo",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR3",
+      "name": "Seung-Gyu Kim",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR4",
+      "name": "Min-jae Kim",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR5",
+      "name": "Yu-min Cho",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR6",
+      "name": "Young-woo Seol",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR7",
+      "name": "Han-beom Lee",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR8",
+      "name": "Tae-seok Lee",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR9",
+      "name": "Myung-jae Lee",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR10",
+      "name": "Jae-sung Lee",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR11",
+      "name": "In-beom Hwang",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR12",
+      "name": "Kang-in Lee",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR13",
+      "name": "Team Photo",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR14",
+      "name": "Seung-ho Paik",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR15",
+      "name": "Jens Castrop",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR16",
+      "name": "Dongg-yeong Lee",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR17",
+      "name": "Gue-sung Cho",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR18",
+      "name": "Heung-min Son",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR19",
+      "name": "Hee-chan Hwang",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "KOR20",
+      "name": "Hyeon-Gyu Oh",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "CZE1",
+      "name": "Emblem",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE2",
+      "name": "Matej Kovar",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE3",
+      "name": "Jindrich Stanek",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE4",
+      "name": "Ladislav Krejci",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE5",
+      "name": "Vladimir Coufal",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE6",
+      "name": "Jaroslav Zeleny",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE7",
+      "name": "Tomas Holes",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE8",
+      "name": "David Zima",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE9",
+      "name": "Michal Sadilek",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE10",
+      "name": "Lukas Provod",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE11",
+      "name": "Lukas Cerv",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE12",
+      "name": "Tomas Soucek",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE13",
+      "name": "Team Photo",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE14",
+      "name": "Pavel Sulc",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE15",
+      "name": "Matej Vydra",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE16",
+      "name": "Vasil Kusej",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE17",
+      "name": "Tomas Chory",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE18",
+      "name": "Vaclav Cerny",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE19",
+      "name": "Adam Hlozek",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CZE20",
+      "name": "Patrik Schick",
+      "country": "Czechia"
+    },
+    {
+      "sticker_code": "CAN1",
+      "name": "Emblem",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN2",
+      "name": "Dayne St.Clair",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN3",
+      "name": "Alphonso Davies",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN4",
+      "name": "Alistair Johnston",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN5",
+      "name": "Samuel Adekugbe",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN6",
+      "name": "Riche Larvea",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN7",
+      "name": "Derek Cornelius",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN8",
+      "name": "Moïse Bombito",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN9",
+      "name": "Kamal Miller",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN10",
+      "name": "Stephen Eustáquio",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN11",
+      "name": "Ismaël Koné",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN12",
+      "name": "Jonathan Osorio",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN13",
+      "name": "Team Photo",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN14",
+      "name": "Jacob Shaffelburg",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN15",
+      "name": "Mathieu Choinière",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN16",
+      "name": "Niko Sigur",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN17",
+      "name": "Tajon Buchanan",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN18",
+      "name": "Liam Millar",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN19",
+      "name": "Cyle Larin",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CAN20",
+      "name": "Jonathan David",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "BIH1",
+      "name": "Emblem",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH2",
+      "name": "Nikola Vasilj",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH3",
+      "name": "Amer Dedic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH4",
+      "name": "Sead Kolasinac",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH5",
+      "name": "Tarik Muharemovic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH6",
+      "name": "Nihad Mujakic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH7",
+      "name": "Nikola Katic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH8",
+      "name": "Amir Hadziahmetovic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH9",
+      "name": "Benjamin Tahirovic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH10",
+      "name": "Armin Gigovic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH11",
+      "name": "Ivan Sunjic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH12",
+      "name": "Ivan Basic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH13",
+      "name": "Team Photo",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH14",
+      "name": "Dzenis Burnic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH15",
+      "name": "Esmir Bajraktarevic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH16",
+      "name": "Amar Memic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH17",
+      "name": "Ermedin Demirovic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH18",
+      "name": "Edin Dzeko",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH19",
+      "name": "Samed Bazdar",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "BIH20",
+      "name": "Haris Tabakovic",
+      "country": "Bosnia and Herzegovina"
+    },
+    {
+      "sticker_code": "QAT1",
+      "name": "Emblem",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT2",
+      "name": "Meshaal Barsham",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT3",
+      "name": "Sultan Albrake",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT4",
+      "name": "Lucas Mendes",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT5",
+      "name": "Homam Ahmed",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT6",
+      "name": "Boualem Khoukhi",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT7",
+      "name": "Pedro Miguel",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT8",
+      "name": "Tarek Salman",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT9",
+      "name": "Mohamed Al-Mannai",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT10",
+      "name": "Karim Boudiaf",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT11",
+      "name": "Assim Madibo",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT12",
+      "name": "Ahmed Fatehi",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT13",
+      "name": "Team Photo",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT14",
+      "name": "Mohammed Waad",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT15",
+      "name": "Abdulaziz Hatem",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT16",
+      "name": "Hassan Al-Haydos",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT17",
+      "name": "Edmilson Junior",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT18",
+      "name": "Akram Hassan Afif",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT19",
+      "name": "Ahmed Al Ganehi",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "QAT20",
+      "name": "Almoez Ali",
+      "country": "Qatar"
+    },
+    {
+      "sticker_code": "SUI1",
+      "name": "Emblem",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI2",
+      "name": "Gregor Kobel",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI3",
+      "name": "Yvon Mvogo",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI4",
+      "name": "Manuel Akanji",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI5",
+      "name": "Ricardo Rodriguez",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI6",
+      "name": "Nico Elvedi",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI7",
+      "name": "Aurèle Amenda",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI8",
+      "name": "Silvan Widmer",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SWI9",
+      "name": "Granit Xhaka",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI10",
+      "name": "Denis Zakaria",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI11",
+      "name": "Remo Freuler",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI12",
+      "name": "Fabian Rieder",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI13",
+      "name": "Team Photo",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI14",
+      "name": "Ardon Jashari",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI15",
+      "name": "Johan Manzambi",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI16",
+      "name": "Michel Aebischer",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI17",
+      "name": "Breel Embolo",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI18",
+      "name": "Ruben Vargas",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SUI19",
+      "name": "Dan Ndoye",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "SWI20",
+      "name": "Zeki Amdouni",
+      "country": "Switzerland"
+    },
+    {
+      "sticker_code": "BRA1",
+      "name": "Emblem",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA2",
+      "name": "Alisson",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA3",
+      "name": "Bento",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA4",
+      "name": "Marquinhos",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA5",
+      "name": "Éder Militão",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA6",
+      "name": "Gabriel Magalhães",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA7",
+      "name": "Danilo",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA8",
+      "name": "Wesley",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA9",
+      "name": "Lucas Paquetá",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA10",
+      "name": "Casemiro",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA11",
+      "name": "Bruno Guimarães",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA12",
+      "name": "Luiz Henrique",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA13",
+      "name": "Team Photo",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA14",
+      "name": "Vinicius Júnior",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA15",
+      "name": "Rodrygo",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA16",
+      "name": "João Pedro",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA17",
+      "name": "Matheus Cunha",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA18",
+      "name": "Gabriel Martinelli",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA19",
+      "name": "Raphinha",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "BRA20",
+      "name": "Estévão",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "MAR1",
+      "name": "Emblem",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR2",
+      "name": "Yassine Bounou",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR3",
+      "name": "Munir El Kajoui",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR4",
+      "name": "Achraf Hakimi",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR5",
+      "name": "Noussair Mazraoui",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR6",
+      "name": "Nayef Aguerd",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR7",
+      "name": "Roman Saiss",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR8",
+      "name": "Jawad El Yamio",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR9",
+      "name": "Adam Masina",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR10",
+      "name": "Sofyan Amrabat",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR11",
+      "name": "Azzedine Ounahi",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR12",
+      "name": "Eliesse Ben Seghir",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR13",
+      "name": "Team Photo",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR14",
+      "name": "Bilal El Khannouss",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR15",
+      "name": "Ismael Saibari",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR16",
+      "name": "Youssef En-Nesyri",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR17",
+      "name": "Abde Ezzalzouli",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR18",
+      "name": "Soufiane Rahimi",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR19",
+      "name": "Brahim Diaz",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "MAR20",
+      "name": "Ayoub El Kaabi",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "HAI1",
+      "name": "Emblem",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI2",
+      "name": "Johny Placide",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI3",
+      "name": "Carlens Arcus",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI4",
+      "name": "Martin Expérience",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI5",
+      "name": "Jean-Kevin Duverne",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI6",
+      "name": "Ricardo Adé",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI7",
+      "name": "Duke Lacroix",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI8",
+      "name": "Garven Metusala",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI9",
+      "name": "Hannes Delcroix",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI10",
+      "name": "Leverton Pierre",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI11",
+      "name": "Danley Jean Jacques",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI12",
+      "name": "Jean-Ricner Bellegarde",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI13",
+      "name": "Team Photo",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI14",
+      "name": "Christopher Attys",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI15",
+      "name": "Derrick Etienne Jr",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI16",
+      "name": "Josue Casimir",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI17",
+      "name": "Ruben Providence",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI18",
+      "name": "Duckens Nazon",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI19",
+      "name": "Louicius Deedson",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "HAI20",
+      "name": "Frantzdy Pierrot",
+      "country": "Haiti"
+    },
+    {
+      "sticker_code": "SCO1",
+      "name": "Emblem",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO2",
+      "name": "Angus Gunn",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO3",
+      "name": "Jack Hendry",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO4",
+      "name": "Kieran Tierney",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO5",
+      "name": "Aaron Hickey",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO6",
+      "name": "Andrew Robertson",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO7",
+      "name": "Scott McKenna",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO8",
+      "name": "John Souttar",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO9",
+      "name": "Anthony Ralston",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO10",
+      "name": "Grant Hanley",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO11",
+      "name": "Scott McTominay",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO12",
+      "name": "Billy Gilmour",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO13",
+      "name": "Team Photo",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO14",
+      "name": "Lewis Ferguson",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO15",
+      "name": "Ryan Christie",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO16",
+      "name": "Kenny McLean",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO17",
+      "name": "John McGinn",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO18",
+      "name": "Lyndon Dykes",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO19",
+      "name": "Che Adams",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "SCO20",
+      "name": "Ben Gannon-Doak",
+      "country": "Scotland"
+    },
+    {
+      "sticker_code": "USA1",
+      "name": "Emblem",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA2",
+      "name": "Math Freese",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA3",
+      "name": "Chris Richards",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA4",
+      "name": "Tim Ream",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA5",
+      "name": "Mark McKenzie",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA6",
+      "name": "Alex Freeman",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA7",
+      "name": "Antonee Robinson",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA8",
+      "name": "Tyler Adams",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA9",
+      "name": "Tanner Tessmann",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA10",
+      "name": "Weston McKenny",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA11",
+      "name": "Christian Roldan",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA12",
+      "name": "Timothy Weah",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA13",
+      "name": "Team Photo",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA14",
+      "name": "Diego Luna",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA15",
+      "name": "Malik Tillman",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA16",
+      "name": "Christian Pulisic",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA17",
+      "name": "Brenden Aaronson",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA18",
+      "name": "Ricardo Pepi",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA19",
+      "name": "Haji Wright",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "USA20",
+      "name": "Folarin Balogun",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "PAR1",
+      "name": "Emblem",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR2",
+      "name": "Roberto Fernandez",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR3",
+      "name": "Orlando Gill",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR4",
+      "name": "Gustavo Gomez",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR5",
+      "name": "Fabián Balbuena",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR6",
+      "name": "Juan José Cáceres",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR7",
+      "name": "Omar Alderete",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR8",
+      "name": "Junior Alonso",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR9",
+      "name": "Mathías Villasanti",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR10",
+      "name": "Diego Gomez",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR11",
+      "name": "Damián Bobadilla",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR12",
+      "name": "Andres Cubas",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR13",
+      "name": "Team Photo",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR14",
+      "name": "Matias Galarza Fonda",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR15",
+      "name": "Julio Enciso",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR16",
+      "name": "Alejandro Romero Gamarra",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR17",
+      "name": "Miguel Almirón",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR18",
+      "name": "Ramon Sosa",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR19",
+      "name": "Angel Romero",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "PAR20",
+      "name": "Antonio Sanabria",
+      "country": "Paraguay"
+    },
+    {
+      "sticker_code": "AUS1",
+      "name": "Emblem",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS2",
+      "name": "Mathew Ryan",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS3",
+      "name": "Joe Gauci",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS4",
+      "name": "Harry Souttar",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS5",
+      "name": "Alessandro Circati",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS6",
+      "name": "Jordan Bos",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS7",
+      "name": "Aziz Behich",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS8",
+      "name": "Cameron Burgess",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS9",
+      "name": "Lewis Miller",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS10",
+      "name": "Milos Degenek",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS11",
+      "name": "Jackson Irvine",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS12",
+      "name": "Riley McGree",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS13",
+      "name": "Team Photo",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS14",
+      "name": "Aiden O'Neill",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS15",
+      "name": "Connor Metcalfe",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS16",
+      "name": "Patrick Yazbek",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS17",
+      "name": "Craig Goodwin",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS18",
+      "name": "Kusini Vengi",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS19",
+      "name": "Nestory Irankunda",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "AUS20",
+      "name": "Mohamed Touré",
+      "country": "Australia"
+    },
+    {
+      "sticker_code": "TUR1",
+      "name": "Emblem",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR2",
+      "name": "Ugurcan Cakir",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR3",
+      "name": "Mert Muldur",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR4",
+      "name": "Zeki Celik",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR5",
+      "name": "Abdulkerim Bardakci",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR6",
+      "name": "Caglar Soyuncu",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR7",
+      "name": "Merih Demiral",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR8",
+      "name": "Ferdi Kadioglu",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR9",
+      "name": "Kaan Ayhan",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR10",
+      "name": "Ismail Yuksek",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR11",
+      "name": "Hakan Calhanoglu",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR12",
+      "name": "Orkun Kokcu",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR13",
+      "name": "Team Photo",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR14",
+      "name": "Arda Guler",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR15",
+      "name": "Irfan Can Kahveci",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR16",
+      "name": "Yunus Akgun",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR17",
+      "name": "Can Uzun",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR18",
+      "name": "Baris Alper Yilmaz",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR19",
+      "name": "Kerem Akturkoglu",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "TUR20",
+      "name": "Kenan Yildiz",
+      "country": "Türkiye"
+    },
+    {
+      "sticker_code": "GER1",
+      "name": "Emblem",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER2",
+      "name": "Marc-André ter Stegen",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER3",
+      "name": "Jonathan Tah",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER4",
+      "name": "David Raum",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER5",
+      "name": "Nico Schlotterbeck",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER6",
+      "name": "Antonio Rüdiger",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER7",
+      "name": "Waldemar Anton",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER8",
+      "name": "Ridle Baku",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER9",
+      "name": "Maximilian Mittelstadt",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER10",
+      "name": "Joshua Kimmich",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER11",
+      "name": "Florian Wirtz",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER12",
+      "name": "Felix Nmecha",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER13",
+      "name": "Team Photo",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER14",
+      "name": "Leon Goretzka",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER15",
+      "name": "Jamal Musiala",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER16",
+      "name": "Serge Gnabry",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER17",
+      "name": "Kai Havertz",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER18",
+      "name": "Leroy Sane",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER19",
+      "name": "Karim Adeyemi",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "GER20",
+      "name": "Nick Woltemade",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "CUW1",
+      "name": "Emblem",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW2",
+      "name": "Eloy Room",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW3",
+      "name": "Armando Obispo",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW4",
+      "name": "Sherel Floranus",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW5",
+      "name": "Jurien Gaari",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW6",
+      "name": "Joshua Brenet",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW7",
+      "name": "Roshon Van Eijma",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW8",
+      "name": "Shurandy Sambo",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW9",
+      "name": "Livano Comenencia",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW10",
+      "name": "Godfried Roemeratoe",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW11",
+      "name": "Juninho Bacuna",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW12",
+      "name": "Leandro Bacuna",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW13",
+      "name": "Team Photo",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW14",
+      "name": "Tahith Chong",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW15",
+      "name": "Kenji Gorre",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW16",
+      "name": "Jearl Margaritha",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW17",
+      "name": "Jurgen Locadia",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW18",
+      "name": "Jeremy Antonisse",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW19",
+      "name": "Gervane Kastaneer",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CUW20",
+      "name": "Sontje Hansen",
+      "country": "Curaçao"
+    },
+    {
+      "sticker_code": "CIV1",
+      "name": "Emblem",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV2",
+      "name": "Yahia Fofana",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV3",
+      "name": "Ghislain Konan",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV4",
+      "name": "Wilfried Singo",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV5",
+      "name": "Odilon Kossounou",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV6",
+      "name": "Evan Ndicka",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV7",
+      "name": "Willy Boly",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV8",
+      "name": "Emmanuel Agbadou",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV9",
+      "name": "Ousmane Diomande",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV10",
+      "name": "Franck Kessie",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV11",
+      "name": "Seko Fofana",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV12",
+      "name": "Ibrahim Sangare",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV13",
+      "name": "Team Photo",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV14",
+      "name": "Jean-Philippe Gbamin",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV15",
+      "name": "Amad Diallo",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV16",
+      "name": "Sébastien Haller",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV17",
+      "name": "Simon Adingra",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV18",
+      "name": "Yan Diomande",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV19",
+      "name": "Evann Guessand",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "CIV20",
+      "name": "Oumar Diakite",
+      "country": "Ivory Coast"
+    },
+    {
+      "sticker_code": "ECU1",
+      "name": "Emblem",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU2",
+      "name": "Hernán Galíndez",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU3",
+      "name": "Gonzalo Valle",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU4",
+      "name": "Piero Hincapié",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU5",
+      "name": "Pervis Estupiñán",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU6",
+      "name": "Willian Pacho",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU7",
+      "name": "Ángelo Preciado",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU8",
+      "name": "Joel Ordóñez",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU9",
+      "name": "Moises Caicedo",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU10",
+      "name": "Alan Franco",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU11",
+      "name": "Kendry Paez",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU12",
+      "name": "Pedro Vite",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU13",
+      "name": "Team Photo",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU14",
+      "name": "John Veboah",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU15",
+      "name": "Leonardo Campana",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU16",
+      "name": "Gonzalo Plata",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU17",
+      "name": "Nilson Angulo",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU18",
+      "name": "Alan Minda",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU19",
+      "name": "Kevin Rodriguez",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "ECU20",
+      "name": "Enner Valencia",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "NED1",
+      "name": "Emblem",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED2",
+      "name": "Bart Verbruggen",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED3",
+      "name": "Virgil van Dijk",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED4",
+      "name": "Micky van de Ven",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED5",
+      "name": "Jurrien Timber",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED6",
+      "name": "Denzel Dumfries",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED7",
+      "name": "Nathan Aké",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED8",
+      "name": "Jeremie Frimpong",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED9",
+      "name": "Jan Paul van Hecke",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED10",
+      "name": "Tijjani Reijnders",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED11",
+      "name": "Ryan Gravenberch",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED12",
+      "name": "Teun Koopmeiners",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED13",
+      "name": "Team Photo",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED14",
+      "name": "Frenkie de Jong",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED15",
+      "name": "Xavi Simons",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED16",
+      "name": "Justin Kluivert",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED17",
+      "name": "Memphis Depay",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED18",
+      "name": "Donyell Malen",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED19",
+      "name": "Wout Weghorst",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "NED20",
+      "name": "Cody Gakpo",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "JPN1",
+      "name": "Emblem",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN2",
+      "name": "Zion Suzuki",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN3",
+      "name": "Henry Heroki Mochizuki",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN4",
+      "name": "Ayumu Seko",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN5",
+      "name": "Junnosuke Suzuki",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN6",
+      "name": "Shogo Taniguchi",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN7",
+      "name": "Tsuyoshi Watanabe",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN8",
+      "name": "Kaishu Sano",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN9",
+      "name": "Yuki Soma",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN10",
+      "name": "Ao Tanaka",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN11",
+      "name": "Daichi Kamada",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN12",
+      "name": "Takefusa Kubo",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN13",
+      "name": "Team Photo",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN14",
+      "name": "Ritsu Doan",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN15",
+      "name": "Keito Nakamura",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN16",
+      "name": "Takumi Minamino",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN17",
+      "name": "Shuto Machino",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN18",
+      "name": "Junya Ito",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN19",
+      "name": "Koki Ogawa",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "JPN20",
+      "name": "Ayase Ueda",
+      "country": "Japan"
+    },
+    {
+      "sticker_code": "SWE1",
+      "name": "Emblem",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE2",
+      "name": "Victor Johansson",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE3",
+      "name": "Isak Hien",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE4",
+      "name": "Gabriel Gudmundsson",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE5",
+      "name": "Emil Holm",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE6",
+      "name": "Victor Nilsson Lindelöf",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE7",
+      "name": "Gustaf Lagerbielke",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE8",
+      "name": "Lucas Bergvall",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE9",
+      "name": "Hugo Larsson",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE10",
+      "name": "Jesper Karlström",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE11",
+      "name": "Yasin Ayari",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE12",
+      "name": "Mattias Svanberg",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE13",
+      "name": "Team Photo",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE14",
+      "name": "Daniel Svensson",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE15",
+      "name": "Ken Sema",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE16",
+      "name": "Roony Bardghji",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE17",
+      "name": "Dejan Kulusevski",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE18",
+      "name": "Anthony Elanga",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE19",
+      "name": "Alexander Isak",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "SWE20",
+      "name": "Viktor Gyökeres",
+      "country": "Sweden"
+    },
+    {
+      "sticker_code": "TUN1",
+      "name": "Emblem",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN2",
+      "name": "Bechir Ben Said",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN3",
+      "name": "Aymen Dahmen",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN4",
+      "name": "Yan Valery",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN5",
+      "name": "Montassar Talbi",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN6",
+      "name": "Yassine Meriah",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN7",
+      "name": "Ali Abdi",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN8",
+      "name": "Dylan Bronn",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN9",
+      "name": "Ellyes Skhiri",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN10",
+      "name": "Aissa Laidouni",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN11",
+      "name": "Ferjani Sassi",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN12",
+      "name": "Mohamed Ali Ben Romdhane",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN13",
+      "name": "Team Photo",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN14",
+      "name": "Hannibal Mejbri",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN15",
+      "name": "Elias Achouri",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN16",
+      "name": "Elias Saad",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN17",
+      "name": "Hazem Mastouri",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN18",
+      "name": "Ismael Gharbi",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN19",
+      "name": "Sayfallah Ltaief",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "TUN20",
+      "name": "Naim Sliti",
+      "country": "Tunisia"
+    },
+    {
+      "sticker_code": "BEL1",
+      "name": "Emblem",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL2",
+      "name": "Thibaut Courtois",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL3",
+      "name": "Arthur Theate",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL4",
+      "name": "Timothy Castagne",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL5",
+      "name": "Zeno Debast",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL6",
+      "name": "Brandon Mechele",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL7",
+      "name": "Maxim De Cuyper",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL8",
+      "name": "Thomas Meunier",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL9",
+      "name": "Youri Tielemans",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL10",
+      "name": "Amadou Onana",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL11",
+      "name": "Nicolas Raskin",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL12",
+      "name": "Alexis Saelemaekers",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL13",
+      "name": "Team Photo",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL14",
+      "name": "Hans Vanaken",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL15",
+      "name": "Kevin De Bruyne",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL16",
+      "name": "Jérémy Doku",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL17",
+      "name": "Charles De Ketelaere",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL18",
+      "name": "Leandro Trossard",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL19",
+      "name": "Loïs Openda",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "BEL20",
+      "name": "Romelu Lukaku",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "EGY1",
+      "name": "Emblem",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY2",
+      "name": "Mohamed El Shenawy",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY3",
+      "name": "Mohamed Hany",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY4",
+      "name": "Mohamed Hamdy",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY5",
+      "name": "Yasser Ibrahim",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY6",
+      "name": "Khaled Sobhi",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY7",
+      "name": "Ramy Rabia",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY8",
+      "name": "Hossam Abdelmaguid",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY9",
+      "name": "Ahmed Fatouh",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY10",
+      "name": "Marwan Attia",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY11",
+      "name": "Zizo",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY12",
+      "name": "Hamdy Fathy",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY13",
+      "name": "Team Photo",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY14",
+      "name": "Mohamed Lasheen",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY15",
+      "name": "Emam Ashour",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY16",
+      "name": "Osama Faisal",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY17",
+      "name": "Mohamed Salah",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY18",
+      "name": "Mostafa Mohamed",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY19",
+      "name": "Trezeguet",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "EGY20",
+      "name": "Omar Marmoush",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "IRN1",
+      "name": "Emblem",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN2",
+      "name": "Alireza Beiranvand",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN3",
+      "name": "Morteza Pouraliganji",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN4",
+      "name": "Ehsan Hajsafi",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN5",
+      "name": "Milad Mohammadi",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN6",
+      "name": "Shojae Khalilzadeh",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN7",
+      "name": "Ramin Rezaeian",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN8",
+      "name": "Hossein Kanaani",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN9",
+      "name": "Sadegh Moharrami",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN10",
+      "name": "Saleh Hardani",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN11",
+      "name": "Saeed Ezatolahi",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN12",
+      "name": "Saman Ghoddos",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN13",
+      "name": "Team Photo",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN14",
+      "name": "Omid Noorafkan",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN15",
+      "name": "Roozbeh Cheshmi",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN16",
+      "name": "Mohammad Mohebi",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN17",
+      "name": "Sardar Azmoun",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN18",
+      "name": "Mehdi Taremi",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN19",
+      "name": "Alireza Jahanbakhsh",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "IRN20",
+      "name": "Ali Gholizadeh",
+      "country": "Iran"
+    },
+    {
+      "sticker_code": "NZL1",
+      "name": "Emblem",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL2",
+      "name": "Max Crocombe Payne",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL3",
+      "name": "Alex Paulsen",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL4",
+      "name": "Michael Boxall",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL5",
+      "name": "Liberato Cacace",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL6",
+      "name": "Tim Payne",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL7",
+      "name": "Tyler Bindon",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL8",
+      "name": "Francis de Vries",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL9",
+      "name": "Finn Surman",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL10",
+      "name": "Joe Bell",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL11",
+      "name": "Sarpreet Singh",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL12",
+      "name": "Ryan Thomas",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL13",
+      "name": "Team Photo",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL14",
+      "name": "Matthew Garbett",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL15",
+      "name": "Marko Stamenić",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL16",
+      "name": "Ben Old",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL17",
+      "name": "Chris Wood",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL18",
+      "name": "Elijah Just",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL19",
+      "name": "Callum McCowatt",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "NZL20",
+      "name": "Kosta Barbarouses",
+      "country": "New Zealand"
+    },
+    {
+      "sticker_code": "ESP1",
+      "name": "Emblem",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP2",
+      "name": "Unai Simon",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP3",
+      "name": "Robin Le Normand",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP4",
+      "name": "Aymeric Laporte",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP5",
+      "name": "Dean Huijsen",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP6",
+      "name": "Pedro Porro",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP7",
+      "name": "Dani Carvajal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP8",
+      "name": "Marc Cucurella",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP9",
+      "name": "Martín Zubimendi",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP10",
+      "name": "Rodri",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP11",
+      "name": "Pedri",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP12",
+      "name": "Fabian Ruiz",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP13",
+      "name": "Team Photo",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP14",
+      "name": "Mikel Merino",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP15",
+      "name": "Lamine Yamal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP16",
+      "name": "Dani Olmo",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP17",
+      "name": "Nico Williams",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP18",
+      "name": "Ferran Torres",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP19",
+      "name": "Álvaro Morata",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "ESP20",
+      "name": "Mikel Oyarzabal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "CPV1",
+      "name": "Emblem",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV2",
+      "name": "Vozinha",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV3",
+      "name": "Logan Costa",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV4",
+      "name": "Pico",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV5",
+      "name": "Diney",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV6",
+      "name": "Steven Moreira",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV7",
+      "name": "Wagner Pina",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV8",
+      "name": "Joao Paulo",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV9",
+      "name": "Yannick Semedo",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV10",
+      "name": "Kevin Pina",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV11",
+      "name": "Patrick Andrade",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV12",
+      "name": "Jamiro Monteiro",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV13",
+      "name": "Team Photo",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV14",
+      "name": "Deroy Duarte",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV15",
+      "name": "Garry Rodrigues",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV16",
+      "name": "Jovane Cabral",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV17",
+      "name": "Ryan Mendes",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV18",
+      "name": "Dailon Livramento",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV19",
+      "name": "Willy Semedo",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "CPV20",
+      "name": "Bebe",
+      "country": "Cape Verde"
+    },
+    {
+      "sticker_code": "KSA1",
+      "name": "Emblem",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA2",
+      "name": "Nawaf Alaqidi",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA3",
+      "name": "Abdulrahman Al-Sanbi",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA4",
+      "name": "Saud Abdulhamid",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA5",
+      "name": "Nawaf Bouwashl",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA6",
+      "name": "Jihad Thakri",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA7",
+      "name": "Moteb Al-Harbi",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA8",
+      "name": "Hassan Altambakti",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA9",
+      "name": "Musab Aljuwayr",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA10",
+      "name": "Ziyad Aljohani",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA11",
+      "name": "Abdullah Alkhaibari",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KAS12",
+      "name": "Nasser Aldawsari",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA13",
+      "name": "Team Photo",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA14",
+      "name": "Saleh Abu Alshamat",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA15",
+      "name": "Marwan Alsahafi",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA16",
+      "name": "Salem Aldawsari",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA17",
+      "name": "Abdulrahman Al-Aboud",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA18",
+      "name": "Feras Akbrikan",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA19",
+      "name": "Saleh Alshehri",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "KSA20",
+      "name": "Abdullah Al-Hamdan",
+      "country": "Saudi Arabia"
+    },
+    {
+      "sticker_code": "URU1",
+      "name": "Emblem",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU2",
+      "name": "Sergio Rochet",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU3",
+      "name": "Santiago Mele",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU4",
+      "name": "Ronald Araujo",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU5",
+      "name": "José María Giménez",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU6",
+      "name": "Sebastian Caceres",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU7",
+      "name": "Mathias Olivera",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU8",
+      "name": "Guillermo Varela",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU9",
+      "name": "Nahitan Nandez",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU10",
+      "name": "Federico Valverde",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU11",
+      "name": "Giorgian De Arrascaeta",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU12",
+      "name": "Rodrigo Bentancur",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU13",
+      "name": "Team Photo",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU14",
+      "name": "Manuel Ugarte",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU15",
+      "name": "Nicolás de la Cruz",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU16",
+      "name": "Maxi Araujo",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU17",
+      "name": "Darwin Núñez",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU18",
+      "name": "Federico Viñas",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU19",
+      "name": "Rodrigo Aguirre",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "URU20",
+      "name": "Facundo Pellistri",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "FRA1",
+      "name": "Emblem",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA2",
+      "name": "Mike Maignan",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA3",
+      "name": "Theo Hernandez",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA4",
+      "name": "William Saliba",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA5",
+      "name": "Jules Kounde",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA6",
+      "name": "Ibrahima Konate",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA7",
+      "name": "Dayot Upamecano",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA8",
+      "name": "Lucas Digne",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA9",
+      "name": "Aurélien Tchouaméni",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA10",
+      "name": "Eduardo Camavinga",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA11",
+      "name": "Manu Kone",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA12",
+      "name": "Adrien Rabiot",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA13",
+      "name": "Team Photo",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA14",
+      "name": "Michael Olise",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA15",
+      "name": "Ousmane Dembele",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA16",
+      "name": "Bradley Barcola",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA17",
+      "name": "Désiré Doué",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA18",
+      "name": "Kingsley Coman",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA19",
+      "name": "Hugo Ekitike",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FRA20",
+      "name": "Kylian Mbappe",
+      "country": "France"
+    },
+    {
+      "sticker_code": "SEN1",
+      "name": "Emblem",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN2",
+      "name": "Edouard Mendy",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN3",
+      "name": "Yehvann Diouf",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN4",
+      "name": "Moussa Niakhaté",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN5",
+      "name": "Abdoulaye Seck",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN6",
+      "name": "Ismail Jakobs",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN7",
+      "name": "El Hadji Malick Diouf",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN8",
+      "name": "Kalidou Koulibaly",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN9",
+      "name": "Idrissa Gana Gueye",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN10",
+      "name": "Pape Matar Sarr",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN11",
+      "name": "Pape Gueye",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN12",
+      "name": "Habib Diarra",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN13",
+      "name": "Team Photo",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN14",
+      "name": "Lamine Camara",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN15",
+      "name": "Sadio Mane",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN16",
+      "name": "Ismaïla Sarr",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN17",
+      "name": "Boulaye Dia",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN18",
+      "name": "Iliman Ndiaye",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN19",
+      "name": "Nicolas Jackson",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "SEN20",
+      "name": "Krepin Diatta",
+      "country": "Senegal"
+    },
+    {
+      "sticker_code": "IRQ1",
+      "name": "Emblem",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ2",
+      "name": "Jalal Hassan",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ3",
+      "name": "Rebin Sulaka",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ4",
+      "name": "Hussein Ali",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ5",
+      "name": "Akam Hashem",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ6",
+      "name": "Merchas Doski",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ7",
+      "name": "Zaid Tahseen",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ8",
+      "name": "Manaf Younis",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ9",
+      "name": "Zidane Iqbal",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ10",
+      "name": "Amir Al-Ammari",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ11",
+      "name": "Ibrahim Bavesh",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ12",
+      "name": "Ali Jasim",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ13",
+      "name": "Team Photo",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ14",
+      "name": "Youssef Amyn",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ15",
+      "name": "Aimar Sher",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ16",
+      "name": "Marko Farji",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ17",
+      "name": "Osama Rashid",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ18",
+      "name": "Ali Al-Hamadi",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ19",
+      "name": "Aymen Hussein",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "IRQ20",
+      "name": "Mohanad Ali",
+      "country": "Iraq"
+    },
+    {
+      "sticker_code": "NOR1",
+      "name": "Emblem",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR2",
+      "name": "Orjan Nyland",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR3",
+      "name": "Julian Ryerson",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR4",
+      "name": "Leo Ostigård",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR5",
+      "name": "Kristoffer Vassbakk Ajer",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR6",
+      "name": "Marcus Holmgren Pedersen",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR7",
+      "name": "David Møller Wolfe",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR8",
+      "name": "Torbjørn Heggem",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR9",
+      "name": "Morten Thorsby",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR10",
+      "name": "Martin Ødegaard",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR11",
+      "name": "Sander Berge",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR12",
+      "name": "Andreas Schjelderup",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR13",
+      "name": "Team Photo",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR14",
+      "name": "Patrick Berg",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR15",
+      "name": "Erling Haaland",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR16",
+      "name": "Alexander Sørloth",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR17",
+      "name": "Aron Dønnum",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR18",
+      "name": "Jorgen Strand Larsen",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR19",
+      "name": "Antonio Nusa",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "NOR20",
+      "name": "Oscar Bobb",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "ARG1",
+      "name": "Emblem",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG2",
+      "name": "Emiliano Martinez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG3",
+      "name": "Nahuel Molina",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG4",
+      "name": "Cristian Romero",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG5",
+      "name": "Nicolas Otamendi",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG6",
+      "name": "Nicolas Tagliafico",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG7",
+      "name": "Leonardo Balerdi",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG8",
+      "name": "Enzo Fernandez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG9",
+      "name": "Alexis Mac Allister",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG10",
+      "name": "Rodrigo De Paul",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG11",
+      "name": "Exequiel Palacios",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG12",
+      "name": "Leandro Paredes",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG13",
+      "name": "Team Photo",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG14",
+      "name": "Nico Paz",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG15",
+      "name": "Franco Mastantuono",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG16",
+      "name": "Nico Gonzalez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG17",
+      "name": "Lionel Messi",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG18",
+      "name": "Lautaro Martinez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG19",
+      "name": "Julian Alvarez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ARG20",
+      "name": "Giuliano Simeone",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "ALG1",
+      "name": "Emblem",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG2",
+      "name": "Alexis Guendouz",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG3",
+      "name": "Ramy Bensebaini",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG4",
+      "name": "Youcef Atal",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG5",
+      "name": "Rayan Aït-Nouri",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG6",
+      "name": "Mohamed Amine Tougai",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG7",
+      "name": "Aïssa Mandi",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG8",
+      "name": "Ismael Bennacer",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG9",
+      "name": "Houssem Aquar",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG10",
+      "name": "Hicham Boudaoui",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG11",
+      "name": "Ramiz Zerrouki",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG12",
+      "name": "Nabil Bentalab",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG13",
+      "name": "Team Photo",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG14",
+      "name": "Farés Chaibi",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG15",
+      "name": "Riyad Mahrez",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG16",
+      "name": "Said Benrahma",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG17",
+      "name": "Anis Hadj Moussa",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG18",
+      "name": "Amine Gouiri",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG19",
+      "name": "Baghdad Bounedjah",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "ALG20",
+      "name": "Mohammed Amoura",
+      "country": "Algeria"
+    },
+    {
+      "sticker_code": "AUT1",
+      "name": "Emblem",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT2",
+      "name": "Alexander Schlager",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT3",
+      "name": "Patrick Pentz",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT4",
+      "name": "David Alaba",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT5",
+      "name": "Kevin Danso",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT6",
+      "name": "Philipp Lienhart",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT7",
+      "name": "Stefan Posch",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT8",
+      "name": "Phillipp Mwene",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT9",
+      "name": "Alexander Prass",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT10",
+      "name": "Xaver Schlager",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT11",
+      "name": "Marcel Sabitzer",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT12",
+      "name": "Konrad Laimer",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT13",
+      "name": "Team Photo",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT14",
+      "name": "Florian Grillitsch",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT15",
+      "name": "Nicolas Seiwald",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT16",
+      "name": "Romano Schmid",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT17",
+      "name": "Patrick Wimmer",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT18",
+      "name": "Christoph Baumgartner",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT19",
+      "name": "Michael Gregoritsch",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "AUT20",
+      "name": "Marko Arnautović",
+      "country": "Austria"
+    },
+    {
+      "sticker_code": "JOR1",
+      "name": "Emblem",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR2",
+      "name": "Yazeed Abulaila",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR3",
+      "name": "Ihsan Haddad",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR4",
+      "name": "Mohammad Abu Hashish",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR5",
+      "name": "Yazan Al-Arab",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR6",
+      "name": "Abdallah Nasib",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR7",
+      "name": "Saleem Obaid",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR8",
+      "name": "Mohammad Abualnadi",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR9",
+      "name": "Ibrahim Saadeh",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR10",
+      "name": "Nizar Al-Rashdan",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR11",
+      "name": "Noor Al-Rawabdeh",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR12",
+      "name": "Mohannad Abu Taha",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR13",
+      "name": "Team Photo",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR14",
+      "name": "Amer Jamous",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR15",
+      "name": "Musa Al-Taamari",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR16",
+      "name": "Yazan Al-Naimat",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR17",
+      "name": "Mahmoud Al-Mardi",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR18",
+      "name": "Ali Olwan",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR19",
+      "name": "Mohammad Abu Zrayq",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "JOR20",
+      "name": "Ibrahim Sabra",
+      "country": "Jordan"
+    },
+    {
+      "sticker_code": "POR1",
+      "name": "Emblem",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR2",
+      "name": "Diogo Costa",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR3",
+      "name": "Jose Sa",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR4",
+      "name": "Ruben Dias",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR5",
+      "name": "João Cancelo",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR6",
+      "name": "Diogo Dalot",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR7",
+      "name": "Nuno Mendes",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR8",
+      "name": "Gonçalo Inácio",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR9",
+      "name": "Bernardo Silva",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR10",
+      "name": "Bruno Fernandes",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR11",
+      "name": "Ruben Neves",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR12",
+      "name": "Vitinha",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR13",
+      "name": "Team Photo",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR14",
+      "name": "João Neves",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR15",
+      "name": "Cristiano Ronaldo",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR16",
+      "name": "Francisco Trincao",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR17",
+      "name": "João Felix",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR18",
+      "name": "Gonçalo Ramos",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR19",
+      "name": "Pedro Neto",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "POR20",
+      "name": "Rafael Leão",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "COD1",
+      "name": "Emblem",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD2",
+      "name": "Lionel Mpasi",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD3",
+      "name": "Aaron Wan-Bissaka",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD4",
+      "name": "Axel Tuanzebe",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD5",
+      "name": "Arthur Masuaku",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD6",
+      "name": "Chancel Mbemba",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD7",
+      "name": "Joris Kayembe",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD8",
+      "name": "Charles Pickel",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD9",
+      "name": "Ngal'ayel Mukau",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD10",
+      "name": "Edo Kayembe",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD11",
+      "name": "Samuel Moutoussamy",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD12",
+      "name": "Noah Sadiki",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD13",
+      "name": "Team Photo",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD14",
+      "name": "Théo Bongonda",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD15",
+      "name": "Meschak Elia",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD16",
+      "name": "Yoane Wissa",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD17",
+      "name": "Brian Cipenga",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD18",
+      "name": "Fiston Mayele",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD19",
+      "name": "Cédric Bakambu",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "COD20",
+      "name": "Nathanaël Mbuku",
+      "country": "Congo DR"
+    },
+    {
+      "sticker_code": "UZB1",
+      "name": "Emblem",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB2",
+      "name": "Utkir Yusupov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB3",
+      "name": "Farrukh Savfiev",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB4",
+      "name": "Sherzod Nasrullaev",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB5",
+      "name": "Umar Eshmurodov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB6",
+      "name": "Husniddin Aliqulov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB7",
+      "name": "Rustamjon Ashurmatov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB8",
+      "name": "Khojiakbar Alijonov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB9",
+      "name": "Abdukodir Khusanov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB10",
+      "name": "Odiljon Hamrobekov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB11",
+      "name": "Otabek Shukurov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB12",
+      "name": "Jamshid Iskanderov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB13",
+      "name": "Team Photo",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB14",
+      "name": "Azizbek Turgunboev",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB15",
+      "name": "Khojimat Erkinov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB16",
+      "name": "Eldor Shomurodov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB17",
+      "name": "Oston Urunov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB18",
+      "name": "Jaloliddin Masharipov",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB19",
+      "name": "Igor Sergeev",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "UZB20",
+      "name": "Abbosbek Fayzullaev",
+      "country": "Uzbekistan"
+    },
+    {
+      "sticker_code": "COL1",
+      "name": "Emblem",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL2",
+      "name": "Camilo Vargas",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL3",
+      "name": "David Ospina",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL4",
+      "name": "Dávinson Sánchez",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL5",
+      "name": "Yerry Mina",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL6",
+      "name": "Daniel Munoz",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL7",
+      "name": "Johan Mojica",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL8",
+      "name": "Jhon Lucumí",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL9",
+      "name": "Santiago Arias",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL10",
+      "name": "Jefferson Lerma",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL11",
+      "name": "Kevin Castaño",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL12",
+      "name": "Richard Rios",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL13",
+      "name": "Team Photo",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL14",
+      "name": "James Rodriguez",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL15",
+      "name": "Juan Fernando Quintero",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL16",
+      "name": "Jorge Carrascal",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL17",
+      "name": "Jon Arias",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL18",
+      "name": "Jhon Cordova",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL19",
+      "name": "Luis Suarez",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "COL20",
+      "name": "Luis Diaz",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "ENG1",
+      "name": "Emblem",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG2",
+      "name": "Jordan Pickford",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG3",
+      "name": "John Stones",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG4",
+      "name": "Marc Guéhi",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG5",
+      "name": "Ezri Konsa",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG6",
+      "name": "Trent Alexander-Arnold",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG7",
+      "name": "Reece James",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG8",
+      "name": "Dan Burn",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG9",
+      "name": "Jordan Henderson",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG10",
+      "name": "Declan Rice",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG11",
+      "name": "Jude Bellingham",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG12",
+      "name": "Cole Palmer",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG13",
+      "name": "Team Photo",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG14",
+      "name": "Morgan Rogers",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG15",
+      "name": "Anthony Gordon",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG16",
+      "name": "Phil Foden",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG17",
+      "name": "Bukayo Saka",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG18",
+      "name": "Harry Kane",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG19",
+      "name": "Marcus Rashford",
+      "country": "England"
+    },
+    {
+      "sticker_code": "ENG20",
+      "name": "Ollie Watkins",
+      "country": "England"
+    },
+    {
+      "sticker_code": "CRO1",
+      "name": "Emblem",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO2",
+      "name": "Dominik Livaković",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO3",
+      "name": "Duje Caleta-Car",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO4",
+      "name": "Josko Gvardiol",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO5",
+      "name": "Josip Stanišić",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO6",
+      "name": "Luka Vušković",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO7",
+      "name": "Josip Sutalo",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO8",
+      "name": "Kristijan Jakic",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO9",
+      "name": "Luka Modrić",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO10",
+      "name": "Mateo Kovacic",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO11",
+      "name": "Martin Baturina",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO12",
+      "name": "Lovro Majer",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO13",
+      "name": "Team Photo",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO14",
+      "name": "Mario Pasalic",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO15",
+      "name": "Petar Sucic",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO16",
+      "name": "Ivan Perišić",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO17",
+      "name": "Marco Pasalic",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO18",
+      "name": "Ante Budimir",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO19",
+      "name": "Andrej Kramarić",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CRO20",
+      "name": "Franjo Ivanovic",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "GHA1",
+      "name": "Emblem",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA2",
+      "name": "Lawrence Ati Zigi",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA3",
+      "name": "Tariq Lamptey",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA4",
+      "name": "Mohammed Salisu",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA5",
+      "name": "Alidu Seidu",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA6",
+      "name": "Alexander Djiku",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA7",
+      "name": "Gideon Mensah",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA8",
+      "name": "Caleb Yirenkyi",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA9",
+      "name": "Abdul Issahaku Fatawu",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA10",
+      "name": "Thomas Partey",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA11",
+      "name": "Salis Abdul Samed",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA12",
+      "name": "Kamaldeen Sulemana",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA13",
+      "name": "Team Photo",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA14",
+      "name": "Mohammed Kudus",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA15",
+      "name": "Inaki Williams",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA16",
+      "name": "Jordan Ayew",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA17",
+      "name": "Andrew Ayew",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA18",
+      "name": "Joseph Paintsil",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA19",
+      "name": "Osman Bukari",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "GHA20",
+      "name": "Antoine Semenyo",
+      "country": "Ghana"
+    },
+    {
+      "sticker_code": "PAN1",
+      "name": "Emblem",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN2",
+      "name": "Orlando Mosquera",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN3",
+      "name": "Luis Mejia",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN4",
+      "name": "Fidel Escobar",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN5",
+      "name": "Andres Andrade",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN6",
+      "name": "Michael Amir Murillo",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN7",
+      "name": "Eric Davis",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN8",
+      "name": "Jose Cordoba",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN9",
+      "name": "Cesar Blackman",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN10",
+      "name": "Cristian Martinez",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN11",
+      "name": "Aníbal Godoy",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN12",
+      "name": "Adalberto Carrasquilla",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN13",
+      "name": "Team Photo",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN14",
+      "name": "Édgar Bárcenas",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN15",
+      "name": "Carlos Harvey",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN16",
+      "name": "Ismael Díaz",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN17",
+      "name": "Jose Fajardo",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN18",
+      "name": "Cecilio Waterman",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN19",
+      "name": "Jose Luiz Rodriguez",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "PAN20",
+      "name": "Alberto Quintero",
+      "country": "Panama"
+    },
+    {
+      "sticker_code": "FWC9",
+      "name": "Italy 1934",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC10",
+      "name": "Uruguay 1950",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC11",
+      "name": "West Germany 1954",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC12",
+      "name": "Brazil 1962",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC13",
+      "name": "West Germany 1974",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC14",
+      "name": "Argentina 1986",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC15",
+      "name": "Brazil 1994",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC16",
+      "name": "Brazil 2002",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC17",
+      "name": "Italy 2006",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC18",
+      "name": "Germany 2014",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "FWC19",
+      "name": "Argentina 2022",
+      "country": "FIFA World Cup History"
+    },
+    {
+      "sticker_code": "CC-US1",
+      "name": "Lamine Yamal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "CC-US2",
+      "name": "Joshua Kimmich",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "CC-US3",
+      "name": "Harry Kane",
+      "country": "England"
+    },
+    {
+      "sticker_code": "CC-US4",
+      "name": "Santiago Giménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "CC-US5",
+      "name": "Antonee Robinson",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "CC-US6",
+      "name": "Jefferson Lerma",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "CC-US7",
+      "name": "Edson Álvarez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "CC-US8",
+      "name": "Virgil van Dijk",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "CC-US9",
+      "name": "Alphonso Davies",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CC-US10",
+      "name": "Weston McKennie",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "CC-US11",
+      "name": "Lautaro Martínez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "CC-US12",
+      "name": "Gabriel Magalhães",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "CC-LAM1",
+      "name": "Lamine Yamal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "CC-LAM2",
+      "name": "Joshua Kimmich",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "CC-LAM3",
+      "name": "Harry Kane",
+      "country": "England"
+    },
+    {
+      "sticker_code": "CC-LAM4",
+      "name": "Santiago Giménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "CC-LAM5",
+      "name": "Josko Gvardiol",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CC-LAM6",
+      "name": "Federico Valverde",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "CC-LAM7",
+      "name": "Jefferson Lerma",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "CC-LAM8",
+      "name": "Enner Valencia",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "CC-LAM9",
+      "name": "Gabriel Magalhães",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "CC-LAM10",
+      "name": "Virgil van Dijk",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "CC-LAM11",
+      "name": "Alphonso Davies",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CC-LAM12",
+      "name": "Emiliano Martinez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "CC-LAM13",
+      "name": "Raúl Jiménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "CC-LAM14",
+      "name": "Lautaro Martínez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "CC-SRB1",
+      "name": "Lautaro Martínez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "CC-SRB2",
+      "name": "Alphonso Davies",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CC-SRB3",
+      "name": "Josko Gvardiol",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CC-SRB4",
+      "name": "Harry Kane",
+      "country": "England"
+    },
+    {
+      "sticker_code": "CC-SRB5",
+      "name": "Eduardo Camavinga",
+      "country": "France"
+    },
+    {
+      "sticker_code": "CC-SRB6",
+      "name": "William Saliba",
+      "country": "France"
+    },
+    {
+      "sticker_code": "CC-SRB7",
+      "name": "Joshua Kimmich",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "CC-SRB8",
+      "name": "Raúl Jiménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "CC-SRB9",
+      "name": "Virgil van Dijk",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "CC-SRB10",
+      "name": "Lamine Yamal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "CC-SRB11",
+      "name": "Antonee Robinson",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "CC-SRB12",
+      "name": "Federico Valverde",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "CC-ESP1",
+      "name": "Lamine Yamal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "CC-ESP2",
+      "name": "Joshua Kimmich",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "CC-ESP3",
+      "name": "Eduardo Camavinga",
+      "country": "France"
+    },
+    {
+      "sticker_code": "CC-ESP4",
+      "name": "Josko Gvardiol",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "CC-ESP5",
+      "name": "Federico Valverde",
+      "country": "Uruguay"
+    },
+    {
+      "sticker_code": "CC-ESP6",
+      "name": "Virgil van Dijk",
+      "country": "Netherlands"
+    },
+    {
+      "sticker_code": "CC-ESP7",
+      "name": "Alphonso Davies",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "CC-ESP8",
+      "name": "Raúl Jiménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "CC-ESP9",
+      "name": "William Saliba",
+      "country": "France"
+    },
+    {
+      "sticker_code": "CC-ESP10",
+      "name": "Lautaro Martínez",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "CC-ESP11",
+      "name": "Harry Kane",
+      "country": "England"
+    },
+    {
+      "sticker_code": "CC-ESP12",
+      "name": "Antonee Robinson",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "LM",
+      "name": "Lionel Messi",
+      "country": "Argentina"
+    },
+    {
+      "sticker_code": "JD",
+      "name": "Jérémy Doku",
+      "country": "Belgium"
+    },
+    {
+      "sticker_code": "VJ",
+      "name": "Vinícíús Júnior",
+      "country": "Brazil"
+    },
+    {
+      "sticker_code": "AD",
+      "name": "Alphonso Davies",
+      "country": "Canada"
+    },
+    {
+      "sticker_code": "LD",
+      "name": "Luis Díaz",
+      "country": "Colombia"
+    },
+    {
+      "sticker_code": "LMO",
+      "name": "Luka Modrić",
+      "country": "Croatia"
+    },
+    {
+      "sticker_code": "MC",
+      "name": "Moisés Caicedo",
+      "country": "Ecuador"
+    },
+    {
+      "sticker_code": "MS",
+      "name": "Mohamed Salah",
+      "country": "Egypt"
+    },
+    {
+      "sticker_code": "JB",
+      "name": "Jude Bellingham",
+      "country": "England"
+    },
+    {
+      "sticker_code": "KM",
+      "name": "Kylian Mbappé",
+      "country": "France"
+    },
+    {
+      "sticker_code": "FW",
+      "name": "Florian Wirtz",
+      "country": "Germany"
+    },
+    {
+      "sticker_code": "RJ",
+      "name": "Raúl Jiménez",
+      "country": "Mexico"
+    },
+    {
+      "sticker_code": "AH",
+      "name": "Achraf Hakimi",
+      "country": "Morocco"
+    },
+    {
+      "sticker_code": "EH",
+      "name": "Erling Haaland",
+      "country": "Norway"
+    },
+    {
+      "sticker_code": "RL",
+      "name": "Robert Lewandowski",
+      "country": "Poland"
+    },
+    {
+      "sticker_code": "CR",
+      "name": "Cristiano Ronaldo",
+      "country": "Portugal"
+    },
+    {
+      "sticker_code": "HS",
+      "name": "Heung-min Son",
+      "country": "South Korea"
+    },
+    {
+      "sticker_code": "LY",
+      "name": "Lamine Yamal",
+      "country": "Spain"
+    },
+    {
+      "sticker_code": "CP",
+      "name": "Christian Pulisic",
+      "country": "USA"
+    },
+    {
+      "sticker_code": "FV",
+      "name": "Federico Valverde",
+      "country": "Uruguay"
+    }
+  ]
+}
