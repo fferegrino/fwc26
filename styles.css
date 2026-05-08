@@ -1,0 +1,378 @@
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --text: #e6edf3;
+  --muted: #c9d1d9;
+  --accent: #f5c518;
+  --border: #2a313a;
+  --card-min: 220px;
+  --card-ratio: 3 / 4;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(14, 17, 22, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.global-counter {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.controls label { color: var(--muted); font-size: 0.9rem; }
+
+.controls select {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+}
+
+.toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+
+main#gallery {
+  padding: 20px;
+}
+
+/* Country group section */
+.country-group {
+  margin-bottom: 32px;
+}
+.country-group-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.country-group-title .flag { font-size: 1.4rem; }
+.country-group-title .count {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.country-group-title .dupes {
+  margin-left: 4px;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* Uniform grid — every card is the same size, no gaps */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+  gap: 0;
+}
+
+.sticker {
+  position: relative;
+  aspect-ratio: var(--card-ratio);
+  overflow: hidden;
+  background: var(--panel);
+  isolation: isolate;          /* keep ::before/overlays scoped */
+  transition: transform 0.15s ease, z-index 0.15s step-end;
+}
+.sticker:hover {
+  transform: scale(1.03);
+  z-index: 2;
+  transition: transform 0.15s ease, z-index 0s;
+}
+
+/* Photo fills the card */
+.sticker .photo {
+  position: absolute;
+  inset: 0;
+  background: #222 center/cover no-repeat;
+  z-index: 0;
+}
+.sticker .photo.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  text-align: center;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1f26,
+    #1a1f26 10px,
+    #1d232b 10px,
+    #1d232b 20px
+  );
+}
+
+.sticker .photo.placeholder .ph-code {
+  display: inline-block;
+  background: var(--accent);
+  color: #111;
+  font-weight: 800;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(0.9rem, 2.4cqw, 1.2rem);
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.sticker .photo.placeholder .ph-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 2.8cqw, 1.15rem);
+  line-height: 1.25;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.sticker { container-type: inline-size; }
+
+/* Meta overlay anchored to the bottom of the card */
+.sticker .meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 12px 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  color: #fff;
+  z-index: 1;
+}
+.sticker .name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.sticker .sub {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.sticker .badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: #111;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+/* Owned ("got") cards — green ring + count pill */
+.sticker.got {
+  box-shadow: inset 0 0 0 3px #22c55e;
+}
+
+.sticker .count-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #22c55e;
+  color: #062611;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  z-index: 3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* When owned and the card has no image, recolor the highlighted code pill */
+.sticker.got .photo.placeholder .ph-code {
+  background: #22c55e;
+  color: #062611;
+}
+
+/* ---------- Per-portrait layouts ----------
+   All cards share the same outer size now.
+   Layouts only change the *internal* styling (frame, overlay, accents). */
+
+/* legend — gold inset frame + gold name */
+.sticker[data-layout="legend"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--accent);
+  pointer-events: none;
+  z-index: 2;
+}
+.sticker[data-layout="legend"] .name { color: var(--accent); }
+
+/* captain — red "C" badge top-left */
+.sticker[data-layout="captain"]::before {
+  content: "C";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e63946;
+  color: white;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  border: 2px solid white;
+  z-index: 2;
+}
+
+/* shiny — animated holo overlay */
+.sticker[data-layout="shiny"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 197, 24, 0.35),
+    rgba(80, 200, 255, 0.35),
+    rgba(255, 80, 180, 0.35),
+    rgba(245, 197, 24, 0.35)
+  );
+  background-size: 300% 300%;
+  animation: holo 6s ease infinite;
+}
+@keyframes holo {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+/* wide — show full image (no crop) instead of cover */
+.sticker[data-layout="wide"] .photo {
+  background-size: contain;
+  background-color: #0a0d12;
+}
+
+/* compact — slimmer overlay for less prominent name */
+.sticker[data-layout="compact"] .meta { padding: 18px 10px 6px; }
+.sticker[data-layout="compact"] .name { font-size: 0.82rem; }
+.sticker[data-layout="compact"] .sub  { font-size: 0.7rem; }
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 60px 20px;
+}
+
+/* ---------- Compact mode ---------- */
+/* Cards shrink to ~1/3 the default minimum width; text/badges scale down. */
+body.compact {
+  --card-min: 100px;
+}
+body.compact main#gallery { padding: 12px; }
+body.compact .country-group { margin-bottom: 20px; }
+
+body.compact .sticker.got {
+  box-shadow: inset 0 0 0 2px #22c55e;
+}
+
+body.compact .sticker .photo.placeholder {
+  gap: 4px;
+  padding: 6px;
+}
+body.compact .sticker .photo.placeholder .ph-code {
+  padding: 2px 6px;
+  font-size: clamp(0.6rem, 12cqw, 0.85rem);
+  letter-spacing: 0.03em;
+}
+body.compact .sticker .photo.placeholder .ph-name {
+  font-size: clamp(0.55rem, 11cqw, 0.78rem);
+  line-height: 1.15;
+}
+
+body.compact .sticker .count-badge {
+  top: 3px;
+  right: 3px;
+  padding: 1px 5px;
+  font-size: 0.62rem;
+}
+body.compact .sticker .badge {
+  top: 3px;
+  right: 3px;
+  padding: 1px 5px;
+  font-size: 0.6rem;
+}
+
+/* Captain "C" shrinks too */
+body.compact .sticker[data-layout="captain"]::before {
+  width: 16px;
+  height: 16px;
+  top: 4px;
+  left: 4px;
+  font-size: 0.6rem;
+  border-width: 1px;
+}
+
+/* Legend gold frame thinner */
+body.compact .sticker[data-layout="legend"]::after {
+  border-width: 2px;
+}
+
+body.compact .sticker .meta {
+  padding: 18px 8px 6px;
+}
+body.compact .sticker .name { font-size: 0.78rem; }
+body.compact .sticker .sub  { font-size: 0.65rem; }

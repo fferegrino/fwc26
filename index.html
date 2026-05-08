@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panini FWC26 — My Stickers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>
+        My Panini FWC26 Collection
+        <span id="global-counter" class="global-counter"></span>
+      </h1>
+      <div class="controls">
+        <label for="country-filter">Country</label>
+        <select id="country-filter">
+          <option value="__all__">All countries</option>
+        </select>
+        <label for="status-filter">Show</label>
+        <select id="status-filter">
+          <option value="all">All</option>
+          <option value="missing">Missing</option>
+          <option value="owned">Owned</option>
+          <option value="dupes">Duplicates only</option>
+        </select>
+        <label class="toggle">
+          <input type="checkbox" id="group-by-country" checked />
+          Group by country
+        </label>
+        <label class="toggle">
+          <input type="checkbox" id="compact-toggle" />
+          Compact
+        </label>
+      </div>
+    </header>
+
+    <main id="gallery"></main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
