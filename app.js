@@ -21,8 +21,13 @@
   }
 
   // Hide advanced toggles (still functional; just not shown).
-  compactEl?.closest("label.toggle")?.setAttribute("hidden", "");
-  groupEl?.closest("label.toggle")?.setAttribute("hidden", "");
+  for (const el of [compactEl, groupEl]) {
+    const label = el?.closest?.("label.toggle");
+    if (label) {
+      label.hidden = true;
+      label.style.display = "none";
+    }
+  }
 
   // Default to compact view on mobile-ish devices.
   if (compactEl && isProbablyMobile()) {
@@ -30,7 +35,7 @@
     document.body.classList.add("compact");
   }
 
-  compactEl.addEventListener("change", () => {
+  compactEl?.addEventListener("change", () => {
     document.body.classList.toggle("compact", compactEl.checked);
   });
 
