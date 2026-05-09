@@ -1,5 +1,6 @@
 (() => {
   const gallery = document.getElementById("gallery");
+  const searchEl = document.getElementById("sticker-search");
   const filterEl = document.getElementById("country-filter");
   const statusEl = document.getElementById("status-filter");
   const groupEl = document.getElementById("group-by-country");
@@ -212,6 +213,14 @@
     }
   }
 
+  function matchesSearch(s, rawQuery) {
+    const q = (rawQuery || "").trim().toLowerCase();
+    if (!q) return true;
+    const code = String(s.id ?? "").toLowerCase();
+    const name = String(s.name ?? "").toLowerCase();
+    return code.includes(q) || name.includes(q);
+  }
+
   function render(stickers) {
     const filter = filterEl.value;
     const status = statusEl.value;
@@ -220,7 +229,8 @@
     const visible = stickers.filter(
       (s) =>
         (filter === "__all__" || s.country === filter) &&
-        matchesStatus(s, status)
+        matchesStatus(s, status) &&
+        matchesSearch(s, searchEl?.value)
     );
 
     updateGlobalCounter(visible, status);
@@ -319,6 +329,7 @@
     filterEl.addEventListener("change", () => render(stickers));
     statusEl.addEventListener("change", () => render(stickers));
     groupEl.addEventListener("change", () => render(stickers));
+    searchEl?.addEventListener("input", () => render(stickers));
     render(stickers);
   }
 
