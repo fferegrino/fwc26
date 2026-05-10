@@ -266,14 +266,25 @@
     }
     card.appendChild(photo);
 
-    if (s.count > 0) {
+    const cb = document.createElement("span");
+    cb.className = "count-badge";
+    if (s.count === 0) {
+      cb.classList.add("count-badge--missing");
+      cb.textContent = "\u2717"; /* ✗ */
+      cb.title = "Missing";
+    } else {
       card.classList.add("got");
-      const cb = document.createElement("span");
-      cb.className = "count-badge";
-      cb.textContent = `×${s.count}`;
-      cb.title = `${s.count} owned`;
-      card.appendChild(cb);
+      cb.classList.add("count-badge--owned");
+      if (s.count === 1) {
+        cb.textContent = "\u2713"; /* ✓ */
+        cb.title = "Owned";
+      } else {
+        const extras = s.count - 1;
+        cb.textContent = `+${extras}`;
+        cb.title = `${s.count} owned (${extras} extra${extras === 1 ? "" : "s"})`;
+      }
     }
+    card.appendChild(cb);
 
     if (s.badge) {
       const b = document.createElement("span");

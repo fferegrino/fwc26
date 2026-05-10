@@ -256,15 +256,25 @@ main#gallery {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: #22c55e;
-  color: #062611;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 800;
   padding: 3px 9px;
   border-radius: 999px;
   letter-spacing: 0.03em;
   z-index: 3;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  border: 3px solid #fff;
+}
+
+.sticker .count-badge--owned {
+  background: #22c55e;
+  color: #062611;
+}
+
+.sticker .count-badge--missing {
+  background: #dc2626;
+  color: #fff;
+  font-weight: 900;
 }
 
 /* When owned and the card has no image, recolor the highlighted code pill */
