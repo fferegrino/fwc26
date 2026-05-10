@@ -162,6 +162,8 @@
   // Country -> 3-letter code, derived from the loaded dataset (e.g. "Mexico" -> "MEX").
   function buildCountryCodeMap(rows) {
     const map = new Map();
+    // Special-case: all FWC* stickers should be treated as one group.
+    map.set("FIFA World Cup 2026", "FWC");
     for (const row of rows) {
       const code = String(row?.sticker_code ?? "");
       const m = code.match(/^([A-Z]{3})\d+$/);
@@ -206,10 +208,13 @@
 
   function toSticker(row, got, prefixMaxNum) {
     const sprite = spriteForCode(row.sticker_code, prefixMaxNum);
+    const code = String(row.sticker_code || "");
+    const country =
+      code.startsWith("FWC") ? "FIFA World Cup 2026" : row.country;
     return {
       id: row.sticker_code,
       name: row.name,
-      country: row.country,
+      country,
       role: row.sticker_code,    // shown as subtitle so collectors see the code
       image: sprite?.url,
       sprite: sprite
