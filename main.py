@@ -35,7 +35,7 @@ _reload_thread_started = False
 
 def _reload_seconds() -> int:
     try:
-        return int(os.environ.get("RELOAD_SECONDS", "300"))
+        return int(os.environ.get("RELOAD_SECONDS", "1800"))
     except ValueError:
         return 300
 
