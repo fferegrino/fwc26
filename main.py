@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import csv
 import os
+import threading
+import time
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -26,6 +28,15 @@ user_mapping: dict[str, str] = {
 app = FastAPI(title="Panini FWC26 Stickers")
 
 _got_by_user: dict[str, dict[str, list[list[int]]]] = {}
+_got_lock = threading.RLock()
+_reload_thread_started = False
+
+
+def _reload_seconds() -> int:
+    try:
+        return int(os.environ.get("RELOAD_SECONDS", "300"))
+    except ValueError:
+        return 300
 
 
 def _download_text(url: str) -> str:
@@ -95,19 +106,46 @@ def _got_shape_from_csv_text(csv_text: str) -> dict[str, list[list[int]]]:
     return out
 
 
-@app.on_event("startup")
-def _load_user_got_data() -> None:
-    global _got_by_user
+def _reload_user(username: str) -> dict[str, list[list[int]]]:
+    url = user_mapping[username]
+    csv_text = _download_text(url)
+    return _got_shape_from_csv_text(csv_text)
+
+
+def _reload_all_users_once() -> None:
     loaded: dict[str, dict[str, list[list[int]]]] = {}
-    for username, url in user_mapping.items():
+    for username in user_mapping.keys():
         try:
-            csv_text = _download_text(url)
-            with open(f"csv_{username}.csv", "w", encoding="utf-8") as f:
-                f.write(csv_text)
-            loaded[username] = _got_shape_from_csv_text(csv_text)
+            loaded[username] = _reload_user(username)
         except Exception:
             loaded[username] = {}
-    _got_by_user = loaded
+    with _got_lock:
+        _got_by_user.clear()
+        _got_by_user.update(loaded)
+
+
+def _reload_loop() -> None:
+    interval = _reload_seconds()
+    if interval <= 0:
+        return
+    while True:
+        time.sleep(interval)
+        try:
+            _reload_all_users_once()
+        except Exception:
+            # If a reload fails, keep the old cache and try again later.
+            pass
+
+
+@app.on_event("startup")
+def _load_user_got_data() -> None:
+    global _reload_thread_started
+    _reload_all_users_once()
+
+    if not _reload_thread_started and _reload_seconds() > 0:
+        t = threading.Thread(target=_reload_loop, name="got-reload-loop", daemon=True)
+        t.start()
+        _reload_thread_started = True
 
 
 @app.get("/healthz", include_in_schema=False)
@@ -161,8 +199,23 @@ def user_index(username: str) -> HTMLResponse:
 def user_got_json(username: str) -> JSONResponse:
     if username not in user_mapping:
         raise HTTPException(status_code=404, detail="Unknown user")
-    payload: dict[str, Any] = _got_by_user.get(username, {})
+    with _got_lock:
+        payload: dict[str, Any] = _got_by_user.get(username, {})
     return JSONResponse(payload)
+
+
+@app.get("/{username}/reload", include_in_schema=False)
+def user_reload(username: str) -> RedirectResponse:
+    if username not in user_mapping:
+        raise HTTPException(status_code=404, detail="Unknown user")
+    try:
+        fresh = _reload_user(username)
+        with _got_lock:
+            _got_by_user[username] = fresh
+    except Exception:
+        # Keep existing cache if reload fails.
+        pass
+    return RedirectResponse(url=f"/{username}/", status_code=303)
 
 
 @app.get("/{username}/data.json", include_in_schema=False)
