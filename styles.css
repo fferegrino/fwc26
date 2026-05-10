@@ -100,6 +100,26 @@ main#gallery {
   padding: 20px;
 }
 
+.site-footer {
+  padding: 14px 20px 22px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+.site-footer p {
+  margin: 0;
+}
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 209, 217, 0.35);
+}
+.site-footer a:hover {
+  color: var(--text);
+  border-bottom-color: rgba(230, 237, 243, 0.65);
+}
+
 /* Country group section */
 .country-group {
   margin-bottom: 32px;
