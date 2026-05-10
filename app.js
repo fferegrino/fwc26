@@ -41,6 +41,74 @@
   });
 
   // ---------------------------------------------------------------------------
+  // URL <-> controls sync. Recognised query params:
+  //   show=all|missing|owned|dupes   -> status filter
+  //   country=<exact name>           -> country filter
+  //   q=<text>                       -> search box
+  //   group=true|false               -> "Group by country" toggle
+  //   compact=true|false             -> "Compact" toggle
+  // ---------------------------------------------------------------------------
+  const VALID_STATUS = new Set(["all", "missing", "owned", "dupes"]);
+
+  function parseBool(value) {
+    if (value == null) return null;
+    const v = String(value).toLowerCase();
+    if (v === "1" || v === "true" || v === "yes" || v === "on") return true;
+    if (v === "0" || v === "false" || v === "no" || v === "off") return false;
+    return null;
+  }
+
+  function applyQueryToControls() {
+    const params = new URLSearchParams(window.location.search);
+
+    const show = params.get("show");
+    if (show && VALID_STATUS.has(show) && statusEl) {
+      statusEl.value = show;
+    }
+
+    const country = params.get("country");
+    if (country && filterEl) {
+      const has = Array.from(filterEl.options).some((o) => o.value === country);
+      if (has) filterEl.value = country;
+    }
+
+    const q = params.get("q");
+    if (q != null && searchEl) {
+      searchEl.value = q;
+    }
+
+    const group = parseBool(params.get("group"));
+    if (group != null && groupEl) {
+      groupEl.checked = group;
+    }
+
+    const compact = parseBool(params.get("compact"));
+    if (compact != null && compactEl) {
+      compactEl.checked = compact;
+      document.body.classList.toggle("compact", compact);
+    }
+  }
+
+  function updateQueryFromControls() {
+    const params = new URLSearchParams();
+    if (statusEl && statusEl.value && statusEl.value !== "all") {
+      params.set("show", statusEl.value);
+    }
+    if (filterEl && filterEl.value && filterEl.value !== "__all__") {
+      params.set("country", filterEl.value);
+    }
+    const q = (searchEl?.value || "").trim();
+    if (q) params.set("q", q);
+    if (groupEl && !groupEl.checked) params.set("group", "false");
+
+    const qs = params.toString();
+    const url = qs
+      ? `${window.location.pathname}?${qs}${window.location.hash}`
+      : `${window.location.pathname}${window.location.hash}`;
+    window.history.replaceState(null, "", url);
+  }
+
+  // ---------------------------------------------------------------------------
   // Sticker include filter. Edit this to control which rows from data.json
   // are loaded into the gallery. Return true to keep, false to drop.
   // ---------------------------------------------------------------------------
@@ -326,10 +394,17 @@
       filterEl.appendChild(opt);
     }
 
-    filterEl.addEventListener("change", () => render(stickers));
-    statusEl.addEventListener("change", () => render(stickers));
-    groupEl.addEventListener("change", () => render(stickers));
-    searchEl?.addEventListener("input", () => render(stickers));
+    applyQueryToControls();
+
+    const onChange = () => {
+      updateQueryFromControls();
+      render(stickers);
+    };
+
+    filterEl.addEventListener("change", onChange);
+    statusEl.addEventListener("change", onChange);
+    groupEl.addEventListener("change", onChange);
+    searchEl?.addEventListener("input", onChange);
     render(stickers);
   }
 
