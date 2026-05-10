@@ -132,7 +132,17 @@ main#gallery {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
-.country-group-title .flag { font-size: 1.4rem; }
+.country-group-title .flag {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
 .country-group-title .count {
   color: var(--muted);
   font-weight: 400;

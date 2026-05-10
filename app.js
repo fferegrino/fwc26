@@ -159,34 +159,27 @@
     "Host Countries and Cities",
   ];
 
-  // Country -> flag emoji. Covers the 48 FWC26 nations + a few extras.
-  const FLAGS = {
-    "Algeria": "🇩🇿", "Argentina": "🇦🇷", "Australia": "🇦🇺", "Austria": "🇦🇹",
-    "Belgium": "🇧🇪", "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦",
-    "Brazil": "🇧🇷", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Chile": "🇨🇱",
-    "Colombia": "🇨🇴", "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Curaçao": "🇨🇼",
-    "Czechia": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬",
-    "El Salvador": "🇸🇻", "England": "🏴\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}",
-    "France": "🇫🇷", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Haiti": "🇭🇹",
-    "Honduras": "🇭🇳", "Hungary": "🇭🇺", "Iceland": "🇮🇸", "Iran": "🇮🇷",
-    "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Israel": "🇮🇱", "Italy": "🇮🇹",
-    "Ivory Coast": "🇨🇮", "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴",
-    "Kazakhstan": "🇰🇿", "Kuwait": "🇰🇼", "Mali": "🇲🇱", "Mexico": "🇲🇽",
-    "Morocco": "🇲🇦", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nigeria": "🇳🇬",
-    "Norway": "🇳🇴", "Panama": "🇵🇦", "Paraguay": "🇵🇾", "Peru": "🇵🇪",
-    "Poland": "🇵🇱", "Portugal": "🇵🇹", "Qatar": "🇶🇦", "Romania": "🇷🇴",
-    "Saudi Arabia": "🇸🇦", "Scotland": "🏴\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}",
-    "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Slovakia": "🇸🇰", "South Africa": "🇿🇦",
-    "South Korea": "🇰🇷", "Spain": "🇪🇸", "Suriname": "🇸🇷", "Sweden": "🇸🇪",
-    "Switzerland": "🇨🇭", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳",
-    "Türkiye": "🇹🇷", "Turkey": "🇹🇷", "Ukraine": "🇺🇦",
-    "United Arab Emirates": "🇦🇪", "Uruguay": "🇺🇾", "USA": "🇺🇸",
-    "Uzbekistan": "🇺🇿", "Venezuela": "🇻🇪", "Wales": "🏴\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}",
-  };
-
-  function flagFor(country) {
-    return FLAGS[country] || "";
+  // Country -> 3-letter code, derived from the loaded dataset (e.g. "Mexico" -> "MEX").
+  function buildCountryCodeMap(rows) {
+    const map = new Map();
+    for (const row of rows) {
+      const code = String(row?.sticker_code ?? "");
+      const m = code.match(/^([A-Z]{3})\d+$/);
+      if (!m) continue;
+      const prefix = m[1];
+      const country = row.country;
+      if (!country) continue;
+      if (!map.has(country)) map.set(country, prefix);
+    }
+    return map;
   }
+
+  function codeFor(country, countryCodeMap) {
+    return countryCodeMap.get(country) || "";
+  }
+
+  // Populated in init(); used by sorting + group headers.
+  let countryCodeMap = new Map();
 
   // Pick a per-portrait CSS layout from the row's properties.
   function deriveLayout(row) {
@@ -228,12 +221,16 @@
     };
   }
 
-  function compareCountries(a, b) {
+  function compareCountries(a, b, countryCodeMap) {
     const ai = SPECIAL_FIRST.indexOf(a);
     const bi = SPECIAL_FIRST.indexOf(b);
     if (ai !== -1 && bi !== -1) return ai - bi;
     if (ai !== -1) return -1;
     if (bi !== -1) return 1;
+    const ac = codeFor(a, countryCodeMap) || a;
+    const bc = codeFor(b, countryCodeMap) || b;
+    const byCode = String(ac).localeCompare(String(bc));
+    if (byCode) return byCode;
     return a.localeCompare(b);
   }
 
@@ -381,7 +378,9 @@
       if (!byCountry.has(s.country)) byCountry.set(s.country, []);
       byCountry.get(s.country).push(s);
     }
-    const orderedCountries = [...byCountry.keys()].sort(compareCountries);
+    const orderedCountries = [...byCountry.keys()].sort((a, b) =>
+      compareCountries(a, b, countryCodeMap)
+    );
 
     for (const country of orderedCountries) {
       const items = byCountry.get(country);
@@ -390,7 +389,7 @@
 
       const title = document.createElement("h2");
       title.className = "country-group-title";
-      const flag = flagFor(country);
+      const flag = codeFor(country, countryCodeMap);
       title.innerHTML =
         (flag ? `<span class="flag">${flag}</span>` : "") +
         `<span>${country}</span>` +
@@ -440,13 +439,16 @@
     const rows = Array.isArray(data?.rows) ? data.rows : [];
     const included = rows.filter(includeSticker);
     const prefixMaxNum = buildPrefixMaxNum(included);
+    countryCodeMap = buildCountryCodeMap(included);
     const stickers = included.map((r) => toSticker(r, got, prefixMaxNum));
 
-    const countries = [...new Set(stickers.map((s) => s.country))].sort(compareCountries);
+    const countries = [...new Set(stickers.map((s) => s.country))].sort((a, b) =>
+      compareCountries(a, b, countryCodeMap)
+    );
     for (const c of countries) {
       const opt = document.createElement("option");
       opt.value = c;
-      const flag = flagFor(c);
+      const flag = codeFor(c, countryCodeMap);
       opt.textContent = `${flag ? flag + " " : ""}${c}`;
       filterEl.appendChild(opt);
     }
