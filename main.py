@@ -23,6 +23,7 @@ STYLES_FILE = BASE_DIR / "styles.css"
 
 user_mapping: dict[str, str] = {
     "tono": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRUU-E9IN010M0NgUAsjNNmGYjEilp-PJHYJf7MQ9rH1--tU6TNBwYP9M_IRtnV2mwnZ8DEJZV79PLG/pub?gid=2042950172&single=true&output=csv",
+    "max": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTccdq22tEOEGci1m2gWYPlCML6qoZEIHsxlaiikB0Jl7BKthiCKLmiRobdh1UHP1YbXrRdhreWSeU1/pub?gid=2042950172&single=true&output=csv",
     "example": "https://docs.google.com/spreadsheets/d/e/2PACX-1vShi7E2m1Ph3nIMLQiLdqnyL7KcF3SoP5RcqJ-7OFM_aEHhIssnnmBusCfsF9h5u0lfQuvGAxM8IMVI/pub?gid=2042950172&single=true&output=csv"
 }
 
