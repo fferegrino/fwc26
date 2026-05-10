@@ -1,8 +1,10 @@
 """
-Merge per-collection sticker folders into one horizontal strip (default 20 × 255 px slots, 300 px tall).
+Merge per-collection sticker folders into one horizontal strip (default 20 × 225 px slots, 300 px tall).
 
 Expects layout like images/NED/NED1.jpg … images/NED/NED20.jpg and images/00/00.jpg.
-Missing files leave a blank (background-colour) cell.
+By default writes PNG strips with fully transparent empty slots.
+Use --format webp for much smaller files (still supports transparent empty slots).
+Use --format jpeg for solid --bg fills.
 """
 
 from __future__ import annotations
@@ -30,16 +32,10 @@ def parse_sticker_index(folder_name: str, stem: str) -> int | None:
 
 
 def load_cell_image(path: Path, cell_w: int, cell_h: int) -> Image.Image:
+    """Resize a cell to slot size, always RGBA (JPEGs get opaque alpha)."""
     with Image.open(path) as img:
         img = ImageOps.exif_transpose(img)
-        if img.mode not in ("RGB", "RGBA"):
-            img = img.convert("RGBA")
-        if img.mode == "RGBA":
-            bg = Image.new("RGB", img.size, (255, 255, 255))
-            bg.paste(img, mask=img.split()[-1])
-            img = bg
-        else:
-            img = img.convert("RGB")
+        img = img.convert("RGBA")
         return img.resize((cell_w, cell_h), Image.Resampling.LANCZOS)
 
 
@@ -50,8 +46,12 @@ def merge_folder(
     height: int,
     slot_count: int,
     bg: tuple[int, int, int],
+    transparent_empty: bool,
 ) -> Image.Image:
-    canvas = Image.new("RGB", (slot_w * slot_count, height), bg)
+    if transparent_empty:
+        canvas = Image.new("RGBA", (slot_w * slot_count, height), (0, 0, 0, 0))
+    else:
+        canvas = Image.new("RGB", (slot_w * slot_count, height), bg)
     mapping: dict[int, Path] = {}
     for p in folder.iterdir():
         if not p.is_file() or p.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
@@ -67,7 +67,12 @@ def merge_folder(
             continue
         x = (i - 1) * slot_w
         cell = load_cell_image(path, slot_w, height)
-        canvas.paste(cell, (x, 0))
+        if transparent_empty:
+            canvas.alpha_composite(cell, dest=(x, 0))
+        else:
+            rgb = Image.new("RGB", cell.size, bg)
+            rgb.paste(cell, mask=cell.split()[-1])
+            canvas.paste(rgb, (x, 0))
 
     return canvas
 
@@ -84,7 +89,27 @@ def main() -> None:
         "--out",
         type=Path,
         default=Path("images"),
-        help="Output directory for merged JPEGs (default: ./images)",
+        help="Output directory for merged strips (default: ./images)",
+    )
+    ap.add_argument(
+        "--format",
+        choices=("png", "webp", "jpeg"),
+        default="webp",
+        help="Output format (default: webp). webp: small + transparent empties; jpeg: opaque --bg empties",
+    )
+    ap.add_argument(
+        "--quality",
+        type=int,
+        default=None,
+        metavar="1-100",
+        help="JPEG/WebP quality (default: 92 for jpeg, 80 for webp; ignored for png)",
+    )
+    ap.add_argument(
+        "--webp-method",
+        type=int,
+        default=6,
+        choices=range(0, 7),
+        help="WebP encoder effort 0=fast/larger … 6=slow/smaller (default: 6)",
     )
     ap.add_argument(
         "--slots",
@@ -108,9 +133,18 @@ def main() -> None:
         "--bg",
         type=str,
         default="255,255,255",
-        help="Background RGB for empty slots, comma-separated (default: 255,255,255)",
+        help="Background RGB for empty slots when using --format jpeg (comma-separated)",
     )
     args = ap.parse_args()
+
+    if args.quality is not None and not (1 <= args.quality <= 100):
+        raise SystemExit("--quality must be between 1 and 100")
+    if args.format == "jpeg":
+        q = 92 if args.quality is None else args.quality
+    elif args.format == "webp":
+        q = 80 if args.quality is None else args.quality
+    else:
+        q = None
 
     bg_parts = [int(x.strip()) for x in args.bg.split(",")]
     if len(bg_parts) != 3:
@@ -128,6 +162,8 @@ def main() -> None:
     if not subdirs:
         raise SystemExit(f"No subfolders under {args.images}")
 
+    transparent_empty = args.format in ("png", "webp")
+
     for folder in subdirs:
         strip = merge_folder(
             folder,
@@ -135,9 +171,21 @@ def main() -> None:
             height=args.height,
             slot_count=args.slots,
             bg=bg_tuple,
+            transparent_empty=transparent_empty,
         )
-        out_path = args.out / f"{folder.name}.jpg"
-        strip.save(out_path, format="JPEG", quality=92, optimize=True)
+        ext = {"png": ".png", "webp": ".webp", "jpeg": ".jpg"}[args.format]
+        out_path = args.out / f"{folder.name}{ext}"
+        if args.format == "png":
+            strip.save(out_path, format="PNG", optimize=True)
+        elif args.format == "webp":
+            strip.save(
+                out_path,
+                format="WEBP",
+                quality=q,
+                method=args.webp_method,
+            )
+        else:
+            strip.save(out_path, format="JPEG", quality=q, optimize=True)
         print(out_path)
 
 
