@@ -156,8 +156,8 @@ def healthz() -> Response:
 
 
 @app.get("/", include_in_schema=False)
-def index() -> HTMLResponse:
-    return HTMLResponse(INDEX_FILE.read_text(encoding="utf-8"))
+def index() -> RedirectResponse:
+    return RedirectResponse(url="/tono/", status_code=307)
 
 
 @app.get("/app.js", include_in_schema=False)

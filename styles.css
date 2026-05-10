@@ -5,7 +5,7 @@
   --muted: #c9d1d9;
   --accent: #f5c518;
   --border: #2a313a;
-  --card-min: 220px;
+  --card-min: 180px;
   --card-ratio: 3 / 4;
 }
 
@@ -256,7 +256,7 @@ main#gallery {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.90) 60%,
     rgba(0, 0, 0, 0) 100%
   );
   color: #fff;
