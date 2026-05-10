@@ -21,6 +21,47 @@
     }
   }
 
+  function prefersReducedMotion() {
+    try {
+      return (
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  // Hide header on scroll down, show on scroll up (mobile-friendly).
+  (() => {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    let lastY = window.scrollY || 0;
+    let hidden = false;
+    const delta = 10; // avoid flicker on tiny scrolls
+
+    function setHidden(next) {
+      if (hidden === next) return;
+      hidden = next;
+      document.body.classList.toggle("header-hidden", hidden);
+    }
+
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const dy = y - lastY;
+      lastY = y;
+      if (Math.abs(dy) < delta) return;
+      if (y < 8) return setHidden(false);
+      if (dy > 0) setHidden(true);
+      else setHidden(false);
+    };
+
+    // If user prefers reduced motion, keep it simple (no hide/show animation).
+    if (!prefersReducedMotion()) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+  })();
+
   // Hide advanced toggles (still functional; just not shown).
   for (const el of [compactEl, groupEl]) {
     const label = el?.closest?.("label.toggle");
@@ -182,6 +223,22 @@
 
   // Populated in init(); used by sorting + group headers.
   let countryCodeMap = new Map();
+
+  function applyCountryOptionLabels() {
+    if (!filterEl) return;
+    const mobile = isProbablyMobile();
+    for (const opt of Array.from(filterEl.options)) {
+      const country = opt.value;
+      if (country === "__all__") {
+        opt.textContent = mobile ? "ALL" : "All countries";
+        continue;
+      }
+      const code = codeFor(country, countryCodeMap);
+      opt.textContent = mobile
+        ? (code || country)
+        : `${code ? code + " " : ""}${country}`;
+    }
+  }
 
   // Pick a per-portrait CSS layout from the row's properties.
   function deriveLayout(row) {
@@ -457,6 +514,8 @@
       opt.textContent = `${flag ? flag + " " : ""}${c}`;
       filterEl.appendChild(opt);
     }
+    applyCountryOptionLabels();
+    window.addEventListener("resize", applyCountryOptionLabels, { passive: true });
 
     applyQueryToControls();
 

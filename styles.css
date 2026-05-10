@@ -32,6 +32,20 @@ html, body {
   gap: 16px;
   align-items: center;
   justify-content: space-between;
+  transition: transform 0.18s ease;
+}
+
+body.header-hidden .site-header {
+  transform: translateY(-110%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
+  body.header-hidden .site-header {
+    transform: none;
+  }
 }
 
 .site-header h1 {
