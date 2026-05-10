@@ -1,6 +1,8 @@
 """
-Merge per-collection sticker folders into one horizontal strip (default 20 × 225 px slots, 300 px tall).
+Merge per-collection sticker folders into one horizontal strip (slot count from data.json by default).
 
+Default slot count per folder matches the album (e.g. FWC → 19, 00 → 1); unknown folders fall back to 20.
+Default geometry is 225 px wide × 300 px tall per slot unless overridden.
 Expects layout like images/NED/NED1.jpg … images/NED/NED20.jpg and images/00/00.jpg.
 By default writes PNG strips with fully transparent empty slots.
 Use --format webp for much smaller files (still supports transparent empty slots).
@@ -10,6 +12,7 @@ Use --format jpeg for solid --bg fills.
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from PIL import Image, ImageOps
@@ -17,6 +20,39 @@ from PIL import Image, ImageOps
 SLOT_DEFAULT = 225
 HEIGHT_DEFAULT = 300
 COUNT_DEFAULT = 20
+
+
+def parse_sticker_code_for_max_slots(code: str) -> tuple[str, int] | None:
+    """Map a data.json sticker_code to (folder prefix, 1-based index) for slot counting."""
+    if code == "00":
+        return ("00", 1)
+    i = len(code) - 1
+    while i >= 0 and code[i].isdigit():
+        i -= 1
+    prefix, suffix = code[: i + 1], code[i + 1 :]
+    if not prefix or not suffix:
+        return None
+    return (prefix, int(suffix))
+
+
+def max_slots_from_data(data_path: Path) -> dict[str, int]:
+    """Largest sticker index per folder prefix in data.json rows."""
+    with data_path.open(encoding="utf-8") as f:
+        payload = json.load(f)
+    rows = payload.get("rows", [])
+    max_by_folder: dict[str, int] = {}
+    for row in rows:
+        code = row.get("sticker_code")
+        if not isinstance(code, str):
+            continue
+        parsed = parse_sticker_code_for_max_slots(code)
+        if parsed is None:
+            continue
+        folder, idx = parsed
+        prev = max_by_folder.get(folder, 0)
+        if idx > prev:
+            max_by_folder[folder] = idx
+    return max_by_folder
 
 
 def parse_sticker_index(folder_name: str, stem: str) -> int | None:
@@ -80,6 +116,12 @@ def merge_folder(
 def main() -> None:
     ap = argparse.ArgumentParser(description="Merge collection folders into horizontal strips.")
     ap.add_argument(
+        "--data",
+        type=Path,
+        default=Path("data.json"),
+        help="Album JSON used for default per-folder --slots (default: ./data.json)",
+    )
+    ap.add_argument(
         "--images",
         type=Path,
         default=Path("images"),
@@ -114,8 +156,12 @@ def main() -> None:
     ap.add_argument(
         "--slots",
         type=int,
-        default=COUNT_DEFAULT,
-        help=f"Number of horizontal slots (default: {COUNT_DEFAULT})",
+        default=None,
+        metavar="N",
+        help=(
+            f"Number of horizontal slots for every folder (default: from --data per folder, "
+            f"else {COUNT_DEFAULT} if folder is missing from data)"
+        ),
     )
     ap.add_argument(
         "--slot-width",
@@ -154,6 +200,12 @@ def main() -> None:
     if not args.images.is_dir():
         raise SystemExit(f"Not a directory: {args.images}")
 
+    max_by_folder: dict[str, int] | None = None
+    if args.slots is None:
+        if not args.data.is_file():
+            raise SystemExit(f"Need --data file for default slot counts, or pass --slots: {args.data}")
+        max_by_folder = max_slots_from_data(args.data)
+
     args.out.mkdir(parents=True, exist_ok=True)
 
     subdirs = sorted(
@@ -165,11 +217,16 @@ def main() -> None:
     transparent_empty = args.format in ("png", "webp")
 
     for folder in subdirs:
+        if args.slots is not None:
+            slot_count = args.slots
+        else:
+            assert max_by_folder is not None
+            slot_count = max_by_folder.get(folder.name, COUNT_DEFAULT)
         strip = merge_folder(
             folder,
             slot_w=args.slot_width,
             height=args.height,
-            slot_count=args.slots,
+            slot_count=slot_count,
             bg=bg_tuple,
             transparent_empty=transparent_empty,
         )
