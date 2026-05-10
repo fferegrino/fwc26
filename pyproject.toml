@@ -1,12 +1,26 @@
 [project]
 name = "panini-wc26"
 version = "0.1.0"
-description = "Add your description here"
+description = ""
+authors = [
+    {name = "Antonio Feregrino",email = "antonio.feregrino@gmail.com"}
+]
+license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.14"
 dependencies = [
-    "lxml>=5.0.0",
-    "pandas>=2.0.0",
-    "pillow>=10.0.0",
-    "playwright>=1.40.0",
+    "fastapi (>=0.136.1,<0.137.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "lxml (>=6.1.0,<7.0.0)",
+    "pandas (>=3.0.2,<4.0.0)",
+    "pillow (>=12.2.0,<13.0.0)",
+    "playwright (>=1.59.0,<2.0.0)"
 ]
