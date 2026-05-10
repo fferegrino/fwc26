@@ -46,15 +46,28 @@ def _got_shape_from_csv_text(csv_text: str) -> dict[str, list[list[int]]]:
       { "MEX": [[1, 1], [2, 0]], "00": [[0, 1]] }
     """
     out: dict[str, list[list[int]]] = {}
-    reader = csv.DictReader(csv_text.splitlines())
+    # Handle common Google/Excel exports with BOM and header variants.
+    text = csv_text.lstrip("\ufeff")
+    reader = csv.DictReader(text.splitlines())
     if not reader.fieldnames:
         return out
 
+    # Normalize headers so we can tolerate "quantity" instead of "count", etc.
+    normalized_headers = {h: (h or "").strip().lower() for h in reader.fieldnames}
+    code_header = next(
+        (h for h, nh in normalized_headers.items() if nh in {"sticker_code", "code", "sticker"}),
+        None,
+    )
+    count_header = next(
+        (h for h, nh in normalized_headers.items() if nh in {"count", "quantity", "qty", "owned"}),
+        None,
+    )
+
     for row in reader:
-        code = (row.get("sticker_code") or "").strip()
+        code = (row.get(code_header or "sticker_code") or "").strip()
         if not code:
             continue
-        raw_count = (row.get("count") or "").strip()
+        raw_count = (row.get(count_header or "count") or "").strip()
         try:
             count = int(float(raw_count)) if raw_count else 0
         except ValueError:
@@ -89,7 +102,8 @@ def _load_user_got_data() -> None:
     for username, url in user_mapping.items():
         try:
             csv_text = _download_text(url)
-            breakpoint()
+            with open(f"csv_{username}.csv", "w", encoding="utf-8") as f:
+                f.write(csv_text)
             loaded[username] = _got_shape_from_csv_text(csv_text)
         except Exception:
             loaded[username] = {}
