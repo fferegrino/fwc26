@@ -117,6 +117,41 @@
     return STICKER_CODE_RE.test(row.sticker_code);
   }
 
+  /** One horizontal strip per 3-letter prefix (or 00), 225×300px cells, hosted on ImageKit. */
+  const SPRITE_BASE = "https://ik.imagekit.io/thatcsharpguy/fwc26";
+
+  /** Max sticker number per prefix in the loaded data — strip width for CSS sprites. */
+  function buildPrefixMaxNum(rows) {
+    const max = new Map();
+    for (const row of rows) {
+      const code = row.sticker_code;
+      if (code === "00") continue;
+      const m = code.match(/^([A-Z]+)(\d+)$/);
+      if (!m) continue;
+      const prefix = m[1];
+      const n = parseInt(m[2], 10);
+      max.set(prefix, Math.max(max.get(prefix) ?? 0, n));
+    }
+    return max;
+  }
+
+  function spriteForCode(code, prefixMaxNum) {
+    if (code === "00") {
+      return { url: `${SPRITE_BASE}/00.webp`, count: 1, index: 0 };
+    }
+    const m = code.match(/^([A-Z]+)(\d+)$/);
+    if (!m) return null;
+    const prefix = m[1];
+    const num = parseInt(m[2], 10);
+    const count = prefixMaxNum.get(prefix);
+    if (!count) return null;
+    return {
+      url: `${SPRITE_BASE}/${prefix}.webp`,
+      count,
+      index: Math.max(0, num - 1),
+    };
+  }
+
   // Special "countries" in the album that should appear before real nations.
   const SPECIAL_FIRST = [
     "We Are Panini",
@@ -176,13 +211,17 @@
     return entry ? Number(entry[1]) || 0 : 0;
   }
 
-  function toSticker(row, got) {
+  function toSticker(row, got, prefixMaxNum) {
+    const sprite = spriteForCode(row.sticker_code, prefixMaxNum);
     return {
       id: row.sticker_code,
       name: row.name,
       country: row.country,
       role: row.sticker_code,    // shown as subtitle so collectors see the code
-      image: undefined,           // populate later when you scan/upload images
+      image: sprite?.url,
+      sprite: sprite
+        ? { count: sprite.count, index: sprite.index }
+        : undefined,
       layout: deriveLayout(row),
       badge: undefined,
       count: countOf(row.sticker_code, got),
@@ -208,6 +247,11 @@
     photo.className = "photo";
     if (s.image) {
       photo.style.backgroundImage = `url("${s.image}")`;
+      if (s.sprite) {
+        photo.classList.add("photo-sprite");
+        photo.style.setProperty("--sprite-count", String(s.sprite.count));
+        photo.style.setProperty("--sprite-index", String(s.sprite.index));
+      }
     } else {
       photo.classList.add("placeholder");
       const code = document.createElement("span");
@@ -383,7 +427,9 @@
     }
 
     const rows = Array.isArray(data?.rows) ? data.rows : [];
-    const stickers = rows.filter(includeSticker).map((r) => toSticker(r, got));
+    const included = rows.filter(includeSticker);
+    const prefixMaxNum = buildPrefixMaxNum(included);
+    const stickers = included.map((r) => toSticker(r, got, prefixMaxNum));
 
     const countries = [...new Set(stickers.map((s) => s.country))].sort(compareCountries);
     for (const c of countries) {

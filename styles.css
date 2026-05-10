@@ -152,6 +152,16 @@ main#gallery {
   background: #222 center/cover no-repeat;
   z-index: 0;
 }
+
+/* Horizontal sprite strip: cells are 225×300 in the source; one cell scales to the card (3:4). */
+.sticker .photo.photo-sprite {
+  background-repeat: no-repeat;
+  background-size: calc(var(--sprite-count) * 100%) 100%;
+  background-position: calc(
+      100% * var(--sprite-index) / max(1, var(--sprite-count) - 1)
+    )
+    0;
+}
 .sticker .photo.placeholder {
   display: flex;
   flex-direction: column;
@@ -321,8 +331,8 @@ main#gallery {
   100% { background-position:   0% 50%; }
 }
 
-/* wide — show full image (no crop) instead of cover */
-.sticker[data-layout="wide"] .photo {
+/* wide — show full image (no crop) instead of cover (single images only; not sprite strips) */
+.sticker[data-layout="wide"] .photo:not(.photo-sprite) {
   background-size: contain;
   background-color: #0a0d12;
 }

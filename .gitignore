@@ -10,3 +10,4 @@ wheels/
 .venv
 .pw-user-data
 images/
+.DS_Store
