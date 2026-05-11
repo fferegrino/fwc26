@@ -85,7 +85,7 @@
   // URL <-> controls sync. Recognised query params:
   //   show=all|missing|owned|dupes   -> status filter
   //   country=<exact name>           -> country filter
-  //   q=<text>                       -> search box
+  //   q=<text>                       -> search box (comma-separated = match any token)
   //   group=true|false               -> "Group by country" toggle
   //   compact=true|false             -> "Compact" toggle
   // ---------------------------------------------------------------------------
@@ -396,11 +396,16 @@
   }
 
   function matchesSearch(s, rawQuery) {
-    const q = (rawQuery || "").trim().toLowerCase();
-    if (!q) return true;
+    const raw = (rawQuery || "").trim();
+    if (!raw) return true;
+    const tokens = raw
+      .split(",")
+      .map((t) => t.trim().toLowerCase())
+      .filter(Boolean);
+    if (tokens.length === 0) return true;
     const code = String(s.id ?? "").toLowerCase();
     const name = String(s.name ?? "").toLowerCase();
-    return code.includes(q) || name.includes(q);
+    return tokens.some((q) => code.includes(q) || name.includes(q));
   }
 
   function render(stickers) {
