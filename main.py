@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import csv
+import json
 import os
+import re
 import threading
 import time
 import urllib.request
@@ -10,6 +12,7 @@ from typing import Any
 
 from fastapi import FastAPI
 from fastapi import HTTPException
+from fastapi import Query
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse, Response
 
 
@@ -20,6 +23,9 @@ DATA_FILE = BASE_DIR / "data.json"
 GOT_FILE = BASE_DIR / "got.json"
 APP_JS_FILE = BASE_DIR / "app.js"
 STYLES_FILE = BASE_DIR / "styles.css"
+
+# Same rule as app.js `includeSticker` — only these rows are part of the album export.
+STICKER_CODE_RE = re.compile(r"^(00|[A-Z]{3}\d{1,2})$")
 
 user_mapping: dict[str, str] = {
     "tono": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRUU-E9IN010M0NgUAsjNNmGYjEilp-PJHYJf7MQ9rH1--tU6TNBwYP9M_IRtnV2mwnZ8DEJZV79PLG/pub?gid=2042950172&single=true&output=csv",
@@ -32,6 +38,9 @@ app = FastAPI(title="Panini FWC26 Stickers")
 _got_by_user: dict[str, dict[str, list[list[int]]]] = {}
 _got_lock = threading.RLock()
 _reload_thread_started = False
+
+# Album sticker codes in data.json row order (refreshed on startup with got data).
+_album_codes: list[str] = []
 
 
 def _reload_seconds() -> int:
@@ -126,6 +135,55 @@ def _reload_all_users_once() -> None:
         _got_by_user.update(loaded)
 
 
+def _load_album_codes() -> None:
+    global _album_codes
+    if not DATA_FILE.exists():
+        _album_codes = []
+        return
+    try:
+        raw: Any = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        _album_codes = []
+        return
+    rows = raw.get("rows") if isinstance(raw, dict) else []
+    if not isinstance(rows, list):
+        _album_codes = []
+        return
+    out: list[str] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        code = str(row.get("sticker_code") or "").strip()
+        if STICKER_CODE_RE.match(code):
+            out.append(code)
+    _album_codes = out
+
+
+def _count_of(code: str, got: dict[str, list[list[int]]]) -> int:
+    """Mirror app.js `countOf`: how many copies of `code` the user has."""
+    m = re.match(r"^([A-Z]+)(\d+)$", code)
+    prefix = m.group(1) if m else code
+    num = int(m.group(2), 10) if m else 0
+    for pair in got.get(prefix) or []:
+        if not isinstance(pair, list) or len(pair) < 2:
+            continue
+        if pair[0] != num:
+            continue
+        try:
+            return int(pair[1]) or 0
+        except (TypeError, ValueError):
+            return 0
+    return 0
+
+
+def _txt_attachment(body: str, filename: str) -> Response:
+    return Response(
+        content=body,
+        media_type="text/plain; charset=utf-8",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
 def _reload_loop() -> None:
     interval = _reload_seconds()
     if interval <= 0:
@@ -142,6 +200,7 @@ def _reload_loop() -> None:
 @app.on_event("startup")
 def _load_user_got_data() -> None:
     global _reload_thread_started
+    _load_album_codes()
     _reload_all_users_once()
 
     if not _reload_thread_started and _reload_seconds() > 0:
@@ -204,6 +263,56 @@ def user_got_json(username: str) -> JSONResponse:
     with _got_lock:
         payload: dict[str, Any] = _got_by_user.get(username, {})
     return JSONResponse(payload)
+
+
+@app.get("/{username}/export/missing.txt", include_in_schema=False)
+def export_missing_txt(username: str) -> Response:
+    if username not in user_mapping:
+        raise HTTPException(status_code=404, detail="Unknown user")
+    with _got_lock:
+        got: dict[str, list[list[int]]] = _got_by_user.get(username, {})
+    codes = [c for c in _album_codes if _count_of(c, got) == 0]
+    body = ",".join(codes)
+    return _txt_attachment(body, f"{username}-missing.txt")
+
+
+@app.get("/{username}/export/spares.txt", include_in_schema=False)
+def export_spares_txt(username: str) -> Response:
+    if username not in user_mapping:
+        raise HTTPException(status_code=404, detail="Unknown user")
+    with _got_lock:
+        got = _got_by_user.get(username, {})
+    parts: list[str] = []
+    for code in _album_codes:
+        n = _count_of(code, got)
+        extras = max(0, n - 1)
+        parts.extend([code] * extras)
+    body = ",".join(parts)
+    return _txt_attachment(body, f"{username}-spares.txt")
+
+
+@app.get("/{username}/export/owned.txt", include_in_schema=False)
+def export_owned_txt(
+    username: str,
+    repeat: bool = Query(
+        False,
+        description="If true, list one entry per physical copy (e.g. three owned → ALG2,ALG2,ALG2).",
+    ),
+) -> Response:
+    if username not in user_mapping:
+        raise HTTPException(status_code=404, detail="Unknown user")
+    with _got_lock:
+        got = _got_by_user.get(username, {})
+    if repeat:
+        parts: list[str] = []
+        for code in _album_codes:
+            n = _count_of(code, got)
+            parts.extend([code] * n)
+        body = ",".join(parts)
+    else:
+        codes = [c for c in _album_codes if _count_of(c, got) > 0]
+        body = ",".join(codes)
+    return _txt_attachment(body, f"{username}-owned.txt")
 
 
 @app.get("/{username}/reload", include_in_schema=False)
