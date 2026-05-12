@@ -123,14 +123,28 @@
       .compare-back:hover {
         color: var(--accent);
       }
+      .compare-tools {
+        margin: -8px 0 16px;
+        font-size: 0.9rem;
+      }
+      .compare-tools a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .compare-tools a:hover {
+        color: var(--accent);
+      }
     </style>
   </head>
   <body>
     <main class="compare-main">
       <a class="compare-back" href="./">← Back to collection</a>
+      <p class="compare-tools"><a href="optimize.html">Swap optimizer</a></p>
       <h1>Compare two sticker lists</h1>
       <p class="lede">
-        Paste comma-separated sticker codes in each box. Empty slots from exports (e.g.
+        Paste comma-separated sticker codes in each box. Repeats count as separate copies
+        (<code>ALG1,ALG1</code>); you can also write counts in parentheses
+        (<code>ALG1(2)</code> means the same). Empty slots from exports (e.g.
         <code>ESP10 ,,ALG2</code>) are ignored. The page shows codes that appear in
         <strong>both</strong> lists.
       </p>
@@ -138,7 +152,7 @@
       <div class="compare-grid">
         <div class="compare-field">
           <label for="list-a">List A</label>
-          <textarea id="list-a" placeholder="MEX1, BRA5, ESP10 ,,ALG2" spellcheck="false"></textarea>
+          <textarea id="list-a" placeholder="MEX1, BRA5(2), ESP10 ,,ALG2" spellcheck="false"></textarea>
         </div>
         <div class="compare-field">
           <label for="list-b">List B</label>
@@ -168,15 +182,25 @@
     </main>
 
     <script>
+      var STICKER_COUNT_SUFFIX_RE = /^\s*([^(]+?)\s*\(\s*(\d+)\s*\)\s*$/;
+
       function parseStickerCsv(text) {
-        return text
-          .split(",")
-          .map(function (s) {
-            return s.trim();
-          })
-          .filter(function (s) {
-            return s.length > 0;
-          });
+        var raw = text.split(",");
+        var out = [];
+        for (var i = 0; i < raw.length; i++) {
+          var token = raw[i].trim();
+          if (!token) continue;
+          var m = token.match(STICKER_COUNT_SUFFIX_RE);
+          if (m) {
+            var code = m[1].trim();
+            var n = parseInt(m[2], 10);
+            if (!code || !isFinite(n) || n <= 0) continue;
+            for (var j = 0; j < n; j++) out.push(code);
+          } else {
+            out.push(token);
+          }
+        }
+        return out;
       }
 
       function uniqueSorted(codes) {

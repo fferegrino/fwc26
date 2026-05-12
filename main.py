@@ -20,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 INDEX_FILE = BASE_DIR / "index.html"
 COMPARE_FILE = BASE_DIR / "compare.html"
+OPTIMIZE_FILE = BASE_DIR / "optimize.html"
 DATA_FILE = BASE_DIR / "data.json"
 GOT_FILE = BASE_DIR / "got.json"
 APP_JS_FILE = BASE_DIR / "app.js"
@@ -249,6 +250,13 @@ def compare_html() -> HTMLResponse:
     if not COMPARE_FILE.exists():
         raise HTTPException(status_code=404, detail="compare.html not found")
     return HTMLResponse(COMPARE_FILE.read_text(encoding="utf-8"))
+
+
+@app.get("/optimize.html", include_in_schema=False)
+def optimize_html() -> HTMLResponse:
+    if not OPTIMIZE_FILE.exists():
+        raise HTTPException(status_code=404, detail="optimize.html not found")
+    return HTMLResponse(OPTIMIZE_FILE.read_text(encoding="utf-8"))
 
 
 @app.get("/{username}", include_in_schema=False)

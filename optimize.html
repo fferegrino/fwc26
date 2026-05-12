@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Swap optimizer — Panini FWC26</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .opt-main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+      .opt-main h1 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+      .opt-main .lede {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .opt-main .lede code {
+        font-size: 0.88em;
+      }
+      .opt-back {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .opt-back:hover {
+        color: var(--accent);
+      }
+      .opt-tools {
+        margin: 0 0 16px;
+        font-size: 0.9rem;
+      }
+      .opt-tools a {
+        color: var(--muted);
+        margin-right: 14px;
+      }
+      .opt-tools a:hover {
+        color: var(--accent);
+      }
+      .opt-panel {
+        padding: 18px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 16px;
+      }
+      .opt-panel h2 {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .opt-panel label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .opt-panel textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 12px 14px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.88rem;
+        line-height: 1.45;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        resize: vertical;
+      }
+      .opt-panel textarea:focus {
+        outline: 2px solid rgba(245, 197, 24, 0.45);
+        outline-offset: 2px;
+      }
+      .opt-people-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      .opt-people-header h2 {
+        margin: 0;
+      }
+      .opt-btn {
+        cursor: pointer;
+        padding: 8px 14px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .opt-btn:hover {
+        border-color: rgba(245, 197, 24, 0.45);
+        color: var(--accent);
+      }
+      .opt-btn-primary {
+        background: rgba(245, 197, 24, 0.12);
+        border-color: rgba(245, 197, 24, 0.35);
+      }
+      .opt-person {
+        margin-bottom: 14px;
+        padding: 14px 16px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .opt-person:last-child {
+        margin-bottom: 0;
+      }
+      .opt-person-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: flex-end;
+        margin-bottom: 10px;
+      }
+      .opt-person-row .field {
+        flex: 1 1 140px;
+      }
+      .opt-person-row .field.narrow {
+        flex: 0 0 110px;
+      }
+      .opt-person-row label {
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+      }
+      .opt-person-row input[type="text"],
+      .opt-person-row input[type="number"] {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+      .opt-person-row input:focus {
+        outline: 2px solid rgba(245, 197, 24, 0.4);
+        outline-offset: 1px;
+      }
+      .opt-remove {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        background: transparent;
+        border: 1px dashed var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .opt-remove:hover {
+        color: #f87171;
+        border-color: rgba(248, 113, 113, 0.45);
+      }
+      .opt-run-row {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .opt-summary {
+        margin: 0 0 10px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .opt-summary strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .opt-result pre {
+        margin: 0 0 12px;
+        padding: 14px 16px;
+        overflow-x: auto;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+      }
+      .opt-result h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .opt-result h3:first-child {
+        margin-top: 0;
+      }
+      .opt-err {
+        margin: 0 0 12px;
+        padding: 10px 12px;
+        font-size: 0.88rem;
+        color: #fecaca;
+        background: rgba(248, 113, 113, 0.1);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="opt-main">
+      <a class="opt-back" href="./">← Back to collection</a>
+      <p class="opt-tools">
+        <a href="compare.html">Compare two lists</a>
+      </p>
+      <h1>Swap optimizer</h1>
+      <p class="lede">
+        Paste your <strong>spares / dupes</strong> (comma-separated; repeats or
+        <code>ALG1(2)</code> count copies the same way; empty slots like <code>ESP10 ,,ALG2</code> are
+        skipped). Add one block per person who
+        <strong>needs</strong> stickers. The tool computes an allocation that
+        <strong>maximizes the total number of stickers</strong> you hand out, given limited copies.
+        Optional <strong>priority</strong> (lower number = preferred when several plans tie on total
+        stickers): the solver maximizes total first, then minimizes
+        <code>Σ (priority × copies sent to that person)</code>.
+      </p>
+
+      <section class="opt-panel">
+        <h2>Your spare inventory</h2>
+        <label for="dupes">Dupes (CSV)</label>
+        <textarea id="dupes" spellcheck="false" placeholder="MEX1(2), ESP10 ,, ALG2(3)"></textarea>
+      </section>
+
+      <section class="opt-panel">
+        <div class="opt-people-header">
+          <h2>People who need stickers</h2>
+          <button type="button" class="opt-btn" id="add-person">Add person</button>
+        </div>
+        <div id="people"></div>
+        <div class="opt-run-row">
+          <button type="button" class="opt-btn opt-btn-primary" id="run-opt">Run optimizer</button>
+        </div>
+      </section>
+
+      <section class="opt-panel opt-result" id="result-wrap" hidden>
+        <p class="opt-summary" id="result-summary"></p>
+        <div id="result-err" class="opt-err" hidden></div>
+        <div id="result-body"></div>
+      </section>
+    </main>
+
+    <script>
+      var STICKER_COUNT_SUFFIX_RE = /^\s*([^(]+?)\s*\(\s*(\d+)\s*\)\s*$/;
+
+      function parseStickerCsv(text) {
+        var raw = text.split(",");
+        var out = [];
+        for (var i = 0; i < raw.length; i++) {
+          var token = raw[i].trim();
+          if (!token) continue;
+          var m = token.match(STICKER_COUNT_SUFFIX_RE);
+          if (m) {
+            var code = m[1].trim();
+            var n = parseInt(m[2], 10);
+            if (!code || !isFinite(n) || n <= 0) continue;
+            for (var j = 0; j < n; j++) out.push(code);
+          } else {
+            out.push(token);
+          }
+        }
+        return out;
+      }
+
+      function countsFromList(codes) {
+        var m = {};
+        for (var i = 0; i < codes.length; i++) {
+          var c = codes[i];
+          m[c] = (m[c] || 0) + 1;
+        }
+        return m;
+      }
+
+      function addEdgeMF(g, from, to, cap, cost) {
+        var fwd = { to: to, rev: g[to].length, cap: cap, cost: cost };
+        var rev = { to: from, rev: g[from].length, cap: 0, cost: -cost };
+        g[from].push(fwd);
+        g[to].push(rev);
+      }
+
+      /**
+       * Min-cost max-flow (successive shortest augmenting path, SPFA).
+       * Maximizes flow from s to t; among maximum flows minimizes total edge cost.
+       */
+      function minCostMaxFlow(g, n, s, t) {
+        var totalFlow = 0;
+        var totalCost = 0;
+        var INF = 2000000000;
+
+        while (true) {
+          var dist = new Array(n);
+          var inq = new Array(n);
+          var prevv = new Array(n);
+          var preve = new Array(n);
+          for (var i = 0; i < n; i++) {
+            dist[i] = INF;
+            inq[i] = 0;
+            prevv[i] = -1;
+            preve[i] = -1;
+          }
+          dist[s] = 0;
+          var q = [s];
+          inq[s] = 1;
+          for (var qi = 0; qi < q.length; qi++) {
+            var v = q[qi];
+            inq[v] = 0;
+            var adj = g[v];
+            for (var ei = 0; ei < adj.length; ei++) {
+              var e = adj[ei];
+              if (e.cap <= 0) continue;
+              var nd = dist[v] + e.cost;
+              if (dist[e.to] > nd) {
+                dist[e.to] = nd;
+                prevv[e.to] = v;
+                preve[e.to] = ei;
+                if (!inq[e.to]) {
+                  inq[e.to] = 1;
+                  q.push(e.to);
+                }
+              }
+            }
+          }
+          if (dist[t] >= INF) break;
+
+          var addf = INF;
+          for (v = t; v !== s; v = prevv[v]) {
+            var pe = g[prevv[v]][preve[v]];
+            if (pe.cap < addf) addf = pe.cap;
+          }
+          for (v = t; v !== s; v = prevv[v]) {
+            var ed = g[prevv[v]][preve[v]];
+            ed.cap -= addf;
+            g[v][ed.rev].cap += addf;
+          }
+          totalFlow += addf;
+          totalCost += addf * dist[t];
+        }
+        return { flow: totalFlow, cost: totalCost };
+      }
+
+      function buildAndSolve(dupesMap, people) {
+        var codes = [];
+        var seen = {};
+        for (var c in dupesMap) {
+          if (!dupesMap.hasOwnProperty(c)) continue;
+          if (dupesMap[c] <= 0) continue;
+          for (var pi = 0; pi < people.length; pi++) {
+            var need = people[pi].need;
+            if (need[c] > 0) {
+              if (!seen[c]) {
+                seen[c] = 1;
+                codes.push(c);
+              }
+              break;
+            }
+          }
+        }
+        if (codes.length === 0) {
+          return { ok: false, error: "No overlap: nobody needs a sticker you have in stock." };
+        }
+
+        var U = people.length;
+        var C = codes.length;
+
+        var S = 0;
+        var offsetCode = 1;
+        var offsetUser = offsetCode + C;
+        var T = offsetUser + U;
+        var n = T + 1;
+        var g = [];
+        for (var i = 0; i < n; i++) g.push([]);
+
+        for (ci = 0; ci < C; ci++) {
+          var code = codes[ci];
+          var cap = dupesMap[code] | 0;
+          addEdgeMF(g, S, offsetCode + ci, cap, 0);
+        }
+
+        var edgeMeta = [];
+
+        for (ci = 0; ci < C; ci++) {
+          code = codes[ci];
+          for (var u = 0; u < U; u++) {
+            var w = people[u].want || 0;
+            var nd = people[u].need[code] | 0;
+            if (nd <= 0) continue;
+            var from = offsetCode + ci;
+            var to = offsetUser + u;
+            addEdgeMF(g, from, to, nd, w);
+            edgeMeta.push({ from: from, to: to, code: code, user: u });
+          }
+        }
+
+        for (u = 0; u < U; u++) {
+          addEdgeMF(g, offsetUser + u, T, 1000000000, 0);
+        }
+
+        var mc = minCostMaxFlow(g, n, S, T);
+
+        var alloc = [];
+        for (u = 0; u < U; u++) {
+          alloc.push({});
+        }
+        for (var k = 0; k < edgeMeta.length; k++) {
+          var em = edgeMeta[k];
+          var adjf = g[em.from];
+          var sent = 0;
+          for (var j = 0; j < adjf.length; j++) {
+            var e = adjf[j];
+            if (e.to === em.to && e.cost >= 0) {
+              var orig = e.cap + g[e.to][e.rev].cap;
+              sent = orig - e.cap;
+              break;
+            }
+          }
+          if (sent > 0) {
+            if (!alloc[em.user][em.code]) alloc[em.user][em.code] = 0;
+            alloc[em.user][em.code] += sent;
+          }
+        }
+
+        var sentTotal = mc.flow;
+
+        var leftover = {};
+        for (c in dupesMap) {
+          if (!dupesMap.hasOwnProperty(c)) continue;
+          leftover[c] = dupesMap[c] | 0;
+        }
+        for (u = 0; u < U; u++) {
+          for (var code2 in alloc[u]) {
+            if (!alloc[u].hasOwnProperty(code2)) continue;
+            leftover[code2] = (leftover[code2] || 0) - alloc[u][code2];
+          }
+        }
+
+        var unmet = [];
+        for (u = 0; u < U; u++) {
+          var um = {};
+          for (var nc in people[u].need) {
+            if (!people[u].need.hasOwnProperty(nc)) continue;
+            var needn = people[u].need[nc] | 0;
+            var gotn = (alloc[u][nc] || 0) | 0;
+            var shortf = needn - gotn;
+            if (shortf > 0) um[nc] = shortf;
+          }
+          unmet.push(um);
+        }
+
+        return {
+          ok: true,
+          totalSent: sentTotal,
+          totalCost: mc.cost,
+          codes: codes,
+          alloc: alloc,
+          leftover: leftover,
+          unmet: unmet,
+        };
+      }
+
+      function formatCountMap(m, sortedKeys) {
+        var parts = [];
+        for (var i = 0; i < sortedKeys.length; i++) {
+          var k = sortedKeys[i];
+          var n = m[k] | 0;
+          if (n <= 0) continue;
+          for (var j = 0; j < n; j++) parts.push(k);
+        }
+        return parts.join(", ");
+      }
+
+      function sortCodes(keys) {
+        return keys.sort(function (a, b) {
+          return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+        });
+      }
+
+      var peopleEl = document.getElementById("people");
+      var personSerial = 0;
+
+      function personTemplate(id, name, priority, body) {
+        var wrap = document.createElement("div");
+        wrap.className = "opt-person";
+        wrap.dataset.personId = String(id);
+        wrap.innerHTML =
+          '<div class="opt-person-row">' +
+          '<div class="field narrow"><label>Priority</label><input type="number" class="p-prio" min="0" step="1" value="' +
+          priority +
+          '" /></div>' +
+          '<div class="field"><label>Name</label><input type="text" class="p-name" placeholder="Person ' +
+          id +
+          '" value="' +
+          name +
+          '" /></div>' +
+          '<button type="button" class="opt-remove" title="Remove">Remove</button>' +
+          "</div>" +
+          '<label>Needs (CSV)</label><textarea class="p-needs" spellcheck="false"></textarea>';
+        wrap.querySelector(".p-needs").value = body || "";
+        wrap.querySelector(".opt-remove").addEventListener("click", function () {
+          if (peopleEl.querySelectorAll(".opt-person").length <= 1) return;
+          wrap.remove();
+        });
+        return wrap;
+      }
+
+      function ensureMinPeople() {
+        while (peopleEl.querySelectorAll(".opt-person").length < 2) {
+          personSerial += 1;
+          peopleEl.appendChild(personTemplate(personSerial, "", 0, ""));
+        }
+      }
+
+      function readPeople() {
+        var nodes = peopleEl.querySelectorAll(".opt-person");
+        var out = [];
+        for (var i = 0; i < nodes.length; i++) {
+          var node = nodes[i];
+          var name = (node.querySelector(".p-name").value || "").trim();
+          var pr = parseInt(node.querySelector(".p-prio").value, 10);
+          if (!isFinite(pr) || pr < 0) pr = 0;
+          var needsText = node.querySelector(".p-needs").value || "";
+          var list = parseStickerCsv(needsText);
+          var need = countsFromList(list);
+          out.push({
+            name: name || "Person " + (i + 1),
+            want: pr,
+            need: need,
+          });
+        }
+        return out;
+      }
+
+      document.getElementById("add-person").addEventListener("click", function () {
+        personSerial += 1;
+        peopleEl.appendChild(personTemplate(personSerial, "", 0, ""));
+      });
+
+      ensureMinPeople();
+
+      document.getElementById("run-opt").addEventListener("click", function () {
+        var dupesText = document.getElementById("dupes").value || "";
+        var dupList = parseStickerCsv(dupesText);
+        var dupesMap = countsFromList(dupList);
+        var people = readPeople();
+
+        var wrap = document.getElementById("result-wrap");
+        var errEl = document.getElementById("result-err");
+        var bodyEl = document.getElementById("result-body");
+        var sumEl = document.getElementById("result-summary");
+
+        wrap.hidden = false;
+        errEl.hidden = true;
+        bodyEl.innerHTML = "";
+        sumEl.textContent = "";
+
+        if (people.length < 1) {
+          errEl.hidden = false;
+          errEl.textContent = "Add at least one person with a needs list.";
+          return;
+        }
+
+        var keys = [];
+        for (var k in dupesMap) {
+          if (dupesMap.hasOwnProperty(k) && dupesMap[k] > 0) keys.push(k);
+        }
+        if (keys.length === 0) {
+          errEl.hidden = false;
+          errEl.textContent = "Enter at least one spare sticker in the dupes box.";
+          return;
+        }
+
+        var res = buildAndSolve(dupesMap, people);
+        if (!res.ok) {
+          errEl.hidden = false;
+          errEl.textContent = res.error;
+          return;
+        }
+
+        var totalPerPerson = [];
+        var linesPerPerson = [];
+        for (var u = 0; u < people.length; u++) {
+          var sk = sortCodes(Object.keys(res.alloc[u]));
+          var nsum = 0;
+          for (var si = 0; si < sk.length; si++) nsum += res.alloc[u][sk[si]];
+          totalPerPerson[u] = nsum;
+          linesPerPerson[u] = formatCountMap(res.alloc[u], sk) || "(nothing from your dupes)";
+        }
+
+        var leftKeys = sortCodes(Object.keys(res.leftover));
+        var leftoverParts = [];
+        for (var li = 0; li < leftKeys.length; li++) {
+          var lk = leftKeys[li];
+          var cnt = res.leftover[lk] | 0;
+          for (var z = 0; z < cnt; z++) leftoverParts.push(lk);
+        }
+        var leftoverLine = leftoverParts.length ? leftoverParts.join(", ") : "(none)";
+
+        var unmetLines = [];
+        for (u = 0; u < people.length; u++) {
+          var uk = sortCodes(Object.keys(res.unmet[u]));
+          var line = people[u].name + ": " + (uk.length ? formatCountMap(res.unmet[u], uk) : "(none)");
+          unmetLines.push(line);
+        }
+        var unmetBlock = unmetLines.join("\n");
+
+        sumEl.innerHTML =
+          "Allocated <strong>" +
+          res.totalSent +
+          "</strong> sticker" +
+          (res.totalSent === 1 ? "" : "s") +
+          " total (maximum possible for this inventory and needs). " +
+          "Secondary objective Σ(priority×copies): <strong>" +
+          res.totalCost +
+          "</strong> (lower is better; use 0 for everyone if you only care about the total).";
+
+        for (u = 0; u < people.length; u++) {
+          var h = document.createElement("h3");
+          h.textContent =
+            people[u].name + " — receives " + totalPerPerson[u] + " (priority weight " + people[u].want + ")";
+          bodyEl.appendChild(h);
+          var pre = document.createElement("pre");
+          pre.textContent = linesPerPerson[u];
+          bodyEl.appendChild(pre);
+        }
+
+        var hL = document.createElement("h3");
+        hL.textContent = "Spares not sent (no demand or ran out)";
+        bodyEl.appendChild(hL);
+        var preL = document.createElement("pre");
+        preL.textContent = leftoverLine;
+        bodyEl.appendChild(preL);
+
+        var hU = document.createElement("h3");
+        hU.textContent = "Still needed by each person (after this allocation)";
+        bodyEl.appendChild(hU);
+        var preU = document.createElement("pre");
+        preU.textContent = unmetBlock;
+        bodyEl.appendChild(preU);
+      });
+    </script>
+  </body>
+</html>
