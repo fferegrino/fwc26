@@ -19,6 +19,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Redirect
 BASE_DIR = Path(__file__).resolve().parent
 
 INDEX_FILE = BASE_DIR / "index.html"
+COMPARE_FILE = BASE_DIR / "compare.html"
 DATA_FILE = BASE_DIR / "data.json"
 GOT_FILE = BASE_DIR / "got.json"
 APP_JS_FILE = BASE_DIR / "app.js"
@@ -241,6 +242,13 @@ def got_json() -> FileResponse:
     if not GOT_FILE.exists():
         raise HTTPException(status_code=404, detail="got.json not found")
     return FileResponse(GOT_FILE, media_type="application/json; charset=utf-8")
+
+
+@app.get("/compare.html", include_in_schema=False)
+def compare_html() -> HTMLResponse:
+    if not COMPARE_FILE.exists():
+        raise HTTPException(status_code=404, detail="compare.html not found")
+    return HTMLResponse(COMPARE_FILE.read_text(encoding="utf-8"))
 
 
 @app.get("/{username}", include_in_schema=False)

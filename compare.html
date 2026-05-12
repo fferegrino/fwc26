@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compare sticker lists — Panini FWC26</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .compare-main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+      .compare-main h1 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+      .compare-main .lede {
+        margin: 0 0 24px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      .compare-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 720px) {
+        .compare-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .compare-field label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .compare-field textarea {
+        width: 100%;
+        min-height: 140px;
+        padding: 12px 14px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        resize: vertical;
+      }
+      .compare-field textarea:focus {
+        outline: 2px solid rgba(245, 197, 24, 0.5);
+        outline-offset: 2px;
+        border-color: rgba(245, 197, 24, 0.35);
+      }
+      .compare-result {
+        margin-top: 28px;
+        padding: 18px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      .compare-result h2 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .compare-result .meta {
+        margin: 0 0 14px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .compare-result pre {
+        margin: 0;
+        padding: 14px 16px;
+        overflow-x: auto;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+      }
+      .compare-result .empty {
+        margin: 0;
+        color: var(--muted);
+        font-style: italic;
+      }
+      .compare-lists {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 720px) {
+        .compare-lists {
+          grid-template-columns: 1fr;
+        }
+      }
+      .compare-lists h3 {
+        margin: 0 0 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .compare-back {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .compare-back:hover {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="compare-main">
+      <a class="compare-back" href="./">← Back to collection</a>
+      <h1>Compare two sticker lists</h1>
+      <p class="lede">
+        Paste comma-separated sticker codes in each box. Empty slots from exports (e.g.
+        <code>ESP10 ,,ALG2</code>) are ignored. The page shows codes that appear in
+        <strong>both</strong> lists.
+      </p>
+
+      <div class="compare-grid">
+        <div class="compare-field">
+          <label for="list-a">List A</label>
+          <textarea id="list-a" placeholder="MEX1, BRA5, ESP10 ,,ALG2" spellcheck="false"></textarea>
+        </div>
+        <div class="compare-field">
+          <label for="list-b">List B</label>
+          <textarea id="list-b" placeholder="ARG3, ESP10, FRA2" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <section class="compare-result" aria-live="polite">
+        <h2>Intersection</h2>
+        <p class="meta" id="compare-meta"></p>
+        <pre id="compare-output" hidden></pre>
+        <p class="empty" id="compare-empty">Enter both lists to see shared codes.</p>
+
+        <div class="compare-lists" aria-label="Normalized lists">
+          <div>
+            <h3>List A (sorted)</h3>
+            <pre id="list-a-sorted" hidden></pre>
+            <p class="empty" id="list-a-empty">—</p>
+          </div>
+          <div>
+            <h3>List B (sorted)</h3>
+            <pre id="list-b-sorted" hidden></pre>
+            <p class="empty" id="list-b-empty">—</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function parseStickerCsv(text) {
+        return text
+          .split(",")
+          .map(function (s) {
+            return s.trim();
+          })
+          .filter(function (s) {
+            return s.length > 0;
+          });
+      }
+
+      function uniqueSorted(codes) {
+        return Array.from(new Set(codes)).sort(function (a, b) {
+          return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+        });
+      }
+
+      function computeIntersection(aText, bText) {
+        var aCodes = parseStickerCsv(aText);
+        var bCodes = parseStickerCsv(bText);
+        var setB = new Set(bCodes);
+        var inBoth = aCodes.filter(function (code) {
+          return setB.has(code);
+        });
+        return {
+          uniqueA: uniqueSorted(aCodes),
+          uniqueB: uniqueSorted(bCodes),
+          intersection: uniqueSorted(inBoth),
+        };
+      }
+
+      var elA = document.getElementById("list-a");
+      var elB = document.getElementById("list-b");
+      var elMeta = document.getElementById("compare-meta");
+      var elOut = document.getElementById("compare-output");
+      var elEmpty = document.getElementById("compare-empty");
+      var elASorted = document.getElementById("list-a-sorted");
+      var elBSorted = document.getElementById("list-b-sorted");
+      var elAEmpty = document.getElementById("list-a-empty");
+      var elBEmpty = document.getElementById("list-b-empty");
+
+      function render() {
+        var r = computeIntersection(elA.value, elB.value);
+        var na = r.uniqueA.length;
+        var nb = r.uniqueB.length;
+        var ni = r.intersection.length;
+
+        elMeta.textContent =
+          na === 0 && nb === 0
+            ? "No codes parsed yet."
+            : "List A: " +
+              na +
+              " unique code" +
+              (na === 1 ? "" : "s") +
+              " · List B: " +
+              nb +
+              " unique code" +
+              (nb === 1 ? "" : "s") +
+              " · Shared: " +
+              ni;
+
+        if (ni > 0) {
+          elOut.textContent = r.intersection.join(", ");
+          elOut.hidden = false;
+          elEmpty.hidden = true;
+        } else {
+          elOut.hidden = true;
+          elEmpty.hidden = false;
+          if (na === 0 && nb === 0) {
+            elEmpty.textContent = "Enter both lists to see shared codes.";
+          } else if (na === 0 || nb === 0) {
+            elEmpty.textContent =
+              "One list has no codes after removing empty entries — add stickers to both sides.";
+          } else {
+            elEmpty.textContent = "No overlap — no codes appear in both lists.";
+          }
+        }
+
+        if (na > 0) {
+          elASorted.textContent = r.uniqueA.join(", ");
+          elASorted.hidden = false;
+          elAEmpty.hidden = true;
+        } else {
+          elASorted.hidden = true;
+          elAEmpty.hidden = false;
+          elAEmpty.textContent = "No codes parsed.";
+        }
+
+        if (nb > 0) {
+          elBSorted.textContent = r.uniqueB.join(", ");
+          elBSorted.hidden = false;
+          elBEmpty.hidden = true;
+        } else {
+          elBSorted.hidden = true;
+          elBEmpty.hidden = false;
+          elBEmpty.textContent = "No codes parsed.";
+        }
+      }
+
+      elA.addEventListener("input", render);
+      elB.addEventListener("input", render);
+      render();
+    </script>
+  </body>
+</html>
