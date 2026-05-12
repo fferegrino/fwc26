@@ -136,6 +136,9 @@
       .opt-person-row .field.narrow {
         flex: 0 0 110px;
       }
+      .opt-person-row .field.maxrecv {
+        flex: 0 0 92px;
+      }
       .opt-person-row label {
         margin-bottom: 6px;
         font-size: 0.72rem;
@@ -217,6 +220,12 @@
         border: 1px solid rgba(248, 113, 113, 0.35);
         border-radius: 8px;
       }
+      .opt-capnote {
+        margin: -6px 0 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-style: italic;
+      }
     </style>
   </head>
   <body>
@@ -230,8 +239,10 @@
         Paste your <strong>spares / dupes</strong> (comma-separated; repeats or
         <code>ALG1(2)</code> count copies the same way; empty slots like <code>ESP10 ,,ALG2</code> are
         skipped). Add one block per person who
-        <strong>needs</strong> stickers. The tool computes an allocation that
-        <strong>maximizes the total number of stickers</strong> you hand out, given limited copies.
+        <strong>needs</strong> stickers. Use <strong>Max</strong> per person to cap how many stickers they
+        will take this round (blank = no limit); the solver will not give them more than that even if
+        their list is longer. The tool computes an allocation that
+        <strong>maximizes the total number of stickers</strong> you hand out, given limited copies and those caps.
         Optional <strong>priority</strong> (lower number = preferred when several plans tie on total
         stickers): the solver maximizes total first, then minimizes
         <code>Σ (priority × copies sent to that person)</code>.
@@ -412,8 +423,15 @@
           }
         }
 
+        var SINK_INF = 1000000000;
         for (u = 0; u < U; u++) {
-          addEdgeMF(g, offsetUser + u, T, 1000000000, 0);
+          var sinkCap = SINK_INF;
+          if (people[u].maxReceive != null) {
+            sinkCap = people[u].maxReceive | 0;
+            if (sinkCap < 0) sinkCap = 0;
+            if (sinkCap > SINK_INF) sinkCap = SINK_INF;
+          }
+          addEdgeMF(g, offsetUser + u, T, sinkCap, 0);
         }
 
         var mc = minCostMaxFlow(g, n, S, T);
@@ -495,22 +513,43 @@
         });
       }
 
+      function unmetStickerCount(um) {
+        var s = 0;
+        for (var k in um) {
+          if (!um.hasOwnProperty(k)) continue;
+          s += um[k] | 0;
+        }
+        return s;
+      }
+
       var peopleEl = document.getElementById("people");
       var personSerial = 0;
 
-      function personTemplate(id, name, priority, body) {
+      function personTemplate(id, name, priority, body, maxRecv) {
         var wrap = document.createElement("div");
         wrap.className = "opt-person";
         wrap.dataset.personId = String(id);
+        var maxRecvAttr =
+          maxRecv != null && String(maxRecv).trim() !== ""
+            ? ' value="' +
+              String(maxRecv)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/"/g, "&quot;") +
+              '"'
+            : "";
         wrap.innerHTML =
           '<div class="opt-person-row">' +
           '<div class="field narrow"><label>Priority</label><input type="number" class="p-prio" min="0" step="1" value="' +
           priority +
           '" /></div>' +
+          '<div class="field narrow maxrecv"><label title="Maximum stickers they accept this round (blank = unlimited)">Max</label><input type="number" class="p-maxrecv" min="0" step="1" placeholder="∞"' +
+          maxRecvAttr +
+          " /></div>" +
           '<div class="field"><label>Name</label><input type="text" class="p-name" placeholder="Person ' +
           id +
           '" value="' +
-          name +
+          name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;") +
           '" /></div>' +
           '<button type="button" class="opt-remove" title="Remove">Remove</button>' +
           "</div>" +
@@ -541,10 +580,18 @@
           var needsText = node.querySelector(".p-needs").value || "";
           var list = parseStickerCsv(needsText);
           var need = countsFromList(list);
+          var maxReceive = null;
+          var maxEl = node.querySelector(".p-maxrecv");
+          var maxRaw = maxEl ? String(maxEl.value || "").trim() : "";
+          if (maxRaw !== "") {
+            var mv = parseInt(maxRaw, 10);
+            if (isFinite(mv) && mv >= 0) maxReceive = mv;
+          }
           out.push({
             name: name || "Person " + (i + 1),
             want: pr,
             need: need,
+            maxReceive: maxReceive,
           });
         }
         return out;
@@ -635,12 +682,31 @@
 
         for (u = 0; u < people.length; u++) {
           var h = document.createElement("h3");
+          var capPart =
+            people[u].maxReceive != null ? " · max " + people[u].maxReceive : "";
           h.textContent =
-            people[u].name + " — receives " + totalPerPerson[u] + " (priority weight " + people[u].want + ")";
+            people[u].name +
+            " — receives " +
+            totalPerPerson[u] +
+            capPart +
+            " (priority weight " +
+            people[u].want +
+            ")";
           bodyEl.appendChild(h);
           var pre = document.createElement("pre");
           pre.textContent = linesPerPerson[u];
           bodyEl.appendChild(pre);
+          if (
+            people[u].maxReceive != null &&
+            totalPerPerson[u] === people[u].maxReceive &&
+            unmetStickerCount(res.unmet[u]) > 0
+          ) {
+            var capNote = document.createElement("p");
+            capNote.className = "opt-capnote";
+            capNote.textContent =
+              "They hit their max receive limit; some listed needs were left out on purpose.";
+            bodyEl.appendChild(capNote);
+          }
         }
 
         var hL = document.createElement("h3");
