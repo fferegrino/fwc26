@@ -21,6 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent
 INDEX_FILE = BASE_DIR / "index.html"
 COMPARE_FILE = BASE_DIR / "compare.html"
 OPTIMIZE_FILE = BASE_DIR / "optimize.html"
+BILATERAL_FILE = BASE_DIR / "bilateral.html"
+MULTILATERAL_FILE = BASE_DIR / "multilateral.html"
+HUB_FILE = BASE_DIR / "hub.html"
 DATA_FILE = BASE_DIR / "data.json"
 GOT_FILE = BASE_DIR / "got.json"
 APP_JS_FILE = BASE_DIR / "app.js"
@@ -257,6 +260,27 @@ def optimize_html() -> HTMLResponse:
     if not OPTIMIZE_FILE.exists():
         raise HTTPException(status_code=404, detail="optimize.html not found")
     return HTMLResponse(OPTIMIZE_FILE.read_text(encoding="utf-8"))
+
+
+@app.get("/bilateral.html", include_in_schema=False)
+def bilateral_html() -> HTMLResponse:
+    if not BILATERAL_FILE.exists():
+        raise HTTPException(status_code=404, detail="bilateral.html not found")
+    return HTMLResponse(BILATERAL_FILE.read_text(encoding="utf-8"))
+
+
+@app.get("/multilateral.html", include_in_schema=False)
+def multilateral_html() -> HTMLResponse:
+    if not MULTILATERAL_FILE.exists():
+        raise HTTPException(status_code=404, detail="multilateral.html not found")
+    return HTMLResponse(MULTILATERAL_FILE.read_text(encoding="utf-8"))
+
+
+@app.get("/hub.html", include_in_schema=False)
+def hub_html() -> HTMLResponse:
+    if not HUB_FILE.exists():
+        raise HTTPException(status_code=404, detail="hub.html not found")
+    return HTMLResponse(HUB_FILE.read_text(encoding="utf-8"))
 
 
 @app.get("/{username}", include_in_schema=False)

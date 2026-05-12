@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multi-party swap planner — Panini FWC26</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .ml-main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+      .ml-main h1 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+      .ml-lede {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .ml-tools a {
+        color: var(--muted);
+        margin-right: 14px;
+        font-size: 0.9rem;
+      }
+      .ml-tools a:hover {
+        color: var(--accent);
+      }
+      .ml-back {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .ml-back:hover {
+        color: var(--accent);
+      }
+      .ml-panel {
+        padding: 18px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 16px;
+      }
+      .ml-panel h2 {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .ml-people-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      .ml-people-header h2 {
+        margin: 0;
+      }
+      .ml-btn {
+        cursor: pointer;
+        padding: 8px 14px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .ml-btn:hover {
+        border-color: rgba(245, 197, 24, 0.45);
+        color: var(--accent);
+      }
+      .ml-btn-primary {
+        background: rgba(245, 197, 24, 0.12);
+        border-color: rgba(245, 197, 24, 0.35);
+      }
+      .ml-person {
+        margin-bottom: 14px;
+        padding: 14px 16px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .ml-person:last-child {
+        margin-bottom: 0;
+      }
+      .ml-person-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: flex-end;
+        margin-bottom: 10px;
+      }
+      .ml-person-row .field {
+        flex: 1 1 140px;
+      }
+      .ml-person-row .field.narrow {
+        flex: 0 0 100px;
+      }
+      .ml-person-row .field.maxrecv {
+        flex: 0 0 88px;
+      }
+      .ml-person-row label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .ml-person-row input[type="text"],
+      .ml-person-row input[type="number"] {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+      .ml-person textarea {
+        width: 100%;
+        min-height: 88px;
+        padding: 10px 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.86rem;
+        line-height: 1.45;
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        resize: vertical;
+      }
+      .ml-person textarea:focus,
+      .ml-person-row input:focus {
+        outline: 2px solid rgba(245, 197, 24, 0.4);
+        outline-offset: 1px;
+      }
+      .ml-remove {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        background: transparent;
+        border: 1px dashed var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .ml-remove:hover {
+        color: #f87171;
+        border-color: rgba(248, 113, 113, 0.45);
+      }
+      .ml-person > label {
+        display: block;
+        margin: 10px 0 6px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .ml-person > label:first-of-type {
+        margin-top: 0;
+      }
+      .ml-run-row {
+        margin-top: 16px;
+      }
+      .ml-summary {
+        margin: 0 0 12px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .ml-summary strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .ml-result h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .ml-result h3:first-child {
+        margin-top: 0;
+      }
+      .ml-result pre {
+        margin: 0 0 12px;
+        padding: 12px 14px;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+      }
+      .ml-err {
+        margin: 0 0 12px;
+        padding: 10px 12px;
+        font-size: 0.88rem;
+        color: #fecaca;
+        background: rgba(248, 113, 113, 0.1);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+        border-radius: 8px;
+      }
+      .ml-capnote {
+        margin: -6px 0 8px;
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="ml-main">
+      <a class="ml-back" href="./">← Back to collection</a>
+      <p class="ml-tools">
+        <a href="optimize.html">One-way optimizer</a>
+        <a href="bilateral.html">Two-person planner</a>
+        <a href="compare.html">Compare lists</a>
+        <a href="hub.html">Hub (your view)</a>
+      </p>
+      <h1>Multi-party swap planner</h1>
+      <p class="ml-lede">
+        Add <strong>every trader</strong> (including you). Each person lists <strong>offers</strong> (spares they can
+        ship) and <strong>needs</strong>. The planner routes each sticker from someone who has a spare to someone else
+        who still needs that code, never to the same person. It <strong>maximizes total stickers moved</strong> across
+        the whole group, respects each person&apos;s optional <strong>Max</strong> receive cap, and uses
+        <strong>Priority</strong> (lower = better) only to break ties. Lists support <code>ALG1(2)</code> and empty CSV
+        gaps like the other tools.
+      </p>
+
+      <section class="ml-panel">
+        <div class="ml-people-header">
+          <h2>Participants</h2>
+          <button type="button" class="ml-btn" id="ml-add">Add person</button>
+        </div>
+        <div id="ml-people"></div>
+        <div class="ml-run-row">
+          <button type="button" class="ml-btn ml-btn-primary" id="ml-run">Plan network trade</button>
+        </div>
+      </section>
+
+      <section class="ml-panel ml-result" id="ml-result" hidden>
+        <p class="ml-summary" id="ml-summary"></p>
+        <div class="ml-err" id="ml-err" hidden></div>
+        <div id="ml-body"></div>
+      </section>
+    </main>
+
+    <script>
+      var STICKER_COUNT_SUFFIX_RE = /^\s*([^(]+?)\s*\(\s*(\d+)\s*\)\s*$/;
+
+      function parseStickerCsv(text) {
+        var raw = text.split(",");
+        var out = [];
+        for (var i = 0; i < raw.length; i++) {
+          var token = raw[i].trim();
+          if (!token) continue;
+          var m = token.match(STICKER_COUNT_SUFFIX_RE);
+          if (m) {
+            var code = m[1].trim();
+            var n = parseInt(m[2], 10);
+            if (!code || !isFinite(n) || n <= 0) continue;
+            for (var j = 0; j < n; j++) out.push(code);
+          } else {
+            out.push(token);
+          }
+        }
+        return out;
+      }
+
+      function countsFromList(codes) {
+        var m = {};
+        for (var i = 0; i < codes.length; i++) {
+          var c = codes[i];
+          m[c] = (m[c] || 0) + 1;
+        }
+        return m;
+      }
+
+      function addEdgeMF(g, from, to, cap, cost) {
+        var fwd = { to: to, rev: g[to].length, cap: cap, cost: cost };
+        var rev = { to: from, rev: g[from].length, cap: 0, cost: -cost };
+        g[from].push(fwd);
+        g[to].push(rev);
+      }
+
+      function minCostMaxFlow(g, n, s, t) {
+        var totalFlow = 0;
+        var totalCost = 0;
+        var INF = 2000000000;
+
+        while (true) {
+          var dist = new Array(n);
+          var inq = new Array(n);
+          var prevv = new Array(n);
+          var preve = new Array(n);
+          for (var i = 0; i < n; i++) {
+            dist[i] = INF;
+            inq[i] = 0;
+            prevv[i] = -1;
+            preve[i] = -1;
+          }
+          dist[s] = 0;
+          var q = [s];
+          inq[s] = 1;
+          for (var qi = 0; qi < q.length; qi++) {
+            var v = q[qi];
+            inq[v] = 0;
+            var adj = g[v];
+            for (var ei = 0; ei < adj.length; ei++) {
+              var e = adj[ei];
+              if (e.cap <= 0) continue;
+              var nd = dist[v] + e.cost;
+              if (dist[e.to] > nd) {
+                dist[e.to] = nd;
+                prevv[e.to] = v;
+                preve[e.to] = ei;
+                if (!inq[e.to]) {
+                  inq[e.to] = 1;
+                  q.push(e.to);
+                }
+              }
+            }
+          }
+          if (dist[t] >= INF) break;
+
+          var addf = INF;
+          for (v = t; v !== s; v = prevv[v]) {
+            var pe = g[prevv[v]][preve[v]];
+            if (pe.cap < addf) addf = pe.cap;
+          }
+          for (v = t; v !== s; v = prevv[v]) {
+            var ed = g[prevv[v]][preve[v]];
+            ed.cap -= addf;
+            g[v][ed.rev].cap += addf;
+          }
+          totalFlow += addf;
+          totalCost += addf * dist[t];
+        }
+        return { flow: totalFlow, cost: totalCost };
+      }
+
+      function otherNeedersExist(P, u, c) {
+        for (var v = 0; v < P.length; v++) {
+          if (v === u) continue;
+          if ((P[v].need[c] | 0) > 0) return true;
+        }
+        return false;
+      }
+
+      function otherSuppliersExist(P, u, c) {
+        for (var v = 0; v < P.length; v++) {
+          if (v === u) continue;
+          if ((P[v].offer[c] | 0) > 0) return true;
+        }
+        return false;
+      }
+
+      var SINK_INF = 1000000000;
+      var EDGE_INF = 1000000000;
+
+      function solveNetwork(P) {
+        var U = P.length;
+        var supList = [];
+        var demList = [];
+        var ui;
+        var c;
+        for (ui = 0; ui < U; ui++) {
+          for (c in P[ui].offer) {
+            if (!P[ui].offer.hasOwnProperty(c)) continue;
+            if ((P[ui].offer[c] | 0) <= 0) continue;
+            if (!otherNeedersExist(P, ui, c)) continue;
+            supList.push({ u: ui, c: c, cap: P[ui].offer[c] | 0 });
+          }
+          for (c in P[ui].need) {
+            if (!P[ui].need.hasOwnProperty(c)) continue;
+            if ((P[ui].need[c] | 0) <= 0) continue;
+            if (!otherSuppliersExist(P, ui, c)) continue;
+            demList.push({ u: ui, c: c, cap: P[ui].need[c] | 0 });
+          }
+        }
+
+        if (supList.length === 0 || demList.length === 0) {
+          return {
+            ok: false,
+            error:
+              "No tradable overlap: need at least one sticker code that at least two different people care about (one can offer, another can need).",
+          };
+        }
+
+        var S = 0;
+        var nid = 1;
+        var si;
+        for (si = 0; si < supList.length; si++) {
+          supList[si].node = nid++;
+        }
+        var di;
+        for (di = 0; di < demList.length; di++) {
+          demList[di].node = nid++;
+        }
+        var offsetR = nid;
+        nid += U;
+        var T = nid++;
+        var n = T + 1;
+        var g = [];
+        for (var i = 0; i < n; i++) g.push([]);
+
+        var sdMeta = [];
+
+        for (si = 0; si < supList.length; si++) {
+          var su = supList[si];
+          addEdgeMF(g, S, su.node, su.cap, 0);
+          for (di = 0; di < demList.length; di++) {
+            var dm = demList[di];
+            if (su.u === dm.u) continue;
+            if (su.c !== dm.c) continue;
+            var prio = P[dm.u].want | 0;
+            if (prio < 0) prio = 0;
+            addEdgeMF(g, su.node, dm.node, EDGE_INF, prio);
+            sdMeta.push({ from: su.node, to: dm.node, fu: su.u, tu: dm.u, code: su.c });
+          }
+        }
+
+        for (di = 0; di < demList.length; di++) {
+          var d = demList[di];
+          addEdgeMF(g, d.node, offsetR + d.u, d.cap, 0);
+        }
+
+        for (ui = 0; ui < U; ui++) {
+          var rc = SINK_INF;
+          if (P[ui].maxReceive != null) {
+            rc = P[ui].maxReceive | 0;
+            if (rc < 0) rc = 0;
+            if (rc > SINK_INF) rc = SINK_INF;
+          }
+          addEdgeMF(g, offsetR + ui, T, rc, 0);
+        }
+
+        var mc = minCostMaxFlow(g, n, S, T);
+
+        var giveByUser = [];
+        var recvByUser = [];
+        var giveTo = [];
+        for (ui = 0; ui < U; ui++) {
+          giveByUser.push({});
+          recvByUser.push({});
+          giveTo.push([]);
+          for (var vj = 0; vj < U; vj++) giveTo[ui].push({});
+        }
+
+        for (var k = 0; k < sdMeta.length; k++) {
+          var em = sdMeta[k];
+          var adjf = g[em.from];
+          var sent = 0;
+          for (var j = 0; j < adjf.length; j++) {
+            var e = adjf[j];
+            if (e.to === em.to && e.cost >= 0) {
+              var orig = e.cap + g[e.to][e.rev].cap;
+              sent = orig - e.cap;
+              break;
+            }
+          }
+          if (sent > 0) {
+            var fu = em.fu;
+            var tu = em.tu;
+            var code = em.code;
+            if (!giveByUser[fu][code]) giveByUser[fu][code] = 0;
+            giveByUser[fu][code] += sent;
+            if (!recvByUser[tu][code]) recvByUser[tu][code] = 0;
+            recvByUser[tu][code] += sent;
+            if (!giveTo[fu][tu][code]) giveTo[fu][tu][code] = 0;
+            giveTo[fu][tu][code] += sent;
+          }
+        }
+
+        var unmet = [];
+        for (ui = 0; ui < U; ui++) {
+          var um = {};
+          for (c in P[ui].need) {
+            if (!P[ui].need.hasOwnProperty(c)) continue;
+            var needn = P[ui].need[c] | 0;
+            var gotn = recvByUser[ui][c] | 0;
+            var sh = needn - gotn;
+            if (sh > 0) um[c] = sh;
+          }
+          unmet.push(um);
+        }
+
+        var leftover = [];
+        for (ui = 0; ui < U; ui++) {
+          var lo = {};
+          for (c in P[ui].offer) {
+            if (!P[ui].offer.hasOwnProperty(c)) continue;
+            lo[c] = P[ui].offer[c] | 0;
+          }
+          for (c in giveByUser[ui]) {
+            if (!giveByUser[ui].hasOwnProperty(c)) continue;
+            lo[c] = (lo[c] | 0) - (giveByUser[ui][c] | 0);
+          }
+          leftover.push(lo);
+        }
+
+        return {
+          ok: true,
+          totalFlow: mc.flow,
+          totalCost: mc.cost,
+          giveByUser: giveByUser,
+          recvByUser: recvByUser,
+          giveTo: giveTo,
+          unmet: unmet,
+          leftover: leftover,
+        };
+      }
+
+      function sortCodes(keys) {
+        return keys.sort(function (a, b) {
+          return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+        });
+      }
+
+      function formatCountMap(m, sortedKeys) {
+        var parts = [];
+        for (var i = 0; i < sortedKeys.length; i++) {
+          var k = sortedKeys[i];
+          var n = m[k] | 0;
+          if (n <= 0) continue;
+          for (var j = 0; j < n; j++) parts.push(k);
+        }
+        return parts.join(", ");
+      }
+
+      function recvTotal(recvMap) {
+        var t = 0;
+        for (var k in recvMap) {
+          if (!recvMap.hasOwnProperty(k)) continue;
+          t += recvMap[k] | 0;
+        }
+        return t;
+      }
+
+      function unmetStickerCount(um) {
+        var s = 0;
+        for (var k in um) {
+          if (!um.hasOwnProperty(k)) continue;
+          s += um[k] | 0;
+        }
+        return s;
+      }
+
+      var peopleEl = document.getElementById("ml-people");
+      var serial = 0;
+
+      function personTemplate(id, name, prio) {
+        var w = document.createElement("div");
+        w.className = "ml-person";
+        w.innerHTML =
+          '<div class="ml-person-row">' +
+          '<div class="field narrow"><label>Priority</label><input type="number" class="ml-prio" min="0" step="1" value="' +
+          prio +
+          '" /></div>' +
+          '<div class="field narrow maxrecv"><label title="Max stickers they accept this round (blank = unlimited)">Max</label><input type="number" class="ml-max" min="0" step="1" placeholder="∞" /></div>' +
+          '<div class="field"><label>Name</label><input type="text" class="ml-name" placeholder="Person ' +
+          id +
+          '" value="' +
+          name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;") +
+          '" /></div>' +
+          '<button type="button" class="ml-remove" title="Remove">Remove</button></div>' +
+          '<label>Offers (spares / dupes)</label><textarea class="ml-offer" spellcheck="false"></textarea>' +
+          '<label>Needs</label><textarea class="ml-need" spellcheck="false"></textarea>';
+        w.querySelector(".ml-remove").addEventListener("click", function () {
+          if (peopleEl.querySelectorAll(".ml-person").length <= 2) return;
+          w.remove();
+        });
+        return w;
+      }
+
+      function ensureMin() {
+        while (peopleEl.querySelectorAll(".ml-person").length < 2) {
+          serial += 1;
+          peopleEl.appendChild(personTemplate(serial, "", 0));
+        }
+      }
+
+      function readParticipants() {
+        var nodes = peopleEl.querySelectorAll(".ml-person");
+        var out = [];
+        for (var i = 0; i < nodes.length; i++) {
+          var node = nodes[i];
+          var name = (node.querySelector(".ml-name").value || "").trim();
+          var pr = parseInt(node.querySelector(".ml-prio").value, 10);
+          if (!isFinite(pr) || pr < 0) pr = 0;
+          var maxReceive = null;
+          var maxRaw = String(node.querySelector(".ml-max").value || "").trim();
+          if (maxRaw !== "") {
+            var mv = parseInt(maxRaw, 10);
+            if (isFinite(mv) && mv >= 0) maxReceive = mv;
+          }
+          var offer = countsFromList(parseStickerCsv(node.querySelector(".ml-offer").value || ""));
+          var need = countsFromList(parseStickerCsv(node.querySelector(".ml-need").value || ""));
+          out.push({
+            name: name || "Person " + (i + 1),
+            want: pr,
+            offer: offer,
+            need: need,
+            maxReceive: maxReceive,
+          });
+        }
+        return out;
+      }
+
+      document.getElementById("ml-add").addEventListener("click", function () {
+        serial += 1;
+        peopleEl.appendChild(personTemplate(serial, "", 0));
+      });
+
+      ensureMin();
+
+      document.getElementById("ml-run").addEventListener("click", function () {
+        var P = readParticipants();
+        var wrap = document.getElementById("ml-result");
+        var errEl = document.getElementById("ml-err");
+        var bodyEl = document.getElementById("ml-body");
+        var sumEl = document.getElementById("ml-summary");
+
+        wrap.hidden = false;
+        errEl.hidden = true;
+        bodyEl.innerHTML = "";
+        sumEl.textContent = "";
+
+        if (P.length < 2) {
+          errEl.hidden = false;
+          errEl.textContent = "Add at least two participants.";
+          return;
+        }
+
+        var hasOffer = false;
+        var hasNeed = false;
+        for (var i = 0; i < P.length; i++) {
+          for (var k in P[i].offer) {
+            if (P[i].offer[k] > 0) {
+              hasOffer = true;
+              break;
+            }
+          }
+          for (var k2 in P[i].need) {
+            if (P[i].need[k2] > 0) {
+              hasNeed = true;
+              break;
+            }
+          }
+        }
+        if (!hasOffer || !hasNeed) {
+          errEl.hidden = false;
+          errEl.textContent = "Each side of a trade needs someone with offers and someone with needs—fill both columns where relevant.";
+          return;
+        }
+
+        var res = solveNetwork(P);
+        if (!res.ok) {
+          errEl.hidden = false;
+          errEl.textContent = res.error;
+          return;
+        }
+
+        sumEl.innerHTML =
+          "Total stickers re-homed: <strong>" +
+          res.totalFlow +
+          "</strong> (maximum for this group). Tie-break cost: <strong>" +
+          res.totalCost +
+          "</strong>.";
+
+        var U = P.length;
+        for (var u = 0; u < U; u++) {
+          var h = document.createElement("h3");
+          var rt = recvTotal(res.recvByUser[u]);
+          var capPart = P[u].maxReceive != null ? " · max " + P[u].maxReceive : "";
+          h.textContent = P[u].name + " — receives " + rt + capPart + " (priority " + P[u].want + ")";
+          bodyEl.appendChild(h);
+
+          var preIn = document.createElement("pre");
+          preIn.textContent =
+            "Receives: " +
+            (formatCountMap(res.recvByUser[u], sortCodes(Object.keys(res.recvByUser[u]))) || "(none)");
+          bodyEl.appendChild(preIn);
+
+          var preOut = document.createElement("pre");
+          preOut.textContent =
+            "Sends: " +
+            (formatCountMap(res.giveByUser[u], sortCodes(Object.keys(res.giveByUser[u]))) || "(none)");
+          bodyEl.appendChild(preOut);
+
+          var lines = [];
+          for (var v = 0; v < U; v++) {
+            if (v === u) continue;
+            var m = res.giveTo[u][v];
+            var keys = sortCodes(Object.keys(m));
+            var s = formatCountMap(m, keys);
+            if (s) lines.push("  → " + P[v].name + ": " + s);
+          }
+          if (lines.length) {
+            var preTo = document.createElement("pre");
+            preTo.textContent = "Outgoing detail:\n" + lines.join("\n");
+            bodyEl.appendChild(preTo);
+          }
+
+          if (
+            P[u].maxReceive != null &&
+            rt === P[u].maxReceive &&
+            unmetStickerCount(res.unmet[u]) > 0
+          ) {
+            var note = document.createElement("p");
+            note.className = "ml-capnote";
+            note.textContent = "Reached max receive; some listed needs were skipped because of that cap.";
+            bodyEl.appendChild(note);
+          }
+
+          var preUn = document.createElement("pre");
+          preUn.textContent =
+            "Needs still unmet: " +
+            (formatCountMap(res.unmet[u], sortCodes(Object.keys(res.unmet[u]))) || "(none)");
+          bodyEl.appendChild(preUn);
+
+          var preLo = document.createElement("pre");
+          preLo.textContent =
+            "Offers still on hand: " +
+            (formatCountMap(res.leftover[u], sortCodes(Object.keys(res.leftover[u]))) || "(none)");
+          bodyEl.appendChild(preLo);
+        }
+      });
+    </script>
+  </body>
+</html>

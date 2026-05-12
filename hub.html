@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hub swap planner — Panini FWC26</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .hub-main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+      .hub-main h1 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+      .hub-lede {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .hub-tools a {
+        color: var(--muted);
+        margin-right: 14px;
+        font-size: 0.9rem;
+      }
+      .hub-tools a:hover {
+        color: var(--accent);
+      }
+      .hub-back {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .hub-back:hover {
+        color: var(--accent);
+      }
+      .hub-panel {
+        padding: 18px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 16px;
+      }
+      .hub-panel h2 {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .hub-panel label {
+        display: block;
+        margin: 10px 0 6px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hub-panel label:first-of-type {
+        margin-top: 0;
+      }
+      .hub-panel textarea,
+      .hub-panel input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.86rem;
+        line-height: 1.45;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .hub-panel textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .hub-panel input[type="number"] {
+        max-width: 160px;
+        font-family: system-ui, sans-serif;
+      }
+      .hub-row2 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 8px;
+      }
+      .hub-row2 > div {
+        flex: 1 1 200px;
+      }
+      .hub-people-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      .hub-people-header h2 {
+        margin: 0;
+      }
+      .hub-btn {
+        cursor: pointer;
+        padding: 8px 14px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .hub-btn:hover {
+        border-color: rgba(245, 197, 24, 0.45);
+        color: var(--accent);
+      }
+      .hub-btn-primary {
+        background: rgba(245, 197, 24, 0.12);
+        border-color: rgba(245, 197, 24, 0.35);
+      }
+      .hub-person {
+        margin-bottom: 14px;
+        padding: 14px 16px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .hub-person-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: flex-end;
+        margin-bottom: 10px;
+      }
+      .hub-person-row .field {
+        flex: 1 1 120px;
+      }
+      .hub-person-row .field.narrow {
+        flex: 0 0 100px;
+      }
+      .hub-person-row label {
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+      }
+      .hub-person-row input[type="text"],
+      .hub-person-row input[type="number"] {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+      .hub-person textarea {
+        width: 100%;
+        min-height: 80px;
+        margin-top: 6px;
+        padding: 10px 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.85rem;
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        resize: vertical;
+      }
+      .hub-remove {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        background: transparent;
+        border: 1px dashed var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .hub-remove:hover {
+        color: #f87171;
+      }
+      .hub-summary {
+        margin: 0 0 12px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .hub-summary strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .hub-result h3 {
+        margin: 14px 0 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hub-result pre {
+        margin: 0 0 12px;
+        padding: 12px 14px;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+      }
+      .hub-err {
+        margin: 0 0 12px;
+        padding: 10px 12px;
+        font-size: 0.88rem;
+        color: #fecaca;
+        background: rgba(248, 113, 113, 0.1);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+        border-radius: 8px;
+      }
+      .hub-suberr {
+        margin: 0 0 10px;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+      .hub-capnote {
+        margin: -6px 0 10px;
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hub-main">
+      <a class="hub-back" href="./">← Back to collection</a>
+      <p class="hub-tools">
+        <a href="optimize.html">One-way optimizer</a>
+        <a href="bilateral.html">Two-person planner</a>
+        <a href="multilateral.html">Multi-party (full network)</a>
+        <a href="compare.html">Compare lists</a>
+      </p>
+      <h1>Hub swap planner</h1>
+      <p class="hub-lede">
+        Everything is centered on <strong>you</strong>: you list your offers and needs, then each other swapper lists
+        theirs. The planner only moves stickers <strong>from you to them</strong> (your offers ∩ their needs) and
+        <strong>from them to you</strong> (their offers ∩ your needs). It does <strong>not</strong> plan trades
+        between two other people with no involvement from you. It maximizes how many stickers you send and how many you
+        receive (two independent flows), with optional caps and the same CSV rules as the other tools.
+      </p>
+
+      <section class="hub-panel">
+        <h2>You (the hub)</h2>
+        <label for="hub-you-offer">Your offers (spares / dupes)</label>
+        <textarea id="hub-you-offer" spellcheck="false" placeholder="MEX1(2), BRA3"></textarea>
+        <label for="hub-you-need">Your needs</label>
+        <textarea id="hub-you-need" spellcheck="false" placeholder="ESP10, ARG2"></textarea>
+        <div class="hub-row2">
+          <div>
+            <label for="hub-you-maxout">Max stickers you send this round (blank = unlimited)</label>
+            <input type="number" id="hub-you-maxout" min="0" step="1" placeholder="" />
+          </div>
+          <div>
+            <label for="hub-you-maxin">Max stickers you receive this round (blank = unlimited)</label>
+            <input type="number" id="hub-you-maxin" min="0" step="1" placeholder="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="hub-panel">
+        <div class="hub-people-header">
+          <h2>Other swappers</h2>
+          <button type="button" class="hub-btn" id="hub-add">Add swapper</button>
+        </div>
+        <p class="hub-lede" style="margin-top: -6px; font-size: 0.88rem">
+          <strong>Max (from you)</strong> caps how many stickers that person will take from you this round (same idea as
+          the one-way optimizer).
+        </p>
+        <div id="hub-people"></div>
+        <div style="margin-top: 16px">
+          <button type="button" class="hub-btn hub-btn-primary" id="hub-run">Plan from my perspective</button>
+        </div>
+      </section>
+
+      <section class="hub-panel hub-result" id="hub-result" hidden>
+        <p class="hub-summary" id="hub-summary"></p>
+        <div class="hub-err" id="hub-err" hidden></div>
+        <div id="hub-body"></div>
+      </section>
+    </main>
+
+    <script>
+      var STICKER_COUNT_SUFFIX_RE = /^\s*([^(]+?)\s*\(\s*(\d+)\s*\)\s*$/;
+
+      function parseStickerCsv(text) {
+        var raw = text.split(",");
+        var out = [];
+        for (var i = 0; i < raw.length; i++) {
+          var token = raw[i].trim();
+          if (!token) continue;
+          var m = token.match(STICKER_COUNT_SUFFIX_RE);
+          if (m) {
+            var code = m[1].trim();
+            var n = parseInt(m[2], 10);
+            if (!code || !isFinite(n) || n <= 0) continue;
+            for (var j = 0; j < n; j++) out.push(code);
+          } else {
+            out.push(token);
+          }
+        }
+        return out;
+      }
+
+      function countsFromList(codes) {
+        var m = {};
+        for (var i = 0; i < codes.length; i++) {
+          var c = codes[i];
+          m[c] = (m[c] || 0) + 1;
+        }
+        return m;
+      }
+
+      function addEdgeMF(g, from, to, cap, cost) {
+        var fwd = { to: to, rev: g[to].length, cap: cap, cost: cost };
+        var rev = { to: from, rev: g[from].length, cap: 0, cost: -cost };
+        g[from].push(fwd);
+        g[to].push(rev);
+      }
+
+      function minCostMaxFlow(g, n, s, t) {
+        var totalFlow = 0;
+        var totalCost = 0;
+        var INF = 2000000000;
+
+        while (true) {
+          var dist = new Array(n);
+          var inq = new Array(n);
+          var prevv = new Array(n);
+          var preve = new Array(n);
+          for (var i = 0; i < n; i++) {
+            dist[i] = INF;
+            inq[i] = 0;
+            prevv[i] = -1;
+            preve[i] = -1;
+          }
+          dist[s] = 0;
+          var q = [s];
+          inq[s] = 1;
+          for (var qi = 0; qi < q.length; qi++) {
+            var v = q[qi];
+            inq[v] = 0;
+            var adj = g[v];
+            for (var ei = 0; ei < adj.length; ei++) {
+              var e = adj[ei];
+              if (e.cap <= 0) continue;
+              var nd = dist[v] + e.cost;
+              if (dist[e.to] > nd) {
+                dist[e.to] = nd;
+                prevv[e.to] = v;
+                preve[e.to] = ei;
+                if (!inq[e.to]) {
+                  inq[e.to] = 1;
+                  q.push(e.to);
+                }
+              }
+            }
+          }
+          if (dist[t] >= INF) break;
+
+          var addf = INF;
+          for (v = t; v !== s; v = prevv[v]) {
+            var pe = g[prevv[v]][preve[v]];
+            if (pe.cap < addf) addf = pe.cap;
+          }
+          for (v = t; v !== s; v = prevv[v]) {
+            var ed = g[prevv[v]][preve[v]];
+            ed.cap -= addf;
+            g[v][ed.rev].cap += addf;
+          }
+          totalFlow += addf;
+          totalCost += addf * dist[t];
+        }
+        return { flow: totalFlow, cost: totalCost };
+      }
+
+      var SINK_INF = 1000000000;
+
+      function solveYouToOthers(youOffer, others, maxSendOut) {
+        var codes = [];
+        var seen = {};
+        for (var c in youOffer) {
+          if (!youOffer.hasOwnProperty(c)) continue;
+          if ((youOffer[c] | 0) <= 0) continue;
+          for (var pi = 0; pi < others.length; pi++) {
+            if ((others[pi].need[c] | 0) > 0) {
+              if (!seen[c]) {
+                seen[c] = 1;
+                codes.push(c);
+              }
+              break;
+            }
+          }
+        }
+        if (codes.length === 0) {
+          return { ok: false, error: "No overlap between your offers and anyone else's needs." };
+        }
+
+        var U = others.length;
+        var C = codes.length;
+        var S = 0;
+        var X = 1;
+        var offsetCode = 2;
+        var offsetUser = offsetCode + C;
+        var T = offsetUser + U;
+        var n = T + 1;
+        var g = [];
+        for (var i = 0; i < n; i++) g.push([]);
+
+        var capX = maxSendOut != null ? maxSendOut | 0 : SINK_INF;
+        if (capX < 0) capX = 0;
+        if (capX > SINK_INF) capX = SINK_INF;
+        addEdgeMF(g, S, X, capX, 0);
+
+        var ci;
+        var code;
+        for (ci = 0; ci < C; ci++) {
+          code = codes[ci];
+          addEdgeMF(g, X, offsetCode + ci, youOffer[code] | 0, 0);
+        }
+
+        var edgeMeta = [];
+        for (ci = 0; ci < C; ci++) {
+          code = codes[ci];
+          for (var u = 0; u < U; u++) {
+            var nd = others[u].need[code] | 0;
+            if (nd <= 0) continue;
+            var w = others[u].want | 0;
+            if (w < 0) w = 0;
+            var from = offsetCode + ci;
+            var to = offsetUser + u;
+            addEdgeMF(g, from, to, nd, w);
+            edgeMeta.push({ from: from, to: to, code: code, user: u });
+          }
+        }
+
+        for (var u = 0; u < U; u++) {
+          var sinkCap = SINK_INF;
+          if (others[u].maxFromYou != null) {
+            sinkCap = others[u].maxFromYou | 0;
+            if (sinkCap < 0) sinkCap = 0;
+            if (sinkCap > SINK_INF) sinkCap = SINK_INF;
+          }
+          addEdgeMF(g, offsetUser + u, T, sinkCap, 0);
+        }
+
+        var mc = minCostMaxFlow(g, n, S, T);
+
+        var alloc = [];
+        for (u = 0; u < U; u++) alloc.push({});
+
+        for (var k = 0; k < edgeMeta.length; k++) {
+          var em = edgeMeta[k];
+          var adjf = g[em.from];
+          var sent = 0;
+          for (var j = 0; j < adjf.length; j++) {
+            var e = adjf[j];
+            if (e.to === em.to && e.cost >= 0) {
+              var orig = e.cap + g[e.to][e.rev].cap;
+              sent = orig - e.cap;
+              break;
+            }
+          }
+          if (sent > 0) {
+            if (!alloc[em.user][em.code]) alloc[em.user][em.code] = 0;
+            alloc[em.user][em.code] += sent;
+          }
+        }
+
+        return {
+          ok: true,
+          flow: mc.flow,
+          cost: mc.cost,
+          alloc: alloc,
+          codes: codes,
+        };
+      }
+
+      function solveOthersToYou(youNeed, others, maxReceiveYou) {
+        var supList = [];
+        var u;
+        var c;
+        for (u = 0; u < others.length; u++) {
+          for (c in others[u].offer) {
+            if (!others[u].offer.hasOwnProperty(c)) continue;
+            if ((others[u].offer[c] | 0) <= 0) continue;
+            if ((youNeed[c] | 0) <= 0) continue;
+            supList.push({
+              u: u,
+              c: c,
+              cap: others[u].offer[c] | 0,
+              prio: others[u].recvPrio | 0,
+            });
+          }
+        }
+
+        var needCodes = [];
+        var seen = {};
+        for (var i = 0; i < supList.length; i++) {
+          c = supList[i].c;
+          if (!seen[c]) {
+            seen[c] = 1;
+            needCodes.push(c);
+          }
+        }
+
+        if (supList.length === 0) {
+          return { ok: false, error: "No overlap between others' offers and your needs." };
+        }
+
+        var S = 0;
+        var nid = 1;
+        for (var si = 0; si < supList.length; si++) {
+          supList[si].node = nid++;
+        }
+        var zMap = {};
+        for (var zi = 0; zi < needCodes.length; zi++) {
+          c = needCodes[zi];
+          zMap[c] = nid++;
+        }
+        var mergeN = nid++;
+        var T = nid++;
+        var n = T + 1;
+        var g = [];
+        for (var ii = 0; ii < n; ii++) g.push([]);
+
+        var inMeta = [];
+        for (si = 0; si < supList.length; si++) {
+          var srow = supList[si];
+          addEdgeMF(g, S, srow.node, srow.cap, 0);
+          var znode = zMap[srow.c];
+          var pr = srow.prio | 0;
+          if (pr < 0) pr = 0;
+          addEdgeMF(g, srow.node, znode, SINK_INF, pr);
+          inMeta.push({ from: srow.node, to: znode, u: srow.u, code: srow.c });
+        }
+
+        for (zi = 0; zi < needCodes.length; zi++) {
+          c = needCodes[zi];
+          addEdgeMF(g, zMap[c], mergeN, youNeed[c] | 0, 0);
+        }
+
+        var capIn = maxReceiveYou != null ? maxReceiveYou | 0 : SINK_INF;
+        if (capIn < 0) capIn = 0;
+        if (capIn > SINK_INF) capIn = SINK_INF;
+        addEdgeMF(g, mergeN, T, capIn, 0);
+
+        var mc = minCostMaxFlow(g, n, S, T);
+
+        var recvByCode = {};
+        var recvFrom = [];
+        for (u = 0; u < others.length; u++) recvFrom.push({});
+
+        for (var k = 0; k < inMeta.length; k++) {
+          var em = inMeta[k];
+          var adjf = g[em.from];
+          var sent = 0;
+          for (var j = 0; j < adjf.length; j++) {
+            var e = adjf[j];
+            if (e.to === em.to && e.cost >= 0) {
+              var orig = e.cap + g[e.to][e.rev].cap;
+              sent = orig - e.cap;
+              break;
+            }
+          }
+          if (sent > 0) {
+            if (!recvByCode[em.code]) recvByCode[em.code] = 0;
+            recvByCode[em.code] += sent;
+            if (!recvFrom[em.u][em.code]) recvFrom[em.u][em.code] = 0;
+            recvFrom[em.u][em.code] += sent;
+          }
+        }
+
+        return {
+          ok: true,
+          flow: mc.flow,
+          cost: mc.cost,
+          recvByCode: recvByCode,
+          recvFrom: recvFrom,
+        };
+      }
+
+      function sortCodes(keys) {
+        return keys.sort(function (a, b) {
+          return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+        });
+      }
+
+      function formatCountMap(m, sortedKeys) {
+        var parts = [];
+        for (var i = 0; i < sortedKeys.length; i++) {
+          var k = sortedKeys[i];
+          var n = m[k] | 0;
+          if (n <= 0) continue;
+          for (var j = 0; j < n; j++) parts.push(k);
+        }
+        return parts.join(", ");
+      }
+
+      function unmetStickerCount(um) {
+        var s = 0;
+        for (var k in um) {
+          if (!um.hasOwnProperty(k)) continue;
+          s += um[k] | 0;
+        }
+        return s;
+      }
+
+      var peopleEl = document.getElementById("hub-people");
+      var serial = 0;
+
+      function personRow(id) {
+        var w = document.createElement("div");
+        w.className = "hub-person";
+        w.innerHTML =
+          '<div class="hub-person-row">' +
+          '<div class="field narrow"><label>Priority</label><input type="number" class="h-prio" min="0" step="1" value="0" /></div>' +
+          '<div class="field narrow"><label>Max (from you)</label><input type="number" class="h-maxfy" min="0" step="1" placeholder="∞" /></div>' +
+          '<div class="field"><label>Name</label><input type="text" class="h-name" placeholder="Swapper ' +
+          id +
+          '" /></div>' +
+          '<button type="button" class="hub-remove" title="Remove">Remove</button></div>' +
+          '<label>Their offers</label><textarea class="h-offer" spellcheck="false"></textarea>' +
+          '<label>Their needs</label><textarea class="h-need" spellcheck="false"></textarea>';
+        w.querySelector(".hub-remove").addEventListener("click", function () {
+          if (peopleEl.querySelectorAll(".hub-person").length <= 1) return;
+          w.remove();
+        });
+        return w;
+      }
+
+      function ensureMin() {
+        while (peopleEl.querySelectorAll(".hub-person").length < 1) {
+          serial += 1;
+          peopleEl.appendChild(personRow(serial));
+        }
+      }
+
+      function readOthers() {
+        var nodes = peopleEl.querySelectorAll(".hub-person");
+        var out = [];
+        for (var i = 0; i < nodes.length; i++) {
+          var node = nodes[i];
+          var name = (node.querySelector(".h-name").value || "").trim();
+          var pr = parseInt(node.querySelector(".h-prio").value, 10);
+          if (!isFinite(pr) || pr < 0) pr = 0;
+          var maxFromYou = null;
+          var maxRaw = String(node.querySelector(".h-maxfy").value || "").trim();
+          if (maxRaw !== "") {
+            var mv = parseInt(maxRaw, 10);
+            if (isFinite(mv) && mv >= 0) maxFromYou = mv;
+          }
+          var offer = countsFromList(parseStickerCsv(node.querySelector(".h-offer").value || ""));
+          var need = countsFromList(parseStickerCsv(node.querySelector(".h-need").value || ""));
+          out.push({
+            name: name || "Swapper " + (i + 1),
+            want: pr,
+            recvPrio: pr,
+            offer: offer,
+            need: need,
+            maxFromYou: maxFromYou,
+          });
+        }
+        return out;
+      }
+
+      document.getElementById("hub-add").addEventListener("click", function () {
+        serial += 1;
+        peopleEl.appendChild(personRow(serial));
+      });
+
+      ensureMin();
+
+      document.getElementById("hub-run").addEventListener("click", function () {
+        var youOffer = countsFromList(parseStickerCsv(document.getElementById("hub-you-offer").value || ""));
+        var youNeed = countsFromList(parseStickerCsv(document.getElementById("hub-you-need").value || ""));
+
+        var maxOutRaw = String(document.getElementById("hub-you-maxout").value || "").trim();
+        var maxInRaw = String(document.getElementById("hub-you-maxin").value || "").trim();
+        var maxSend = null;
+        var maxRecv = null;
+        if (maxOutRaw !== "") {
+          var mo = parseInt(maxOutRaw, 10);
+          if (isFinite(mo) && mo >= 0) maxSend = mo;
+        }
+        if (maxInRaw !== "") {
+          var mi = parseInt(maxInRaw, 10);
+          if (isFinite(mi) && mi >= 0) maxRecv = mi;
+        }
+
+        var others = readOthers();
+
+        var wrap = document.getElementById("hub-result");
+        var errEl = document.getElementById("hub-err");
+        var bodyEl = document.getElementById("hub-body");
+        var sumEl = document.getElementById("hub-summary");
+
+        wrap.hidden = false;
+        errEl.hidden = true;
+        bodyEl.innerHTML = "";
+        sumEl.textContent = "";
+
+        var yo = Object.keys(youOffer).some(function (k) {
+          return youOffer[k] > 0;
+        });
+        if (!yo) {
+          errEl.hidden = false;
+          errEl.textContent = "List at least one sticker you can offer.";
+          return;
+        }
+
+        var outRes = solveYouToOthers(youOffer, others, maxSend);
+        var inRes = solveOthersToYou(youNeed, others, maxRecv);
+
+        if (!outRes.ok && !inRes.ok) {
+          errEl.hidden = false;
+          errEl.textContent =
+            (outRes.error || "Nothing you can send.") + " · " + (inRes.error || "Nothing you can receive.");
+          return;
+        }
+
+        var fOut = outRes.ok ? outRes.flow : 0;
+        var fIn = inRes.ok ? inRes.flow : 0;
+        sumEl.innerHTML =
+          "From your perspective: up to <strong>" +
+          fOut +
+          "</strong> sticker" +
+          (fOut === 1 ? "" : "s") +
+          " you can send to others, and up to <strong>" +
+          fIn +
+          "</strong> you can receive from them (independent totals; not trades between others).";
+
+        if (outRes.ok) {
+          var h1 = document.createElement("h3");
+          h1.textContent = "You send";
+          bodyEl.appendChild(h1);
+          for (var u = 0; u < others.length; u++) {
+            var sk = sortCodes(Object.keys(outRes.alloc[u]));
+            var line = formatCountMap(outRes.alloc[u], sk);
+            if (!line) continue;
+            var pre = document.createElement("pre");
+            pre.textContent = "→ " + others[u].name + ": " + line;
+            bodyEl.appendChild(pre);
+          }
+          var totalGive = 0;
+          for (u = 0; u < others.length; u++) {
+            for (var c in outRes.alloc[u]) {
+              if (!outRes.alloc[u].hasOwnProperty(c)) continue;
+              totalGive += outRes.alloc[u][c] | 0;
+            }
+          }
+          if (totalGive === 0) {
+            var p0 = document.createElement("pre");
+            p0.textContent = "(no shipments in this direction)";
+            bodyEl.appendChild(p0);
+          }
+          var pCost = document.createElement("p");
+          pCost.className = "hub-capnote";
+          pCost.textContent = "Outgoing tie-break cost (priority × copies): " + outRes.cost + ".";
+          bodyEl.appendChild(pCost);
+        } else {
+          var e1 = document.createElement("p");
+          e1.className = "hub-suberr";
+          e1.textContent = "Outgoing: " + outRes.error;
+          bodyEl.appendChild(e1);
+        }
+
+        if (inRes.ok) {
+          var h2 = document.createElement("h3");
+          h2.textContent = "You receive";
+          bodyEl.appendChild(h2);
+          for (u = 0; u < others.length; u++) {
+            var sk2 = sortCodes(Object.keys(inRes.recvFrom[u]));
+            var line2 = formatCountMap(inRes.recvFrom[u], sk2);
+            if (!line2) continue;
+            var pre2 = document.createElement("pre");
+            pre2.textContent = "← " + others[u].name + ": " + line2;
+            bodyEl.appendChild(pre2);
+          }
+          if ((inRes.flow | 0) === 0) {
+            var pz = document.createElement("pre");
+            pz.textContent = "(nothing in this direction)";
+            bodyEl.appendChild(pz);
+          }
+          var preSum = document.createElement("pre");
+          preSum.textContent =
+            "Total incoming: " +
+            (formatCountMap(inRes.recvByCode, sortCodes(Object.keys(inRes.recvByCode))) || "(none)");
+          bodyEl.appendChild(preSum);
+          var pCost2 = document.createElement("p");
+          pCost2.className = "hub-capnote";
+          pCost2.textContent = "Incoming tie-break cost (priority × copies from each person): " + inRes.cost + ".";
+          bodyEl.appendChild(pCost2);
+
+          if (maxRecv != null && fIn === maxRecv) {
+            var um = {};
+            for (var nc in youNeed) {
+              if (!youNeed.hasOwnProperty(nc)) continue;
+              var needn = youNeed[nc] | 0;
+              var gotn = inRes.recvByCode[nc] | 0;
+              var sh = needn - gotn;
+              if (sh > 0) um[nc] = sh;
+            }
+            if (unmetStickerCount(um) > 0) {
+              var capN = document.createElement("p");
+              capN.className = "hub-capnote";
+              capN.textContent =
+                "You hit your max receive cap; some needs are still open for later trades.";
+              bodyEl.appendChild(capN);
+            }
+          }
+        } else {
+          var e2 = document.createElement("p");
+          e2.className = "hub-suberr";
+          e2.textContent = "Incoming: " + inRes.error;
+          bodyEl.appendChild(e2);
+        }
+      });
+    </script>
+  </body>
+</html>

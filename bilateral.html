@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bilateral swap planner — Panini FWC26</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .bi-main {
+        max-width: 1020px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+      .bi-main h1 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+      .bi-lede {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .bi-tools {
+        margin: 0 0 16px;
+        font-size: 0.9rem;
+      }
+      .bi-tools a {
+        color: var(--muted);
+        margin-right: 14px;
+        font-size: 0.9rem;
+      }
+      .bi-tools a:hover {
+        color: var(--accent);
+      }
+      .bi-back {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .bi-back:hover {
+        color: var(--accent);
+      }
+      .bi-panel {
+        padding: 18px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 16px;
+      }
+      .bi-panel h2 {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .bi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 760px) {
+        .bi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .bi-side h3 {
+        margin: 0 0 10px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .bi-side label {
+        display: block;
+        margin: 10px 0 6px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .bi-side label:first-of-type {
+        margin-top: 0;
+      }
+      .bi-side textarea,
+      .bi-side input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.86rem;
+        line-height: 1.45;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        resize: vertical;
+      }
+      .bi-side textarea {
+        min-height: 100px;
+      }
+      .bi-side input[type="number"] {
+        max-width: 120px;
+      }
+      .bi-side textarea:focus,
+      .bi-side input:focus {
+        outline: 2px solid rgba(245, 197, 24, 0.45);
+        outline-offset: 2px;
+      }
+      .bi-mode {
+        margin: 0 0 8px;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+      .bi-mode label {
+        display: block;
+        margin: 8px 0;
+        cursor: pointer;
+      }
+      .bi-mode input {
+        margin-right: 8px;
+      }
+      .bi-hint {
+        margin: 8px 0 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .bi-btn {
+        cursor: pointer;
+        padding: 8px 14px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text);
+        background: rgba(245, 197, 24, 0.12);
+        border: 1px solid rgba(245, 197, 24, 0.35);
+        border-radius: 8px;
+      }
+      .bi-btn:hover {
+        color: var(--accent);
+      }
+      .bi-summary {
+        margin: 0 0 12px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .bi-summary strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .bi-result h3 {
+        margin: 14px 0 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .bi-result h3:first-child {
+        margin-top: 0;
+      }
+      .bi-result pre {
+        margin: 0 0 10px;
+        padding: 12px 14px;
+        overflow-x: auto;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+      }
+      .bi-err {
+        margin: 0 0 12px;
+        padding: 10px 12px;
+        font-size: 0.88rem;
+        color: #fecaca;
+        background: rgba(248, 113, 113, 0.1);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="bi-main">
+      <a class="bi-back" href="./">← Back to collection</a>
+      <p class="bi-tools">
+        <a href="optimize.html">One-way optimizer</a>
+        <a href="multilateral.html">Multi-party planner</a>
+        <a href="hub.html">Hub (your view)</a>
+        <a href="compare.html">Compare lists</a>
+      </p>
+      <h1>Bilateral swap planner</h1>
+      <p class="bi-lede">
+        Enter <strong>what each side can trade</strong> (spares / dupes) and <strong>what each side still needs</strong>.
+        The planner finds how many stickers can move in each direction where your offer overlaps their need and vice
+        versa. <strong>Balanced 1:1</strong> caps both directions at the same count so neither side gives more stickers
+        than they get (equal swap size). <strong>Independent max</strong> shows the maximum each direction could move
+        without linking counts—useful to see upside before you negotiate a bundle. Lists support repeats and
+        <code>ALG1(2)</code> like the other tools.
+      </p>
+
+      <div class="bi-grid">
+        <section class="bi-panel bi-side">
+          <h3>You</h3>
+          <label for="you-offer">Your offers (spares / dupes)</label>
+          <textarea id="you-offer" spellcheck="false" placeholder="MEX1(2), BRA3"></textarea>
+          <label for="you-need">Your needs</label>
+          <textarea id="you-need" spellcheck="false" placeholder="ESP10, ARG5(2)"></textarea>
+          <label for="you-prio">Priority when receiving (lower = preferred among ties)</label>
+          <input type="number" id="you-prio" min="0" step="1" value="0" />
+        </section>
+        <section class="bi-panel bi-side">
+          <h3>Them</h3>
+          <label for="them-offer">Their offers (spares / dupes)</label>
+          <textarea id="them-offer" spellcheck="false" placeholder="ESP10, FRA2(3)"></textarea>
+          <label for="them-need">Their needs</label>
+          <textarea id="them-need" spellcheck="false" placeholder="MEX1, BRA3"></textarea>
+          <label for="them-prio">Priority when receiving (lower = preferred among ties)</label>
+          <input type="number" id="them-prio" min="0" step="1" value="0" />
+        </section>
+      </div>
+
+      <section class="bi-panel">
+        <h2>How to count the trade</h2>
+        <div class="bi-mode">
+          <label
+            ><input type="radio" name="bi-mode" id="mode-balanced" value="balanced" checked />
+            Balanced 1:1 — same number of stickers each way (maximizes that common count, then uses priorities).</label
+          >
+          <label
+            ><input type="radio" name="bi-mode" id="mode-independent" value="independent" />
+            Independent max — maximize each direction separately (counts can differ).</label
+          >
+        </div>
+        <label for="pair-cap">Optional: cap on 1:1 pair count (blank = no extra cap)</label>
+        <input type="number" id="pair-cap" min="0" step="1" placeholder="" />
+        <p class="bi-hint">
+          Each sticker counts as one unit. This planner does not score “rare vs common”; it maximizes how many useful
+          trades happen, then breaks ties with your priority numbers.
+        </p>
+        <p style="margin-top: 14px">
+          <button type="button" class="bi-btn" id="bi-run">Plan trade</button>
+        </p>
+      </section>
+
+      <section class="bi-panel bi-result" id="bi-result" hidden>
+        <p class="bi-summary" id="bi-summary"></p>
+        <div class="bi-err" id="bi-err" hidden></div>
+        <div id="bi-body"></div>
+      </section>
+    </main>
+
+    <script>
+      var STICKER_COUNT_SUFFIX_RE = /^\s*([^(]+?)\s*\(\s*(\d+)\s*\)\s*$/;
+
+      function parseStickerCsv(text) {
+        var raw = text.split(",");
+        var out = [];
+        for (var i = 0; i < raw.length; i++) {
+          var token = raw[i].trim();
+          if (!token) continue;
+          var m = token.match(STICKER_COUNT_SUFFIX_RE);
+          if (m) {
+            var code = m[1].trim();
+            var n = parseInt(m[2], 10);
+            if (!code || !isFinite(n) || n <= 0) continue;
+            for (var j = 0; j < n; j++) out.push(code);
+          } else {
+            out.push(token);
+          }
+        }
+        return out;
+      }
+
+      function countsFromList(codes) {
+        var m = {};
+        for (var i = 0; i < codes.length; i++) {
+          var c = codes[i];
+          m[c] = (m[c] || 0) + 1;
+        }
+        return m;
+      }
+
+      function addEdgeMF(g, from, to, cap, cost) {
+        var fwd = { to: to, rev: g[to].length, cap: cap, cost: cost };
+        var rev = { to: from, rev: g[from].length, cap: 0, cost: -cost };
+        g[from].push(fwd);
+        g[to].push(rev);
+      }
+
+      function minCostMaxFlow(g, n, s, t) {
+        var totalFlow = 0;
+        var totalCost = 0;
+        var INF = 2000000000;
+
+        while (true) {
+          var dist = new Array(n);
+          var inq = new Array(n);
+          var prevv = new Array(n);
+          var preve = new Array(n);
+          for (var i = 0; i < n; i++) {
+            dist[i] = INF;
+            inq[i] = 0;
+            prevv[i] = -1;
+            preve[i] = -1;
+          }
+          dist[s] = 0;
+          var q = [s];
+          inq[s] = 1;
+          for (var qi = 0; qi < q.length; qi++) {
+            var v = q[qi];
+            inq[v] = 0;
+            var adj = g[v];
+            for (var ei = 0; ei < adj.length; ei++) {
+              var e = adj[ei];
+              if (e.cap <= 0) continue;
+              var nd = dist[v] + e.cost;
+              if (dist[e.to] > nd) {
+                dist[e.to] = nd;
+                prevv[e.to] = v;
+                preve[e.to] = ei;
+                if (!inq[e.to]) {
+                  inq[e.to] = 1;
+                  q.push(e.to);
+                }
+              }
+            }
+          }
+          if (dist[t] >= INF) break;
+
+          var addf = INF;
+          for (v = t; v !== s; v = prevv[v]) {
+            var pe = g[prevv[v]][preve[v]];
+            if (pe.cap < addf) addf = pe.cap;
+          }
+          for (v = t; v !== s; v = prevv[v]) {
+            var ed = g[prevv[v]][preve[v]];
+            ed.cap -= addf;
+            g[v][ed.rev].cap += addf;
+          }
+          totalFlow += addf;
+          totalCost += addf * dist[t];
+        }
+        return { flow: totalFlow, cost: totalCost };
+      }
+
+      var SINK_INF = 1000000000;
+
+      /**
+       * Max (min-cost) flow: offerMap supplies stickers, needMap is recipient demand.
+       * sinkCap limits total stickers delivered to the recipient.
+       */
+      function solveDirected(offerMap, needMap, sinkCap, recvPriority) {
+        var codes = [];
+        for (var c in offerMap) {
+          if (!offerMap.hasOwnProperty(c)) continue;
+          if ((offerMap[c] | 0) <= 0) continue;
+          if ((needMap[c] | 0) > 0) codes.push(c);
+        }
+        if (codes.length === 0) {
+          return { ok: false, error: "No overlapping codes between offers and their needs." };
+        }
+
+        var C = codes.length;
+        var S = 0;
+        var offsetCode = 1;
+        var userNode = offsetCode + C;
+        var T = userNode + 1;
+        var n = T + 1;
+        var g = [];
+        for (var i = 0; i < n; i++) g.push([]);
+
+        var edgeMeta = [];
+        var ci;
+        var code;
+        for (ci = 0; ci < C; ci++) {
+          code = codes[ci];
+          addEdgeMF(g, S, offsetCode + ci, offerMap[code] | 0, 0);
+        }
+        var w = recvPriority | 0;
+        if (w < 0) w = 0;
+        for (ci = 0; ci < C; ci++) {
+          code = codes[ci];
+          var nd = needMap[code] | 0;
+          if (nd <= 0) continue;
+          var from = offsetCode + ci;
+          addEdgeMF(g, from, userNode, nd, w);
+          edgeMeta.push({ from: from, to: userNode, code: code });
+        }
+
+        var capSink = sinkCap;
+        if (capSink == null || !isFinite(capSink)) capSink = SINK_INF;
+        capSink = capSink | 0;
+        if (capSink < 0) capSink = 0;
+        if (capSink > SINK_INF) capSink = SINK_INF;
+        addEdgeMF(g, userNode, T, capSink, 0);
+
+        var mc = minCostMaxFlow(g, n, S, T);
+
+        var recv = {};
+        for (var k = 0; k < edgeMeta.length; k++) {
+          var em = edgeMeta[k];
+          var adjf = g[em.from];
+          var sent = 0;
+          for (var j = 0; j < adjf.length; j++) {
+            var e = adjf[j];
+            if (e.to === em.to && e.cost >= 0) {
+              var orig = e.cap + g[e.to][e.rev].cap;
+              sent = orig - e.cap;
+              break;
+            }
+          }
+          if (sent > 0) {
+            if (!recv[em.code]) recv[em.code] = 0;
+            recv[em.code] += sent;
+          }
+        }
+
+        return { ok: true, flow: mc.flow, cost: mc.cost, recv: recv, codes: codes };
+      }
+
+      function sortCodes(keys) {
+        return keys.sort(function (a, b) {
+          return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+        });
+      }
+
+      function formatRecv(recv) {
+        var keys = sortCodes(Object.keys(recv));
+        var parts = [];
+        for (var i = 0; i < keys.length; i++) {
+          var k = keys[i];
+          var n = recv[k] | 0;
+          for (var j = 0; j < n; j++) parts.push(k);
+        }
+        return parts.length ? parts.join(", ") : "(none)";
+      }
+
+      function leftoverOffers(offerMap, sentRecv) {
+        var out = {};
+        for (var c in offerMap) {
+          if (!offerMap.hasOwnProperty(c)) continue;
+          out[c] = offerMap[c] | 0;
+        }
+        for (var code in sentRecv) {
+          if (!sentRecv.hasOwnProperty(code)) continue;
+          out[code] = (out[code] || 0) - (sentRecv[code] | 0);
+        }
+        return out;
+      }
+
+      function unmetAfter(needMap, recv) {
+        var um = {};
+        for (var nc in needMap) {
+          if (!needMap.hasOwnProperty(nc)) continue;
+          var needn = needMap[nc] | 0;
+          var gotn = recv[nc] | 0;
+          var shortf = needn - gotn;
+          if (shortf > 0) um[nc] = shortf;
+        }
+        return um;
+      }
+
+      function formatCountMap(m, sortedKeys) {
+        var parts = [];
+        for (var i = 0; i < sortedKeys.length; i++) {
+          var k = sortedKeys[i];
+          var n = m[k] | 0;
+          if (n <= 0) continue;
+          for (var j = 0; j < n; j++) parts.push(k);
+        }
+        return parts.join(", ");
+      }
+
+      document.getElementById("bi-run").addEventListener("click", function () {
+        var youOffer = countsFromList(parseStickerCsv(document.getElementById("you-offer").value || ""));
+        var youNeed = countsFromList(parseStickerCsv(document.getElementById("you-need").value || ""));
+        var themOffer = countsFromList(parseStickerCsv(document.getElementById("them-offer").value || ""));
+        var themNeed = countsFromList(parseStickerCsv(document.getElementById("them-need").value || ""));
+
+        var youPrio = parseInt(document.getElementById("you-prio").value, 10);
+        var themPrio = parseInt(document.getElementById("them-prio").value, 10);
+        if (!isFinite(youPrio) || youPrio < 0) youPrio = 0;
+        if (!isFinite(themPrio) || themPrio < 0) themPrio = 0;
+
+        var modeBalanced = document.getElementById("mode-balanced").checked;
+        var pairRaw = String(document.getElementById("pair-cap").value || "").trim();
+        var pairCap = null;
+        if (pairRaw !== "") {
+          var pc = parseInt(pairRaw, 10);
+          if (isFinite(pc) && pc >= 0) pairCap = pc;
+        }
+
+        var wrap = document.getElementById("bi-result");
+        var errEl = document.getElementById("bi-err");
+        var bodyEl = document.getElementById("bi-body");
+        var sumEl = document.getElementById("bi-summary");
+
+        wrap.hidden = false;
+        errEl.hidden = true;
+        bodyEl.innerHTML = "";
+        sumEl.textContent = "";
+
+        var yoKeys = Object.keys(youOffer).filter(function (k) {
+          return youOffer[k] > 0;
+        });
+        var toKeys = Object.keys(themOffer).filter(function (k) {
+          return themOffer[k] > 0;
+        });
+        if (yoKeys.length === 0 || toKeys.length === 0) {
+          errEl.hidden = false;
+          errEl.textContent = "Enter offers on both sides (your spares and their spares).";
+          return;
+        }
+
+        var rYt = solveDirected(youOffer, themNeed, SINK_INF, themPrio);
+        var rTy = solveDirected(themOffer, youNeed, SINK_INF, youPrio);
+
+        if (!rYt.ok && !rTy.ok) {
+          errEl.hidden = false;
+          errEl.textContent =
+            "No one-way overlap in either direction (your offers ∩ their needs and their offers ∩ your needs are both empty).";
+          return;
+        }
+
+        var F_yt = rYt.ok ? rYt.flow : 0;
+        var F_ty = rTy.ok ? rTy.flow : 0;
+
+        if (modeBalanced) {
+          var k = Math.min(F_yt, F_ty);
+          if (pairCap != null) k = Math.min(k, pairCap);
+
+          var finalYt = rYt.ok ? solveDirected(youOffer, themNeed, k, themPrio) : { ok: false, recv: {} };
+          var finalTy = rTy.ok ? solveDirected(themOffer, youNeed, k, youPrio) : { ok: false, recv: {} };
+
+          var recvYt = finalYt.ok ? finalYt.recv : {};
+          var recvTy = finalTy.ok ? finalTy.recv : {};
+
+          sumEl.innerHTML =
+            "Balanced plan: <strong>" +
+            k +
+            "</strong> sticker" +
+            (k === 1 ? "" : "s") +
+            " each way (before cap: you→them " +
+            F_yt +
+            ", them→you " +
+            F_ty +
+            ").";
+
+          if (k === 0) {
+            var p = document.createElement("p");
+            p.className = "bi-hint";
+            p.textContent =
+              "With 1:1 balancing, the trade size is limited by the weaker direction. Improve overlap on the bottleneck side, or switch to \"Independent max\" to see one-way potential.";
+            bodyEl.appendChild(p);
+          }
+
+          var h1 = document.createElement("h3");
+          h1.textContent = "You give them";
+          bodyEl.appendChild(h1);
+          var pre1 = document.createElement("pre");
+          pre1.textContent = formatRecv(recvYt);
+          bodyEl.appendChild(pre1);
+
+          var h2 = document.createElement("h3");
+          h2.textContent = "They give you";
+          bodyEl.appendChild(h2);
+          var pre2 = document.createElement("pre");
+          pre2.textContent = formatRecv(recvTy);
+          bodyEl.appendChild(pre2);
+
+          var umThem = unmetAfter(themNeed, recvYt);
+          var umYou = unmetAfter(youNeed, recvTy);
+
+          var h3 = document.createElement("h3");
+          h3.textContent = "Their needs still unmet after this bundle";
+          bodyEl.appendChild(h3);
+          var pre3 = document.createElement("pre");
+          pre3.textContent = formatCountMap(umThem, sortCodes(Object.keys(umThem))) || "(none)";
+          bodyEl.appendChild(pre3);
+
+          var h4 = document.createElement("h3");
+          h4.textContent = "Your needs still unmet after this bundle";
+          bodyEl.appendChild(h4);
+          var pre4 = document.createElement("pre");
+          pre4.textContent = formatCountMap(umYou, sortCodes(Object.keys(umYou))) || "(none)";
+          bodyEl.appendChild(pre4);
+
+          var h5 = document.createElement("h3");
+          h5.textContent = "Your spares left after sending";
+          bodyEl.appendChild(h5);
+          var pre5 = document.createElement("pre");
+          pre5.textContent = formatRecv(leftoverOffers(youOffer, recvYt));
+          bodyEl.appendChild(pre5);
+
+          var h6 = document.createElement("h3");
+          h6.textContent = "Their spares left after sending";
+          bodyEl.appendChild(h6);
+          var pre6 = document.createElement("pre");
+          pre6.textContent = formatRecv(leftoverOffers(themOffer, recvTy));
+          bodyEl.appendChild(pre6);
+        } else {
+          sumEl.innerHTML =
+            "Independent maximums: you can send up to <strong>" +
+            F_yt +
+            "</strong> useful sticker" +
+            (F_yt === 1 ? "" : "s") +
+            " their way; they can send up to <strong>" +
+            F_ty +
+            "</strong> your way. These are not forced equal—agree on a bundle that fits what you both want.";
+
+          if (rYt.ok) {
+            var i1 = document.createElement("h3");
+            i1.textContent = "You → them (max)";
+            bodyEl.appendChild(i1);
+            var pi1 = document.createElement("pre");
+            pi1.textContent = formatRecv(rYt.recv);
+            bodyEl.appendChild(pi1);
+          } else {
+            var e1 = document.createElement("p");
+            e1.className = "bi-hint";
+            e1.textContent = "You → them: " + (rYt.error || "no overlap");
+            bodyEl.appendChild(e1);
+          }
+
+          if (rTy.ok) {
+            var i2 = document.createElement("h3");
+            i2.textContent = "Them → you (max)";
+            bodyEl.appendChild(i2);
+            var pi2 = document.createElement("pre");
+            pi2.textContent = formatRecv(rTy.recv);
+            bodyEl.appendChild(pi2);
+          } else {
+            var e2 = document.createElement("p");
+            e2.className = "bi-hint";
+            e2.textContent = "Them → you: " + (rTy.error || "no overlap");
+            bodyEl.appendChild(e2);
+          }
+
+          if (pairCap != null) {
+            var note = document.createElement("p");
+            note.className = "bi-hint";
+            note.textContent =
+              "Optional pair cap only applies in balanced mode; switch to balanced 1:1 if you want to use it.";
+            bodyEl.appendChild(note);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
