@@ -232,23 +232,57 @@
         return out;
       }
 
-      function uniqueSorted(codes) {
-        return Array.from(new Set(codes)).sort(function (a, b) {
+      function countBy(codes) {
+        var map = new Map();
+        for (var i = 0; i < codes.length; i++) {
+          var c = codes[i];
+          map.set(c, (map.get(c) || 0) + 1);
+        }
+        return map;
+      }
+
+      function formatCodesSortedWithCounts(codes) {
+        var map = countBy(codes);
+        var keys = Array.from(map.keys()).sort(function (a, b) {
           return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
         });
+        var parts = [];
+        for (var i = 0; i < keys.length; i++) {
+          var k = keys[i];
+          var n = map.get(k);
+          parts.push(n > 1 ? k + "(" + n + ")" : k);
+        }
+        return parts.join(", ");
+      }
+
+      function multisetIntersection(aCodes, bCodes) {
+        var bRemaining = countBy(bCodes);
+        var out = [];
+        for (var i = 0; i < aCodes.length; i++) {
+          var code = aCodes[i];
+          var left = bRemaining.get(code) || 0;
+          if (left > 0) {
+            out.push(code);
+            bRemaining.set(code, left - 1);
+          }
+        }
+        return out;
       }
 
       function computeIntersection(aText, bText) {
         var aCodes = parseStickerCsv(aText);
         var bCodes = parseStickerCsv(bText);
-        var setB = new Set(bCodes);
-        var inBoth = aCodes.filter(function (code) {
-          return setB.has(code);
-        });
+        var intersectionCodes = multisetIntersection(aCodes, bCodes);
         return {
-          uniqueA: uniqueSorted(aCodes),
-          uniqueB: uniqueSorted(bCodes),
-          intersection: uniqueSorted(inBoth),
+          formattedA: formatCodesSortedWithCounts(aCodes),
+          formattedB: formatCodesSortedWithCounts(bCodes),
+          intersectionFormatted: formatCodesSortedWithCounts(intersectionCodes),
+          uniqueCountA: countBy(aCodes).size,
+          uniqueCountB: countBy(bCodes).size,
+          totalA: aCodes.length,
+          totalB: bCodes.length,
+          sharedDistinct: countBy(intersectionCodes).size,
+          sharedCopies: intersectionCodes.length,
         };
       }
 
@@ -264,34 +298,47 @@
 
       function render() {
         var r = computeIntersection(elA.value, elB.value);
-        var na = r.uniqueA.length;
-        var nb = r.uniqueB.length;
-        var ni = r.intersection.length;
+        var ua = r.uniqueCountA;
+        var ub = r.uniqueCountB;
+        var ta = r.totalA;
+        var tb = r.totalB;
+        var copies = r.sharedCopies;
 
         elMeta.textContent =
-          na === 0 && nb === 0
+          ua === 0 && ub === 0
             ? "No codes parsed yet."
             : "List A: " +
-              na +
-              " unique code" +
-              (na === 1 ? "" : "s") +
-              " · List B: " +
-              nb +
-              " unique code" +
-              (nb === 1 ? "" : "s") +
-              " · Shared: " +
-              ni;
+              ua +
+              " distinct code" +
+              (ua === 1 ? "" : "s") +
+              " (" +
+              ta +
+              " cop" +
+              (ta === 1 ? "y" : "ies") +
+              ") · List B: " +
+              ub +
+              " distinct code" +
+              (ub === 1 ? "" : "s") +
+              " (" +
+              tb +
+              " cop" +
+              (tb === 1 ? "y" : "ies") +
+              ") · Shared: " +
+              copies +
+              " cop" +
+              (copies === 1 ? "y" : "ies") +
+              (copies > 0 ? " across " + r.sharedDistinct + " code" + (r.sharedDistinct === 1 ? "" : "s") : "");
 
-        if (ni > 0) {
-          elOut.textContent = r.intersection.join(", ");
+        if (copies > 0) {
+          elOut.textContent = r.intersectionFormatted;
           elOut.hidden = false;
           elEmpty.hidden = true;
         } else {
           elOut.hidden = true;
           elEmpty.hidden = false;
-          if (na === 0 && nb === 0) {
+          if (ua === 0 && ub === 0) {
             elEmpty.textContent = "Enter both lists to see shared codes.";
-          } else if (na === 0 || nb === 0) {
+          } else if (ua === 0 || ub === 0) {
             elEmpty.textContent =
               "One list has no codes after removing empty entries — add stickers to both sides.";
           } else {
@@ -299,8 +346,8 @@
           }
         }
 
-        if (na > 0) {
-          elASorted.textContent = r.uniqueA.join(", ");
+        if (ua > 0) {
+          elASorted.textContent = r.formattedA;
           elASorted.hidden = false;
           elAEmpty.hidden = true;
         } else {
@@ -309,8 +356,8 @@
           elAEmpty.textContent = "No codes parsed.";
         }
 
-        if (nb > 0) {
-          elBSorted.textContent = r.uniqueB.join(", ");
+        if (ub > 0) {
+          elBSorted.textContent = r.formattedB;
           elBSorted.hidden = false;
           elBEmpty.hidden = true;
         } else {
