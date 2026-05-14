@@ -71,6 +71,38 @@
         font-size: 1rem;
         font-weight: 600;
       }
+      .compare-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin: 0 0 14px;
+        border-bottom: 1px solid var(--border);
+      }
+      .compare-tab {
+        appearance: none;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid transparent;
+        color: var(--muted);
+        padding: 8px 12px;
+        margin-bottom: -1px;
+        font: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border-radius: 0;
+      }
+      .compare-tab:hover {
+        color: var(--text);
+      }
+      .compare-tab[aria-selected="true"] {
+        color: var(--text);
+        border-bottom-color: var(--accent);
+      }
+      .compare-tab:focus-visible {
+        outline: 2px solid rgba(245, 197, 24, 0.5);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
       .compare-result .meta {
         margin: 0 0 14px;
         font-size: 0.85rem;
@@ -151,8 +183,8 @@
         Paste comma-separated sticker codes in each box. Repeats count as separate copies
         (<code>ALG1,ALG1</code>); you can also write counts in parentheses
         (<code>ALG1(2)</code> means the same). Empty slots from exports (e.g.
-        <code>ESP10 ,,ALG2</code>) are ignored. The page shows codes that appear in
-        <strong>both</strong> lists.
+        <code>ESP10 ,,ALG2</code>) are ignored. Switch tabs to see the intersection,
+        codes only in A, or codes only in B.
       </p>
 
       <div class="compare-grid">
@@ -167,7 +199,17 @@
       </div>
 
       <section class="compare-result" aria-live="polite">
-        <h2>Intersection</h2>
+        <div class="compare-tabs" role="tablist" aria-label="Set operation">
+          <button class="compare-tab" role="tab" type="button" data-tab="intersection" aria-selected="true">
+            Intersection (A ∩ B)
+          </button>
+          <button class="compare-tab" role="tab" type="button" data-tab="a-minus-b" aria-selected="false">
+            In A, not in B
+          </button>
+          <button class="compare-tab" role="tab" type="button" data-tab="b-minus-a" aria-selected="false">
+            In B, not in A
+          </button>
+        </div>
         <p class="meta" id="compare-meta"></p>
         <pre id="compare-output" hidden></pre>
         <p class="empty" id="compare-empty">Enter both lists to see shared codes.</p>
@@ -226,22 +268,44 @@
         return out;
       }
 
-      function computeIntersection(aText, bText) {
+      function multisetDifference(aCodes, bCodes) {
+        var bRemaining = countBy(bCodes);
+        var out = [];
+        for (var i = 0; i < aCodes.length; i++) {
+          var code = aCodes[i];
+          var left = bRemaining.get(code) || 0;
+          if (left > 0) {
+            bRemaining.set(code, left - 1);
+          } else {
+            out.push(code);
+          }
+        }
+        return out;
+      }
+
+      function compute(aText, bText) {
         var aCodes = parseStickerCsv(aText);
         var bCodes = parseStickerCsv(bText);
-        var intersectionCodes = multisetIntersection(aCodes, bCodes);
         return {
-          formattedA: formatCodesSortedWithCounts(aCodes),
-          formattedB: formatCodesSortedWithCounts(bCodes),
-          intersectionFormatted: formatCodesSortedWithCounts(intersectionCodes),
-          uniqueCountA: countBy(aCodes).size,
-          uniqueCountB: countBy(bCodes).size,
-          totalA: aCodes.length,
-          totalB: bCodes.length,
-          sharedDistinct: countBy(intersectionCodes).size,
-          sharedCopies: intersectionCodes.length,
+          a: aCodes,
+          b: bCodes,
+          intersection: multisetIntersection(aCodes, bCodes),
+          aMinusB: multisetDifference(aCodes, bCodes),
+          bMinusA: multisetDifference(bCodes, aCodes),
         };
       }
+
+      var TAB_LABEL = {
+        intersection: "shared",
+        "a-minus-b": "in A only",
+        "b-minus-a": "in B only",
+      };
+
+      var EMPTY_MSG = {
+        intersection: "No overlap — no codes appear in both lists.",
+        "a-minus-b": "Nothing extra — every copy in A is also in B.",
+        "b-minus-a": "Nothing extra — every copy in B is also in A.",
+      };
 
       var elA = document.getElementById("list-a");
       var elB = document.getElementById("list-b");
@@ -252,59 +316,78 @@
       var elBSorted = document.getElementById("list-b-sorted");
       var elAEmpty = document.getElementById("list-a-empty");
       var elBEmpty = document.getElementById("list-b-empty");
+      var tabButtons = document.querySelectorAll(".compare-tab");
+
+      var activeTab = "intersection";
+
+      function pluralCopies(n) {
+        return n + " cop" + (n === 1 ? "y" : "ies");
+      }
+
+      function pluralCodes(n) {
+        return n + " code" + (n === 1 ? "" : "s");
+      }
 
       function render() {
-        var r = computeIntersection(elA.value, elB.value);
-        var ua = r.uniqueCountA;
-        var ub = r.uniqueCountB;
-        var ta = r.totalA;
-        var tb = r.totalB;
-        var copies = r.sharedCopies;
+        var r = compute(elA.value, elB.value);
+        var ua = countBy(r.a).size;
+        var ub = countBy(r.b).size;
+        var resultCodes =
+          activeTab === "intersection"
+            ? r.intersection
+            : activeTab === "a-minus-b"
+            ? r.aMinusB
+            : r.bMinusA;
+        var resultCopies = resultCodes.length;
+        var resultDistinct = countBy(resultCodes).size;
 
-        elMeta.textContent =
-          ua === 0 && ub === 0
-            ? "No codes parsed yet."
-            : "List A: " +
-              ua +
-              " distinct code" +
-              (ua === 1 ? "" : "s") +
-              " (" +
-              ta +
-              " cop" +
-              (ta === 1 ? "y" : "ies") +
-              ") · List B: " +
-              ub +
-              " distinct code" +
-              (ub === 1 ? "" : "s") +
-              " (" +
-              tb +
-              " cop" +
-              (tb === 1 ? "y" : "ies") +
-              ") · Shared: " +
-              copies +
-              " cop" +
-              (copies === 1 ? "y" : "ies") +
-              (copies > 0 ? " across " + r.sharedDistinct + " code" + (r.sharedDistinct === 1 ? "" : "s") : "");
+        if (ua === 0 && ub === 0) {
+          elMeta.textContent = "No codes parsed yet.";
+        } else {
+          var label = TAB_LABEL[activeTab];
+          var summary =
+            "List A: " +
+            pluralCodes(ua) +
+            " (" +
+            pluralCopies(r.a.length) +
+            ") · List B: " +
+            pluralCodes(ub) +
+            " (" +
+            pluralCopies(r.b.length) +
+            ") · " +
+            label.charAt(0).toUpperCase() +
+            label.slice(1) +
+            ": " +
+            pluralCopies(resultCopies);
+          if (resultCopies > 0) {
+            summary += " across " + pluralCodes(resultDistinct);
+          }
+          elMeta.textContent = summary;
+        }
 
-        if (copies > 0) {
-          elOut.textContent = r.intersectionFormatted;
+        if (resultCopies > 0) {
+          elOut.textContent = formatCodesSortedWithCounts(resultCodes);
           elOut.hidden = false;
           elEmpty.hidden = true;
         } else {
           elOut.hidden = true;
           elEmpty.hidden = false;
           if (ua === 0 && ub === 0) {
-            elEmpty.textContent = "Enter both lists to see shared codes.";
-          } else if (ua === 0 || ub === 0) {
+            elEmpty.textContent = "Enter both lists to see results.";
+          } else if (activeTab === "a-minus-b" && ua === 0) {
+            elEmpty.textContent = "List A has no codes.";
+          } else if (activeTab === "b-minus-a" && ub === 0) {
+            elEmpty.textContent = "List B has no codes.";
+          } else if (activeTab === "intersection" && (ua === 0 || ub === 0)) {
             elEmpty.textContent =
               "One list has no codes after removing empty entries — add stickers to both sides.";
           } else {
-            elEmpty.textContent = "No overlap — no codes appear in both lists.";
+            elEmpty.textContent = EMPTY_MSG[activeTab];
           }
         }
 
         if (ua > 0) {
-          elASorted.textContent = r.formattedA;
+          elASorted.textContent = formatCodesSortedWithCounts(r.a);
           elASorted.hidden = false;
           elAEmpty.hidden = true;
         } else {
@@ -314,7 +397,7 @@
         }
 
         if (ub > 0) {
-          elBSorted.textContent = r.formattedB;
+          elBSorted.textContent = formatCodesSortedWithCounts(r.b);
           elBSorted.hidden = false;
           elBEmpty.hidden = true;
         } else {
@@ -322,6 +405,21 @@
           elBEmpty.hidden = false;
           elBEmpty.textContent = "No codes parsed.";
         }
+      }
+
+      function setActiveTab(tab) {
+        activeTab = tab;
+        for (var i = 0; i < tabButtons.length; i++) {
+          var btn = tabButtons[i];
+          btn.setAttribute("aria-selected", btn.dataset.tab === tab ? "true" : "false");
+        }
+        render();
+      }
+
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].addEventListener("click", function (e) {
+          setActiveTab(e.currentTarget.dataset.tab);
+        });
       }
 
       elA.addEventListener("input", render);

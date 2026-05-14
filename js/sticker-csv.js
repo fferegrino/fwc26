@@ -25,6 +25,19 @@ function stemFromStickerCode(code) {
   return m ? m[1] : null;
 }
 
+/** Expand a range like "SWE7-9" into ["SWE7","SWE8","SWE9"]. */
+function expandRangeToken(token) {
+  var m = token.match(/^(.*?)(\d+)\s*-\s*(\d+)$/);
+  if (!m) return [token];
+  var prefix = m[1];
+  var start = parseInt(m[2], 10);
+  var end = parseInt(m[3], 10);
+  if (!isFinite(start) || !isFinite(end) || end < start) return [token];
+  var out = [];
+  for (var i = start; i <= end; i++) out.push(prefix + i);
+  return out;
+}
+
 function parseStickerCsv(text) {
   var raw = text.toUpperCase().split(",");
   var out = [];
@@ -32,7 +45,7 @@ function parseStickerCsv(text) {
   for (var i = 0; i < raw.length; i++) {
     var token = raw[i].trim();
     if (!token) continue;
-    if (/^\d+$/.test(token)) {
+    if (/^\d+(\s*-\s*\d+)?$/.test(token)) {
       if (lastStem != null) {
         token = lastStem + token;
       }
@@ -41,15 +54,20 @@ function parseStickerCsv(text) {
     for (var s = 0; s < subTokens.length; s++) {
       var sub = subTokens[s];
       var m = sub.match(STICKER_COUNT_SUFFIX_RE);
+      var codes, count;
       if (m) {
-        var code = m[1].trim();
-        var n = parseInt(m[2], 10);
-        if (!code || !isFinite(n) || n <= 0) continue;
-        lastStem = stemFromStickerCode(code) || lastStem;
-        for (var j = 0; j < n; j++) out.push(code);
+        codes = expandRangeToken(m[1].trim());
+        count = parseInt(m[2], 10);
+        if (!isFinite(count) || count <= 0) continue;
       } else {
-        out.push(sub);
-        lastStem = stemFromStickerCode(sub) || lastStem;
+        codes = expandRangeToken(sub);
+        count = 1;
+      }
+      for (var c = 0; c < codes.length; c++) {
+        var code = codes[c];
+        if (!code) continue;
+        lastStem = stemFromStickerCode(code) || lastStem;
+        for (var j = 0; j < count; j++) out.push(code);
       }
     }
   }
@@ -57,5 +75,9 @@ function parseStickerCsv(text) {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { parseStickerCsv: parseStickerCsv, expandAmpersandToken: expandAmpersandToken };
+  module.exports = {
+    parseStickerCsv: parseStickerCsv,
+    expandAmpersandToken: expandAmpersandToken,
+    expandRangeToken: expandRangeToken,
+  };
 }
