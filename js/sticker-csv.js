@@ -26,7 +26,7 @@ function stemFromStickerCode(code) {
 }
 
 function parseStickerCsv(text) {
-  var raw = text.split(",");
+  var raw = text.toUpperCase().split(",");
   var out = [];
   var lastStem = null;
   for (var i = 0; i < raw.length; i++) {
