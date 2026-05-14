@@ -14,6 +14,7 @@ from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi import Query
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse, Response
+from fastapi.staticfiles import StaticFiles
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -28,6 +29,7 @@ DATA_FILE = BASE_DIR / "data.json"
 GOT_FILE = BASE_DIR / "got.json"
 APP_JS_FILE = BASE_DIR / "app.js"
 STYLES_FILE = BASE_DIR / "styles.css"
+JS_DIR = BASE_DIR / "js"
 
 # Same rule as app.js `includeSticker` — only these rows are part of the album export.
 STICKER_CODE_RE = re.compile(r"^(00|[A-Z]{3}\d{1,2})$")
@@ -39,6 +41,9 @@ user_mapping: dict[str, str] = {
 }
 
 app = FastAPI(title="Panini FWC26 Stickers")
+
+if JS_DIR.is_dir():
+    app.mount("/js", StaticFiles(directory=str(JS_DIR)), name="js")
 
 _got_by_user: dict[str, dict[str, list[list[int]]]] = {}
 _got_lock = threading.RLock()
